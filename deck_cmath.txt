@@ -1,0 +1,276 @@
+###Question:Return the phase of x (also known as the argument of x), as a  float.  phase(x) is equivalent to math.atan2(x.imag,  x.real).  The result lies in the range [-π, π], and the branch  cut for this operation lies along the negative real axis,  continuous from above.  On systems with support for signed zeros  (which includes most systems in current use), this means that the  sign of the result is the same as the sign of x.imag, even when  x.imag is zero:  >>> phase(complex(-1.0, 0.0))  3.141592653589793  >>> phase(complex(-1.0, -0.0))  -3.141592653589793
+
+Answer:cmath.phase(x)
+
+Note:
+
+###Question:Return the representation of x in polar coordinates.  Returns a  pair (r, phi) where r is the modulus of x and phi is the  phase of x.  polar(x) is equivalent to (abs(x),  phase(x)).
+
+Answer:cmath.polar(x)
+
+Note:
+
+###Question:Return the complex number x with polar coordinates r and phi.  Equivalent to r * (math.cos(phi) + math.sin(phi)*1j).
+
+Answer:cmath.rect(r, phi)
+
+Note:
+
+###Question:Return the exponential value e**x.
+
+Answer:cmath.exp(x)
+
+Note:
+
+###Question:Returns the logarithm of x to the given base. If the base is not  specified, returns the natural logarithm of x. There is one branch cut, from 0  along the negative real axis to -∞, continuous from above.
+
+Answer:cmath.log(x[, base])
+
+Note:
+
+###Question:Return the base-10 logarithm of x. This has the same branch cut as  log().
+
+Answer:cmath.log10(x)
+
+Note:
+
+###Question:Return the square root of x. This has the same branch cut as log().
+
+Answer:cmath.sqrt(x)
+
+Note:
+
+###Question:Return the arc cosine of x. There are two branch cuts: One extends right from  1 along the real axis to ∞, continuous from below. The other extends left from  -1 along the real axis to -∞, continuous from above.
+
+Answer:cmath.acos(x)
+
+Note:
+
+###Question:Return the arc sine of x. This has the same branch cuts as acos().
+
+Answer:cmath.asin(x)
+
+Note:
+
+###Question:Return the arc tangent of x. There are two branch cuts: One extends from  1j along the imaginary axis to ∞j, continuous from the right. The  other extends from -1j along the imaginary axis to -∞j, continuous  from the left.
+
+Answer:cmath.atan(x)
+
+Note:
+
+###Question:Return the cosine of x.
+
+Answer:cmath.cos(x)
+
+Note:
+
+###Question:Return the sine of x.
+
+Answer:cmath.sin(x)
+
+Note:
+
+###Question:Return the tangent of x.
+
+Answer:cmath.tan(x)
+
+Note:
+
+###Question:Return the inverse hyperbolic cosine of x. There is one branch cut,  extending left from 1 along the real axis to -∞, continuous from above.
+
+Answer:cmath.acosh(x)
+
+Note:
+
+###Question:Return the inverse hyperbolic sine of x. There are two branch cuts:  One extends from 1j along the imaginary axis to ∞j,  continuous from the right.  The other extends from -1j along  the imaginary axis to -∞j, continuous from the left.
+
+Answer:cmath.asinh(x)
+
+Note:
+
+###Question:Return the inverse hyperbolic tangent of x. There are two branch cuts: One  extends from 1 along the real axis to ∞, continuous from below. The  other extends from -1 along the real axis to -∞, continuous from  above.
+
+Answer:cmath.atanh(x)
+
+Note:
+
+###Question:Return the hyperbolic cosine of x.
+
+Answer:cmath.cosh(x)
+
+Note:
+
+###Question:Return the hyperbolic sine of x.
+
+Answer:cmath.sinh(x)
+
+Note:
+
+###Question:Return the hyperbolic tangent of x.
+
+Answer:cmath.tanh(x)
+
+Note:
+
+###Question:Return True if both the real and imaginary parts of x are finite, and  False otherwise.    New in version 3.2.
+
+Answer:cmath.isfinite(x)
+
+Note:
+
+###Question:Return True if either the real or the imaginary part of x is an  infinity, and False otherwise.
+
+Answer:cmath.isinf(x)
+
+Note:
+
+###Question:Return True if either the real or the imaginary part of x is a NaN,  and False otherwise.
+
+Answer:cmath.isnan(x)
+
+Note:
+
+###Question:Return True if the values a and b are close to each other and  False otherwise.  Whether or not two values are considered close is determined according to  given absolute and relative tolerances.  rel_tol is the relative tolerance – it is the maximum allowed difference  between a and b, relative to the larger absolute value of a or b.  For example, to set a tolerance of 5%, pass rel_tol=0.05.  The default  tolerance is 1e-09, which assures that the two values are the same  within about 9 decimal digits.  rel_tol must be greater than zero.  abs_tol is the minimum absolute tolerance – useful for comparisons near  zero. abs_tol must be at least zero.  If no errors occur, the result will be:  abs(a-b) <= max(rel_tol * max(abs(a), abs(b)), abs_tol).  The IEEE 754 special values of NaN, inf, and -inf will be  handled according to IEEE rules.  Specifically, NaN is not considered  close to any other value, including NaN.  inf and -inf are only  considered close to themselves.    New in version 3.5.      See also  PEP 485 – A function for testing approximate equality
+
+Answer:cmath.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+
+Note:
+
+###Question:Return the phase of x (also known as the argument of x), as a  float.  phase(x) is equivalent to math.atan2(x.imag,  x.real).  The result lies in the range [-π, π], and the branch  cut for this operation lies along the negative real axis,  continuous from above.  On systems with support for signed zeros  (which includes most systems in current use), this means that the  sign of the result is the same as the sign of x.imag, even when  x.imag is zero:  >>> phase(complex(-1.0, 0.0))  3.141592653589793  >>> phase(complex(-1.0, -0.0))  -3.141592653589793
+
+Answer:cmath.phase(x)
+
+Note:
+
+###Question:Return the representation of x in polar coordinates.  Returns a  pair (r, phi) where r is the modulus of x and phi is the  phase of x.  polar(x) is equivalent to (abs(x),  phase(x)).
+
+Answer:cmath.polar(x)
+
+Note:
+
+###Question:Return the complex number x with polar coordinates r and phi.  Equivalent to r * (math.cos(phi) + math.sin(phi)*1j).
+
+Answer:cmath.rect(r, phi)
+
+Note:
+
+###Question:Return the exponential value e**x.
+
+Answer:cmath.exp(x)
+
+Note:
+
+###Question:Returns the logarithm of x to the given base. If the base is not  specified, returns the natural logarithm of x. There is one branch cut, from 0  along the negative real axis to -∞, continuous from above.
+
+Answer:cmath.log(x[, base])
+
+Note:
+
+###Question:Return the base-10 logarithm of x. This has the same branch cut as  log().
+
+Answer:cmath.log10(x)
+
+Note:
+
+###Question:Return the square root of x. This has the same branch cut as log().
+
+Answer:cmath.sqrt(x)
+
+Note:
+
+###Question:Return the arc cosine of x. There are two branch cuts: One extends right from  1 along the real axis to ∞, continuous from below. The other extends left from  -1 along the real axis to -∞, continuous from above.
+
+Answer:cmath.acos(x)
+
+Note:
+
+###Question:Return the arc sine of x. This has the same branch cuts as acos().
+
+Answer:cmath.asin(x)
+
+Note:
+
+###Question:Return the arc tangent of x. There are two branch cuts: One extends from  1j along the imaginary axis to ∞j, continuous from the right. The  other extends from -1j along the imaginary axis to -∞j, continuous  from the left.
+
+Answer:cmath.atan(x)
+
+Note:
+
+###Question:Return the cosine of x.
+
+Answer:cmath.cos(x)
+
+Note:
+
+###Question:Return the sine of x.
+
+Answer:cmath.sin(x)
+
+Note:
+
+###Question:Return the tangent of x.
+
+Answer:cmath.tan(x)
+
+Note:
+
+###Question:Return the inverse hyperbolic cosine of x. There is one branch cut,  extending left from 1 along the real axis to -∞, continuous from above.
+
+Answer:cmath.acosh(x)
+
+Note:
+
+###Question:Return the inverse hyperbolic sine of x. There are two branch cuts:  One extends from 1j along the imaginary axis to ∞j,  continuous from the right.  The other extends from -1j along  the imaginary axis to -∞j, continuous from the left.
+
+Answer:cmath.asinh(x)
+
+Note:
+
+###Question:Return the inverse hyperbolic tangent of x. There are two branch cuts: One  extends from 1 along the real axis to ∞, continuous from below. The  other extends from -1 along the real axis to -∞, continuous from  above.
+
+Answer:cmath.atanh(x)
+
+Note:
+
+###Question:Return the hyperbolic cosine of x.
+
+Answer:cmath.cosh(x)
+
+Note:
+
+###Question:Return the hyperbolic sine of x.
+
+Answer:cmath.sinh(x)
+
+Note:
+
+###Question:Return the hyperbolic tangent of x.
+
+Answer:cmath.tanh(x)
+
+Note:
+
+###Question:Return True if both the real and imaginary parts of x are finite, and  False otherwise.    New in version 3.2.
+
+Answer:cmath.isfinite(x)
+
+Note:
+
+###Question:Return True if either the real or the imaginary part of x is an  infinity, and False otherwise.
+
+Answer:cmath.isinf(x)
+
+Note:
+
+###Question:Return True if either the real or the imaginary part of x is a NaN,  and False otherwise.
+
+Answer:cmath.isnan(x)
+
+Note:
+
+###Question:Return True if the values a and b are close to each other and  False otherwise.  Whether or not two values are considered close is determined according to  given absolute and relative tolerances.  rel_tol is the relative tolerance – it is the maximum allowed difference  between a and b, relative to the larger absolute value of a or b.  For example, to set a tolerance of 5%, pass rel_tol=0.05.  The default  tolerance is 1e-09, which assures that the two values are the same  within about 9 decimal digits.  rel_tol must be greater than zero.  abs_tol is the minimum absolute tolerance – useful for comparisons near  zero. abs_tol must be at least zero.  If no errors occur, the result will be:  abs(a-b) <= max(rel_tol * max(abs(a), abs(b)), abs_tol).  The IEEE 754 special values of NaN, inf, and -inf will be  handled according to IEEE rules.  Specifically, NaN is not considered  close to any other value, including NaN.  inf and -inf are only  considered close to themselves.    New in version 3.5.      See also  PEP 485 – A function for testing approximate equality
+
+Answer:cmath.isclose(a, b, *, rel_tol=1e-09, abs_tol=0.0)
+
+Note:
+

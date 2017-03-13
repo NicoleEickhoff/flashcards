@@ -1,0 +1,270 @@
+###Question:Class that uses the os.urandom() function for generating random numbers  from sources provided by the operating system. Not available on all systems.  Does not rely on software state, and sequences are not reproducible. Accordingly,  the seed() method has no effect and is ignored.  The getstate() and setstate() methods raise  NotImplementedError if called.
+
+Answer:class random.SystemRandom([seed])
+
+Note:
+
+###Question:Initialize the random number generator.  If a is omitted or None, the current system time is used.  If  randomness sources are provided by the operating system, they are used  instead of the system time (see the os.urandom() function for details  on availability).  If a is an int, it is used directly.  With version 2 (the default), a str, bytes, or bytearray  object gets converted to an int and all of its bits are used.  With version 1 (provided for reproducing random sequences from older versions  of Python), the algorithm for str and bytes generates a  narrower range of seeds.    Changed in version 3.2: Moved to the version 2 scheme which uses all of the bits in a string seed.
+
+Answer:random.seed(a=None, version=2)
+
+Note:
+
+###Question:Return an object capturing the current internal state of the generator.  This  object can be passed to setstate() to restore the state.
+
+Answer:random.getstate()
+
+Note:
+
+###Question:state should have been obtained from a previous call to getstate(), and  setstate() restores the internal state of the generator to what it was at  the time getstate() was called.
+
+Answer:random.setstate(state)
+
+Note:
+
+###Question:Returns a Python integer with k random bits. This method is supplied with  the MersenneTwister generator and some other generators may also provide it  as an optional part of the API. When available, getrandbits() enables  randrange() to handle arbitrarily large ranges.
+
+Answer:random.getrandbits(k)
+
+Note:
+
+###Question:random.randrange(start, stop[, step])  Return a randomly selected element from range(start, stop, step).  This is  equivalent to choice(range(start, stop, step)), but doesn’t actually build a  range object.  The positional argument pattern matches that of range().  Keyword arguments  should not be used because the function may use them in unexpected ways.    Changed in version 3.2: randrange() is more sophisticated about producing equally distributed  values.  Formerly it used a style like int(random()*n) which could produce  slightly uneven distributions.
+
+Answer:random.randrange(stop)
+
+Note:
+
+###Question:Return a random integer N such that a <= N <= b.  Alias for  randrange(a, b+1).
+
+Answer:random.randint(a, b)
+
+Note:
+
+###Question:Return a random element from the non-empty sequence seq. If seq is empty,  raises IndexError.
+
+Answer:random.choice(seq)
+
+Note:
+
+###Question:Return a k sized list of elements chosen from the population with replacement.  If the population is empty, raises IndexError.  If a weights sequence is specified, selections are made according to the  relative weights.  Alternatively, if a cum_weights sequence is given, the  selections are made according to the cumulative weights (perhaps computed  using itertools.accumulate()).  For example, the relative weights  [10, 5, 30, 5] are equivalent to the cumulative weights  [10, 15, 45, 50].  Internally, the relative weights are converted to  cumulative weights before making selections, so supplying the cumulative  weights saves work.  If neither weights nor cum_weights are specified, selections are made  with equal probability.  If a weights sequence is supplied, it must be  the same length as the population sequence.  It is a TypeError  to specify both weights and cum_weights.  The weights or cum_weights can use any numeric type that interoperates  with the float values returned by random() (that includes  integers, floats, and fractions but excludes decimals).    New in version 3.6.
+
+Answer:random.choices(population, weights=None, *, cum_weights=None, k=1)
+
+Note:
+
+###Question:Shuffle the sequence x in place.  The optional argument random is a 0-argument function returning a random  float in [0.0, 1.0); by default, this is the function random().  To shuffle an immutable sequence and return a new shuffled list, use  sample(x, k=len(x)) instead.  Note that even for small len(x), the total number of permutations of x  can quickly grow larger than the period of most random number generators.  This implies that most permutations of a long sequence can never be  generated.  For example, a sequence of length 2080 is the largest that  can fit within the period of the Mersenne Twister random number generator.
+
+Answer:random.shuffle(x[, random])
+
+Note:
+
+###Question:Return a k length list of unique elements chosen from the population sequence  or set. Used for random sampling without replacement.  Returns a new list containing elements from the population while leaving the  original population unchanged.  The resulting list is in selection order so that  all sub-slices will also be valid random samples.  This allows raffle winners  (the sample) to be partitioned into grand prize and second place winners (the  subslices).  Members of the population need not be hashable or unique.  If the population  contains repeats, then each occurrence is a possible selection in the sample.  To choose a sample from a range of integers, use a range() object as an  argument.  This is especially fast and space efficient for sampling from a large  population:  sample(range(10000000), k=60).  If the sample size is larger than the population size, a ValueError  is raised.
+
+Answer:random.sample(population, k)
+
+Note:
+
+###Question:Return the next random floating point number in the range [0.0, 1.0).
+
+Answer:random.random()
+
+Note:
+
+###Question:Return a random floating point number N such that a <= N <= b for  a <= b and b <= N <= a for b < a.  The end-point value b may or may not be included in the range  depending on floating-point rounding in the equation a + (b-a) * random().
+
+Answer:random.uniform(a, b)
+
+Note:
+
+###Question:Return a random floating point number N such that low <= N <= high and  with the specified mode between those bounds.  The low and high bounds  default to zero and one.  The mode argument defaults to the midpoint  between the bounds, giving a symmetric distribution.
+
+Answer:random.triangular(low, high, mode)
+
+Note:
+
+###Question:Beta distribution.  Conditions on the parameters are alpha > 0 and  beta > 0. Returned values range between 0 and 1.
+
+Answer:random.betavariate(alpha, beta)
+
+Note:
+
+###Question:Exponential distribution.  lambd is 1.0 divided by the desired  mean.  It should be nonzero.  (The parameter would be called  “lambda”, but that is a reserved word in Python.)  Returned values  range from 0 to positive infinity if lambd is positive, and from  negative infinity to 0 if lambd is negative.
+
+Answer:random.expovariate(lambd)
+
+Note:
+
+###Question:Gamma distribution.  (Not the gamma function!)  Conditions on the  parameters are alpha > 0 and beta > 0.  The probability distribution function is:            x ** (alpha - 1) * math.exp(-x / beta)  pdf(x) =  --------------------------------------              math.gamma(alpha) * beta ** alpha
+
+Answer:random.gammavariate(alpha, beta)
+
+Note:
+
+###Question:Gaussian distribution.  mu is the mean, and sigma is the standard  deviation.  This is slightly faster than the normalvariate() function  defined below.
+
+Answer:random.gauss(mu, sigma)
+
+Note:
+
+###Question:Log normal distribution.  If you take the natural logarithm of this  distribution, you’ll get a normal distribution with mean mu and standard  deviation sigma.  mu can have any value, and sigma must be greater than  zero.
+
+Answer:random.lognormvariate(mu, sigma)
+
+Note:
+
+###Question:Normal distribution.  mu is the mean, and sigma is the standard deviation.
+
+Answer:random.normalvariate(mu, sigma)
+
+Note:
+
+###Question:mu is the mean angle, expressed in radians between 0 and 2*pi, and kappa  is the concentration parameter, which must be greater than or equal to zero.  If  kappa is equal to zero, this distribution reduces to a uniform random angle  over the range 0 to 2*pi.
+
+Answer:random.vonmisesvariate(mu, kappa)
+
+Note:
+
+###Question:Pareto distribution.  alpha is the shape parameter.
+
+Answer:random.paretovariate(alpha)
+
+Note:
+
+###Question:Weibull distribution.  alpha is the scale parameter and beta is the shape  parameter.
+
+Answer:random.weibullvariate(alpha, beta)
+
+Note:
+
+###Question:Initialize the random number generator.  If a is omitted or None, the current system time is used.  If  randomness sources are provided by the operating system, they are used  instead of the system time (see the os.urandom() function for details  on availability).  If a is an int, it is used directly.  With version 2 (the default), a str, bytes, or bytearray  object gets converted to an int and all of its bits are used.  With version 1 (provided for reproducing random sequences from older versions  of Python), the algorithm for str and bytes generates a  narrower range of seeds.    Changed in version 3.2: Moved to the version 2 scheme which uses all of the bits in a string seed.
+
+Answer:random.seed(a=None, version=2)
+
+Note:
+
+###Question:Return an object capturing the current internal state of the generator.  This  object can be passed to setstate() to restore the state.
+
+Answer:random.getstate()
+
+Note:
+
+###Question:state should have been obtained from a previous call to getstate(), and  setstate() restores the internal state of the generator to what it was at  the time getstate() was called.
+
+Answer:random.setstate(state)
+
+Note:
+
+###Question:Returns a Python integer with k random bits. This method is supplied with  the MersenneTwister generator and some other generators may also provide it  as an optional part of the API. When available, getrandbits() enables  randrange() to handle arbitrarily large ranges.
+
+Answer:random.getrandbits(k)
+
+Note:
+
+###Question:random.randrange(start, stop[, step])  Return a randomly selected element from range(start, stop, step).  This is  equivalent to choice(range(start, stop, step)), but doesn’t actually build a  range object.  The positional argument pattern matches that of range().  Keyword arguments  should not be used because the function may use them in unexpected ways.    Changed in version 3.2: randrange() is more sophisticated about producing equally distributed  values.  Formerly it used a style like int(random()*n) which could produce  slightly uneven distributions.
+
+Answer:random.randrange(stop)
+
+Note:
+
+###Question:Return a random integer N such that a <= N <= b.  Alias for  randrange(a, b+1).
+
+Answer:random.randint(a, b)
+
+Note:
+
+###Question:Return a random element from the non-empty sequence seq. If seq is empty,  raises IndexError.
+
+Answer:random.choice(seq)
+
+Note:
+
+###Question:Return a k sized list of elements chosen from the population with replacement.  If the population is empty, raises IndexError.  If a weights sequence is specified, selections are made according to the  relative weights.  Alternatively, if a cum_weights sequence is given, the  selections are made according to the cumulative weights (perhaps computed  using itertools.accumulate()).  For example, the relative weights  [10, 5, 30, 5] are equivalent to the cumulative weights  [10, 15, 45, 50].  Internally, the relative weights are converted to  cumulative weights before making selections, so supplying the cumulative  weights saves work.  If neither weights nor cum_weights are specified, selections are made  with equal probability.  If a weights sequence is supplied, it must be  the same length as the population sequence.  It is a TypeError  to specify both weights and cum_weights.  The weights or cum_weights can use any numeric type that interoperates  with the float values returned by random() (that includes  integers, floats, and fractions but excludes decimals).    New in version 3.6.
+
+Answer:random.choices(population, weights=None, *, cum_weights=None, k=1)
+
+Note:
+
+###Question:Shuffle the sequence x in place.  The optional argument random is a 0-argument function returning a random  float in [0.0, 1.0); by default, this is the function random().  To shuffle an immutable sequence and return a new shuffled list, use  sample(x, k=len(x)) instead.  Note that even for small len(x), the total number of permutations of x  can quickly grow larger than the period of most random number generators.  This implies that most permutations of a long sequence can never be  generated.  For example, a sequence of length 2080 is the largest that  can fit within the period of the Mersenne Twister random number generator.
+
+Answer:random.shuffle(x[, random])
+
+Note:
+
+###Question:Return a k length list of unique elements chosen from the population sequence  or set. Used for random sampling without replacement.  Returns a new list containing elements from the population while leaving the  original population unchanged.  The resulting list is in selection order so that  all sub-slices will also be valid random samples.  This allows raffle winners  (the sample) to be partitioned into grand prize and second place winners (the  subslices).  Members of the population need not be hashable or unique.  If the population  contains repeats, then each occurrence is a possible selection in the sample.  To choose a sample from a range of integers, use a range() object as an  argument.  This is especially fast and space efficient for sampling from a large  population:  sample(range(10000000), k=60).  If the sample size is larger than the population size, a ValueError  is raised.
+
+Answer:random.sample(population, k)
+
+Note:
+
+###Question:Return the next random floating point number in the range [0.0, 1.0).
+
+Answer:random.random()
+
+Note:
+
+###Question:Return a random floating point number N such that a <= N <= b for  a <= b and b <= N <= a for b < a.  The end-point value b may or may not be included in the range  depending on floating-point rounding in the equation a + (b-a) * random().
+
+Answer:random.uniform(a, b)
+
+Note:
+
+###Question:Return a random floating point number N such that low <= N <= high and  with the specified mode between those bounds.  The low and high bounds  default to zero and one.  The mode argument defaults to the midpoint  between the bounds, giving a symmetric distribution.
+
+Answer:random.triangular(low, high, mode)
+
+Note:
+
+###Question:Beta distribution.  Conditions on the parameters are alpha > 0 and  beta > 0. Returned values range between 0 and 1.
+
+Answer:random.betavariate(alpha, beta)
+
+Note:
+
+###Question:Exponential distribution.  lambd is 1.0 divided by the desired  mean.  It should be nonzero.  (The parameter would be called  “lambda”, but that is a reserved word in Python.)  Returned values  range from 0 to positive infinity if lambd is positive, and from  negative infinity to 0 if lambd is negative.
+
+Answer:random.expovariate(lambd)
+
+Note:
+
+###Question:Gamma distribution.  (Not the gamma function!)  Conditions on the  parameters are alpha > 0 and beta > 0.  The probability distribution function is:            x ** (alpha - 1) * math.exp(-x / beta)  pdf(x) =  --------------------------------------              math.gamma(alpha) * beta ** alpha
+
+Answer:random.gammavariate(alpha, beta)
+
+Note:
+
+###Question:Gaussian distribution.  mu is the mean, and sigma is the standard  deviation.  This is slightly faster than the normalvariate() function  defined below.
+
+Answer:random.gauss(mu, sigma)
+
+Note:
+
+###Question:Log normal distribution.  If you take the natural logarithm of this  distribution, you’ll get a normal distribution with mean mu and standard  deviation sigma.  mu can have any value, and sigma must be greater than  zero.
+
+Answer:random.lognormvariate(mu, sigma)
+
+Note:
+
+###Question:Normal distribution.  mu is the mean, and sigma is the standard deviation.
+
+Answer:random.normalvariate(mu, sigma)
+
+Note:
+
+###Question:mu is the mean angle, expressed in radians between 0 and 2*pi, and kappa  is the concentration parameter, which must be greater than or equal to zero.  If  kappa is equal to zero, this distribution reduces to a uniform random angle  over the range 0 to 2*pi.
+
+Answer:random.vonmisesvariate(mu, kappa)
+
+Note:
+
+###Question:Pareto distribution.  alpha is the shape parameter.
+
+Answer:random.paretovariate(alpha)
+
+Note:
+
+###Question:Weibull distribution.  alpha is the scale parameter and beta is the shape  parameter.
+
+Answer:random.weibullvariate(alpha, beta)
+
+Note:
+

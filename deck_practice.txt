@@ -1,0 +1,800 @@
+###Question: Use the time.time() function assign the current Unix timestamp to a new variable current_time.
+Convert current_time to a struct_time object and assign the resulting object to current_struct_time.
+Assign the current hour to current_hour and display the value.
+
+Answer:import time
+current_time = time.time()
+current_struct_time = time.gmtime(current_time)
+current_hour = current_struct_time.tm_hour
+
+Note:
+
+###Question:Import the datetime module.
+Assign the datetime object representation of the current time to a new variable current_datetime.
+Assign the current year to current_year.
+Assign the current month to current_month.
+
+Answer: import datetime
+current_datetime = datetime.datetime.now()
+current_year = current_datetime.year
+current_month = current_datetime.month
+
+Note:
+
+###Question: Create an instance of the datetime class that represents the current time and date. Assign this to a new variable today.
+Create an instance of the timedelta class that represents one day. Assign this to a new variable diff.
+Assign the datetime instance for tomorrow to a new variable tomorrow, and the datetime instance for yesterday to a new variable yesterday.
+
+Answer:import datetime
+today = datetime.datetime.now()
+diff = datetime.timedelta(days = 1)
+tomorrow = today + diff
+yesterday = today - diff
+
+Note:
+
+###Question: For example, suppose we stored a timestamp from March 3, 2010 in the object march3. If we want to format it nicely into the string "Mar 03, 2010", we can write the following code:
+
+Answer:march3 = datetime.datetime(year = 2010, month = 3, day = 3)
+pretty_march3 = march3.strftime("%b %d, %Y")
+print(pretty_march3)
+
+Note:
+
+###Question: Using the datetime.datetime.strftime() method, display mystery_date, a datetime instance we've created for you, in the following format:
+[12-hour time with minutes][AM/PM] on [Day of week] [Month full name] [Day of month], [Full year]
+Here's an example in that format:
+"11:00AM on Wednesday March 03, 2010"
+Store this string in the new variable mystery_date_formatted_string
+
+Answer: import datetime
+mystery_date_formatted_string = mystery_date.strftime('%I:%M%p on %A %B %d, %Y')
+
+Note:
+
+###Question:Use the datetime.datetime.strptime() function to return a datetime instance that represents the timestamp associated with the string mystery_date_formatted_string:
+mystery_date_formatted_string has the format: [Time][AM/PM] on [Day of week] [Month full name] [Day of month], [Full year].
+March 3, 2010 at 11:00AM would look like "11:00AM on Wednesday March 3, 2010" in this format.
+Assign the resulting datetime instance in mystery_date to 'dt'
+
+Answer:import datetime
+dt = datetime.datetime.strptime(mystery_date_formatted_string, '%I:%M%p on %A %B %d, %Y')
+
+Note:
+
+###Question: Loop through posts, and for each row:
+Convert the value in the Time column (index 2 of each row) to a floating point number.
+Convert the floating point number to a datetime instance using datetime.datetime.fromtimestamp().
+Store the resulting datetime instance back in index 2 of the row, overwriting the original Unix timestamp value.
+
+Answer:import datetime
+for row in posts:
+	row[2] = datetime.datetime.fromtimestamp(float(row[2]))
+
+Note: datetime_object = datetime.datetime.fromtimestamp(1433213314.0)
+
+###Question: Loop through posts, and for each row:
+Use the datetime.month attribute to check if the datetime instance at index 2 equals 3.
+If so, increment march_count.
+
+
+Answer: march_count = 0
+for row in posts:
+	if row[2].month == 3:
+		march_count += 1
+
+Note:
+
+###Question: Write a function that takes in an integer value representing a month, and returns the number of posts users submitted during that month.
+Use the function to return the number of posts users submitted in February (month value of 2), and assign the count to a new variable feb_count.
+Use the function to return the number of posts users submitted in August (month value of 8), and assign the count to a new variable aug_count.
+
+Answer:def count_month_posts(month):
+	month_count = 0
+	for row in posts:
+		if row[2].month == month:
+			month_count += 1
+	return month_count
+
+feb_count = count_month_posts(2)
+aug_count = count_month_posts(8)
+
+Note:
+
+###Question: Use a list comprehension to create a datetime.datetime object for each row. Assign the result to dates.
+The year column in the second element in each row.
+The month column is the third element in each row.
+Make sure to convert year and month to integers using int().
+Pass year, month, and day=1 into the datetime.datetime() function.
+Count up how many times each unique date occurs in dates. Assign the result to date_counts.
+This follows a similar procedure to what we did in the last screen with year_counts.
+Display date_counts.
+
+Answer:dates = [datetime.datetime(year=int(r[1]), month=int(r[2]), day=1) for r in data]
+date_counts = {}
+for d in dates:
+	if d in date_counts:
+		date_counts[d] += 1
+	else:
+		date_counts[d] = 1
+date_counts
+
+Note:
+
+###Question: Use the csv module to read world_alcohol.csv into the variable world_alcohol.
+You can use the csv.reader function to accomplish this.
+world_alcohol should be a list of lists.
+Extract the first column of world_alcohol, and assign it to the variable years.
+Use list slicing to remove the first item in years (this is a header).
+Find the sum of all the items in years. Assign the result to total.
+Remember to convert each item to a float before adding them together.
+Divide total by the length of years to get the average. Assign the result to avg_year.
+
+Answer:import csv
+world_alcohol = list(csv.reader(open('world_alcohol.csv')))
+years = [r[0] for r in world_alcohol]
+years = years[1:]
+years = [float(y) for y in years]
+total = sum(years)
+avg_year = total/len(years)
+
+Note:
+
+###Question: Import NumPy.
+Use the genfromtxt() function to read world_alcohol.csv into the world_alcohol variable.
+Use the type() and print() functions to display the type for world_alcohol.
+
+Answer:import numpy
+world_alcohol = numpy.genfromtxt('world_alcohol.csv', delimiter=',')
+print(type(world_alcohol))
+
+Note:
+
+###Question: Assign the data type of world_alcohol to the variable world_alcohol_dtype.
+
+Answer:world_alcohol_dtype = world_alcohol.dtype
+
+Note:
+
+###Question: Use the numpy.genfromtxt() function to read in world_alcohol.csv:
+Set the dtype parameter to "U75".
+Set the skip_header parameter to 1.
+Set the delimiter parameter to ,.
+Assign the result to world_alcohol.
+Use the print() function to display world_alcohol.
+
+Answer:import numpy as np
+world_alcohol = np.genfromtxt('world_alcohol.csv', dtype='U75', skip_header=1, delimiter=',')
+print(world_alcohol)
+
+Note:
+
+###Question: Assign the amount of alcohol Uruguayans drank in other beverages per capita in 1986 to uruguay_other_1986. This is the second row and fifth column.
+Assign the country in the third row to third_country. Country is the third column.
+
+Answer:uruguay_other_1986 = world_alcohol[1][4]
+third_country = world_alcohol[2][2]
+
+Note:
+
+###Question: Assign the whole third column from world_alcohol to the variable countries.
+Assign the whole fifth column from world_alcohol to the variable alcohol_consumption.
+
+
+Answer:countries = world_alcohol[:, 2]
+alcohol_consumption = world_alcohol[:, 4]
+
+Note:
+
+###Question: Assign all the rows and the first 2 columns of world_alcohol to first_two_columns.
+Assign the first 10 rows and the first column of world_alcohol to first_ten_years.
+Assign the first 10 rows and all of the columns of world_alcohol to first_ten_rows.
+
+Answer:first_two_columns = world_alcohol[:, :2]
+first_ten_years = world_alcohol[:10, 0]
+first_ten_rows = world_alcohol[:10, :]
+
+Note:
+
+###Question: Assign the first 20 rows of the columns at index 1 and 2 of world_alcohol to first_twenty_regions.
+
+Answer:first_twenty_regions = world_alcohol[:20, 1:3]
+
+Note:
+
+###Question: The variable world_alcohol already contains the data set we're working with.
+Extract the third column in world_alcohol, and compare it to the string Canada. Assign the result to countries_canada.
+Extract the first column in world_alcohol, and compare it to the string 1984. Assign the result to years_1984.
+
+Answer: countries_canada = world_alcohol[:,2] == 'Canada'
+years_1984 = world_alcohol[:,0] == '1984'
+
+Note:
+
+###Question: Compare the third column of world_alcohol to the string Algeria.
+Assign the result to country_is_algeria.
+Select only the rows in world_alcohol where country_is_algeria is True.
+Assign the result to country_algeria.
+
+
+Answer:country_is_algeria = world_alcohol[:,2] == 'Algeria'
+country_algeria = world_alcohol[country_is_algeria]
+
+Note:
+
+###Question: Perform a comparison with multiple conditions, and join the conditions with &.
+Compare the first column of world_alcohol to the string 1986.
+Compare the third column of world_alcohol to the string Algeria.
+Enclose each condition in parentheses, and join the conditions with &.
+Assign the result to is_algeria_and_1986.
+Use is_algeria_and_1986 to select rows from world_alcohol.
+Assign the rows that is_algeria_and_1986 selects to rows_with_algeria_and_1986
+
+Answer:is_algeria_and_1986 = (world_alcohol[:,0] == '1986') & (world_alcohol[:,2] == 'Algeria')
+rows_with_algeria_and_1986 = world_alcohol[is_algeria_and_1986]
+
+Note:
+
+###Question: Replace all instances of the string 1986 in the first column of world_alcohol with the string 2014.
+Replace all instances of the string Wine in the fourth column of world_alcohol with the string Grog.
+
+Answer:year_is_1986 = world_alcohol[:,0] == '1986'
+world_alcohol[year_is_1986,0] = '2014'
+is_wine = world_alcohol[:,3] == 'Wine'
+world_alcohol[is_wine,3] = 'Grog'
+
+Note:
+
+###Question: Compare all the items in the fifth column of world_alcohol with an empty string ''. Assign the result to is_value_empty.
+Select all the values in the fifth column of world_alcohol where is_value_empty is True, and replace them with the string 0.
+
+Answer:is_value_empty = world_alcohol[:,4] == ''
+world_alcohol[is_value_empty,4] = '0'
+
+Note:
+
+###Question: Extract the fifth column from world_alcohol, and assign it to the variable alcohol_consumption.
+Use the astype() method to convert alcohol_consumption to the float data type.
+
+Answer:alcohol_consumption = world_alcohol[:,4]
+alcohol_consumption = alcohol_consumption.astype(float)
+
+Note:
+
+###Question: Create a matrix called canada_1986 that only contains the rows in world_alcohol where the first column is the string 1986 and the third column is the string Canada.
+Extract the fifth column of canada_1986, replace any empty strings ('') with the string 0, and convert the column to the float data type. Assign the result to canada_alcohol.
+Compute the sum of canada_alcohol. Assign the result to total_canadian_drinking.
+
+Answer:canada_1986 = world_alcohol[(world_alcohol[:,0]=='1986') & (world_alcohol[:,2]=='Canada')]
+no_value = canada_1986[:,4] == ''
+canada_1986[no_value, 4] = '0'
+canada_alcohol = canada_1986[:,4].astype(float)
+total_canadian_drinking = canada_alcohol.sum()
+
+Note:
+
+###Question: We've assigned the list of all countries to the variable countries.
+Find the total consumption for each country in countries for the year 1989.
+Refer to the steps outlined above for help.
+When you're finished, totals should contain all of the country names as keys, with the corresponding alcohol consumption totals for 1989 as values.
+
+Answer:totals = {}
+year_1989 = world_alcohol[:,0] == '1989'
+year = world_alcohol[year_1989]
+for country in countries:
+	country_consumption = year[(year[:, 2] == country)]
+	empty_values = country_consumption[:, 4] == ''
+	country_consumption[empty_values, 4] = 0
+	consumption = country_consumption[:,4].astype(float)
+	totals[country] = consumption.sum()
+
+
+Note:
+
+###Question: Find the country with the highest total alcohol consumption.
+To do this, you'll need to find the key associated with the highest value in the totals dictionary.
+Follow the process outlined above to find the highest value in totals.
+When you're finished, highest_value will contain the highest average alcohol consumption, and highest_key will contain the country that had the highest per capital alcohol consumption in 1989.
+
+Answer:highest_value = 0
+highest_key = None
+for key, value in totals.items():
+	if value > highest_value:
+		highest_value = value
+		highest_key = key
+
+Note:
+
+###Question: Select the last 5 rows of food_info and assign to the variable last_rows.
+
+Answer:last_rows = food_info.iloc[-5:]
+
+Note:
+
+###Question: Select and display only the columns that use grams for measurement (that end with "(g)"). To accomplish this:
+Use the columns attribute to return the column names in food_info and convert to a list by calling the method tolist()
+Create a new list, gram_columns, containing only the column names that end in "(g)". The string method endswith() returns True if the string object calling the method ends with the string passed into the parentheses.
+Pass gram_columns into bracket notation to select just those columns and assign the resulting dataframe to gram_df
+Then use the dataframe method head() to display the first 3 rows of gram_df.
+
+Answer:gram_columns = [c for c in food_info.columns.tolist() if c.endswith('(g)')]
+gram_df = food_info[gram_columns]
+gram_df.head(3)
+
+Note:
+
+###Question: Import the pandas library.
+Read food_info.csv into a DataFrame object named food_info.
+Use the DataFrame.columns attribute, followed by the Index.tolist() method, to return a list containing only the column names.
+Assign the resulting list to col_names, and use the print() function to display the value.
+Display the first three rows of food_info.
+
+Answer:import pandas as pd
+food_info = pd.read_csv('food_info.csv')
+col_names = food_info.columns.tolist()
+print(col_names)
+food_info.head(3)
+
+Note:
+
+###Question: In the following code, we multiply the "Water_(g)" column by the "Energ_Kcal" column, and assign the resulting Series to water_energy:
+
+Answer: water_energy = food_info['Water_(g)'] * food_info['Energ_Kcal']
+
+Note:
+
+###Question:Normalize the values in the "Protein_(g)" column, and assign the result to normalized_protein.
+Normalize the values in the "Lipid_Tot_(g)" column, and assign the result to normalized_fat.
+
+Answer:max_protein = food_info['Protein_(g)'].max()
+normalized_protein = food_info['Protein_(g)'] / max_protein
+max_fat = food_info['Lipid_Tot_(g)'].max()
+normalized_fat = food_info['Lipid_Tot_(g)'] / max_fat
+
+Note:
+
+###Question: Sort the food_info DataFrame in-place on the Norm_Nutr_Index column in descending order.
+
+Answer: food_info.sort_values('Norm_Nutr_Index', inplace=True, ascending=False)
+
+Note:
+
+###Question: Count how many values in the "age" column of titanic_survival have null values:
+Use pandas.isnull() on age variable to create a Series of True and False values.
+Use the resulting series to select only the elements in age that are null, and assign the result to age_null_true
+Assign the length of age_null_true to age_null_count.
+Print age_null_count to see how many null values are in the "age" column.
+
+Answer:import pandas as pd
+age = titanic_survival['age']
+age_is_null = pd.isnull(age)
+age_null_true = age[age_is_null]
+age_null_count = age_null_true.size
+print(age_null_count)
+
+Note:
+
+###Question: Use age_is_null to create a vector (named 'vector') that only contains values from the "age" column that aren't NaN.
+Calculate the mean of the new vector, and assign the result to correct_mean_age.
+
+Answer: age_is_null = pd.isnull(titanic_survival["age"])
+vector = titanic_survival['age'][age_is_null == False]
+correct_mean_age = sum(vector) / len(vector)
+
+Note:
+
+###Question: Use a for loop to iterate over passenger_classes. Within the for loop:
+Select just the rows in titanic_survival where the pclass value is equivalent to the current iterator value (class).
+Select just the fare column for the current subset of rows.
+Use the Series.mean method to calculate the mean of this subset.
+Add the mean of the class to the fares_by_class dictionary with class as the key.
+Once the loop completes, the dictionary fares_by_class should have 1, 2, and 3 as keys, with the average fares as the corresponding values.
+
+
+Answer:passenger_classes = [1, 2, 3]
+fares_by_class = {}
+for c in passenger_classes:
+	fares_by_class[c] = titanic_survival['fare'][titanic_survival['pclass'] == c].mean()
+
+Note:
+
+###Question: Use the DataFrame.pivot_table() method to calculate the mean 'age' for each passenger class ("pclass") of the titanic_survival dataframe.
+Assign the result to passenger_age.
+Display the passenger_age pivot table using the print() function.
+
+
+Answer: import numpy as np
+passenger_age = titanic_survival.pivot_table(index='pclass', values='age', aggfunc=np.mean)
+print(passenger_age)
+
+Note:
+
+###Question: Make a pivot table that calculates the total fares collected ("fare") and total number of survivors ("survived") for each embarkation port ("embarked"). df is titanic_survival
+Assign the result to port_stats.
+Display port_stats using the print() function.
+
+Answer:import numpy as np
+port_stats = titanic_survival.pivot_table(index='embarked', values=['fare', 'survived'], aggfunc=np.sum)
+print(port_stats)
+
+Note:
+
+###Question: The code below will drop all rows in titanic_survival that have null values and save to new df called drop_na_rows
+
+Answer: drop_na_rows = titanic_survival.dropna(axis=0)
+
+Note:
+
+###Question:Drop all columns in titanic_survival that have missing values and assign the result to drop_na_columns.
+Drop all rows in titanic_survival where the columns "age" or "sex" have missing and values assign the result to new_titanic_survival.
+
+Answer: drop_na_rows = titanic_survival.dropna(axis=0)
+drop_na_columns = titanic_survival.dropna(axis=1)
+new_titanic_survival = titanic_survival.dropna(axis=0, subset=['age', 'sex'])
+
+Note:
+
+###Question: select first five rows of new_titanic_survival and assign to first_five_rows
+	pclass	survived	name	sex	age
+14	1.0	1.0	Barkworth, Mr. Algernon Henry Wilson	male	80.0
+61	1.0	1.0	Cavendish, Mrs. Tyrell William (Julia Florence...	female	76.0
+1235	3.0	0.0	Svensson, Mr. Johan	male	74.0
+135	1.0	0.0	Goldschmidt, Mr. George B	male	71.0
+9	1.0	0.0	Artagaveytia, Mr. Ramon
+
+Answer:first_five_rows = new_titanic_survival.iloc[0:5]
+
+Note:
+
+###Question: Assign the first ten rows from new_titanic_survival to first_ten_rows.
+Assign the fifth row from new_titanic_survival to row_position_fifth.
+Assign the row with index label 25 from new_titanic_survivalto row_index_25.
+
+Answer: first_ten_rows = new_titanic_survival.iloc[0:10]
+row_position_fifth = new_titanic_survival.iloc[4]
+row_index_25 = new_titanic_survival.loc[25]
+
+Note:
+
+###Question:
+df is 'new_titanic_survival'
+first_row_first_column = ***
+all_rows_first_three_columns = ***
+row__index_83_age = ***
+row_index_1000_pclass = ***
+
+Answer: first_row_first_column = new_titanic_survival.iloc[0,0]
+all_rows_first_three_columns = new_titanic_survival.iloc[:,0:3]
+row__index_83_age = new_titanic_survival.loc[83,'age']
+row_index_1000_pclass = new_titanic_survival.loc[766,'pclass']
+
+Note:
+
+###Question:Assign the value at row index label 1100, column index label "age" from new_titanic_survival to row_index_1100_age.
+Assign the value at row index label 25, column index label "survived" from new_titanic_survival to row_index_25_survived.
+Assign the first 5 rows and first three columns from new_titanic_survival to five_rows_three_cols.
+
+Answer: row_index_1100_age = new_titanic_survival.loc[1100,'age']
+row_index_25_survived = new_titanic_survival.loc[25,'survived']
+five_rows_three_cols = new_titanic_survival.iloc[:5,:3]
+
+Note:
+
+###Question: Reindex the new_titanic_survival dataframe so the row indexes start from 0, and the old index is dropped.
+Assign the final result to titanic_reindexed.
+Print the first 5 rows and the first 3 columns of titanic_reindexed.
+
+Answer:titanic_reindexed = new_titanic_survival.reset_index(drop=True)
+print(titanic_reindexed.iloc[:5,:3])
+
+Note:
+
+###Question: # This function returns the hundredth item from a series
+def hundredth_row(column):
+	# Extract the hundredth item
+	***
+# Return the hundredth item from each column in titanic_survival
+hundredth_row = ***
+
+Answer:
+def hundredth_row(column):
+	hundredth_item = column.iloc[99]
+	return hundredth_item
+hundredth_row = titanic_survival.apply(hundredth_row)
+
+Note:
+
+###Question: Write a function (count_null) that counts the number of null elements in a Series.
+Use the DataFrame.apply() method along with your function to run across all the columns in titanic_survival.
+Assign the result to column_null_count.
+
+Answer: def count_null(column):
+	return(len(column[column.isnull()==True]))
+
+column_null_count = titanic_survival.apply(count_null)
+
+Note:
+
+###Question: Create a function that returns the string "minor" if someone is under 18, "adult" if they are equal to or over 18, and "unknown" if their age is null.
+Then, use the function along with .apply() to find the correct label for everyone in the titanic_survival dataframe.
+Assign the result to age_labels.
+You can use pd.isnull to check if a value is null or not.
+
+Answer: def label_ages(row):
+    if row['age'] < 18:
+        return 'minor'
+    elif row['age'] >= 18:
+        return 'adult'
+    else:
+        return 'unknown'
+
+age_labels = titanic_survival.apply(label_ages, axis=1)
+
+Note:
+
+###Question: Create a pivot table that calculates the mean survival chance("survived") for each age group ("age_labels") of the dataframe titanic_survival.
+Assign the resulting Series object to age_group_survival.
+
+Answer: import numpy as np
+age_group_survival = titanic_survival.pivot_table(index='age_labels', values='survived', aggfunc=np.mean)
+
+Note:
+
+###Question: Read all-ages.csv into a DataFrame object, and assign it to all_ages.
+Read recent-grads.csv into a DataFrame object, and assign it to recent_grads.
+Display the first five rows of all_ages and recent_grads.
+
+Answer: all_ages = pd.read_csv('all-ages.csv')
+recent_grads = pd.read_csv('recent-grads.csv')
+print(all_ages.iloc[:5])
+print(recent_grads.iloc[:5])
+
+Note:
+
+###Question: Use the Total column to calculate the number of people who fall under each Major_category in each data set.
+Store the result as a separate dictionary for each data set.
+The key for the dictionary should be the Major_category, and the value should be the total count.
+For the counts from all_ages, store the results as a dictionary named aa_cat_counts.
+For the counts from recent_grads, store the results as a dictionary named rg_cat_counts.
+
+Answer:aa_cat_counts = dict()
+rg_cat_counts = dict()
+
+for cat in all_ages['Major_category'].unique():
+     cat_major = all_ages[all_ages['Major_category']==cat]
+     aa_cat_counts[cat] = cat_major['Total'].sum()
+
+for cat in recent_grads['Major_category'].unique():
+     cat_major = recent_grads[recent_grads['Major_category']==cat]
+     rg_cat_counts[cat] = cat_major['Total'].sum()
+
+Note:
+
+###Question: Use the Low_wage_jobs and Total columns to calculate the proportion of recent college graduates that worked low wage jobs.
+Recall that you can use the Series.sum() method to return the sum of the values in a column.
+Store the resulting float as low_wage_percent, and display the value with the print() function.
+
+
+Answer:low_wage_percent = recent_grads['Low_wage_jobs'].sum() / recent_grads['Total'].sum()
+
+Note:
+
+###Question: Use a for loop to iterate over majors.
+For each major, use Boolean filtering to find the corresponding row in both DataFrames.
+Compare the values for Unemployment_rate to see which DataFrame has a lower value.
+Increment rg_lower_count if the value for Unemployment_rate is lower for recent_grads than it is for all_ages.
+Display rg_lower_count with the print() function.
+
+Answer: majors = recent_grads['Major'].unique()
+rg_lower_count = 0
+
+for major in majors:
+    rg_ur = recent_grads[recent_grads['Major']==major]['Unemployment_rate'].iloc[0]
+    aa_ur = all_ages[all_ages['Major']==major]['Unemployment_rate'].iloc[0]
+    if rg_ur < aa_ur:
+        rg_lower_count += 1
+
+Note:
+
+###Question: Create a new Series object named series_custom that has a string index (based on the values from film_names), and contains all of the Rotten Tomatoes scores from series_rt.
+
+Answer: series_custom = pd.Series(data=rt_scores, index=film_names)
+
+Note:
+
+###Question: The list original_index contains the original index. Sort this index using the Python 3 core method sorted(), then pass the result in to the Series method reindex().
+Store the result in a variable named sorted_by_index.
+
+original_index = series_custom.index.tolist()
+
+Answer:sorted_by_index = series_custom.reindex(sorted(original_index))
+
+Note:
+
+###Question: Normalize series_custom (which is currently on a 0 to 100-point scale) to a 0 to 5-point scale by dividing each value by 20.
+Assign the new normalized Series object to series_normalized.
+
+Answer: series_normalized = series_custom / 20
+
+Note:
+
+###Question: select these from df called fandango
+# First five rows
+# From row at 140 and higher
+# Just row at index 50
+# Just row at index 45 and 90
+
+Answer:
+fandango[0:5]
+fandango[140:]
+fandango.iloc[50]
+fandango.iloc[[45,90]]
+
+Note:
+
+###Question: Return a dataframe containing just the first and last rows, and assign it to first_last.
+fandango = pd.read_csv('fandango_score_comparison.csv')
+
+Answer: first_last = fandango.iloc[[0, -1]]
+
+Note:
+
+###Question: Use the pandas dataframe method set_index to assign the FILM column as the custom index for the dataframe. Also, specify that we don't want to drop the FILM column from the dataframe. We want to keep the original dataframe, so assign the new one to fandango_films.
+Display the index for fandango_films using the index attribute and the print function.
+fandango = pd.read_csv('fandango_score_comparison.csv')
+Answer: fandango_films = fandango.set_index('FILM', drop=False)
+print(fandango_films.index)
+
+Note:
+
+###Question: Use the apply() method on float_df to halve each value, and assign the result to halved_df. Then, print the first row.
+double_df = float_df.apply(lambda x: x*2)
+print(double_df.head(1))
+
+Answer:halved_df = float_df.apply(lambda x: x/2)
+print(halved_df.iloc[0])
+
+Note:
+
+###Question: Use the apply() method to calculate the average of each movie's values for RT_user_norm and Metacritic_user_nom, and assign the result to the variable rt_mt_means.
+Display the first five values in rt_mt_means.
+rt_mt_user = float_df[['RT_user_norm', 'Metacritic_user_nom']]
+rt_mt_deviations = rt_mt_user.apply(lambda x: np.std(x), axis=1)
+print(rt_mt_deviations[0:5])
+
+
+Answer: rt_mt_means = rt_mt_user.apply(lambda x: np.mean(x), axis=1)
+print(rt_mt_means.iloc[:5])
+
+Note:
+
+###Question: Find the correlation between the "fta" column and the "pts" column. Assign the result to r_fta_pts.
+Find the correlation between the "stl" column and the "pf" column. Assign the result to r_stl_pf.
+
+Answer: from scipy.stats.stats import pearsonr
+r_fta_pts = pearsonr(nba_stats['fta'], nba_stats['pts'])
+r_stl_pf = pearsonr(nba_stats['stl'], nba_stats['pf'])
+
+Note:
+
+###Question: Make a function that calculates covariance.
+Use the function to calculate the covariance of the "stl" and "pf" columns. Assign the result to cov_stl_pf.
+Use the function to calculate the covariance of the "fta" and "pts" columns. Assign the result to cov_fta_pts.
+
+Answer:def covariance(x, y):
+    x_mean = sum(x) / len(x)
+    y_mean = sum(y) / len(y)
+    x_diffs = [i - x_mean for i in x]
+    y_diffs = [i - y_mean for i in y]
+    codeviates = [x_diffs[i] * y_diffs[i] for i in range(len(x))]
+    return sum(codeviates) / len(codeviates)
+
+cov_stl_pf = covariance(nba_stats["stl"], nba_stats["pf"])
+cov_fta_pts = covariance(nba_stats["fta"], nba_stats["pts"])
+
+Note:
+
+###Question: Compute the correlation coefficient for the fta and blk columns, and assign the result to r_fta_blk.
+Compute the correlation coefficient for the ast and stl columns, and assign the result to r_ast_stl.
+
+Answer: from numpy import cov
+# We've already loaded the nba_stats variable for you.
+r_fta_blk = cov(nba_stats['fta'], nba_stats['blk']) / (nba_stats['fta'].std() * nba_stats['blk'].std())
+
+r_ast_stl = cov(nba_stats['ast'], nba_stats['stl']) / (nba_stats['ast'].std() * nba_stats['stl'].std())
+
+Note:
+
+###Question: Find the county with the lowest median income in the US (median_income). Assign the name of the county (county) to lowest_income_county.
+Find the county that has more than 500000 residents with the lowest median income. Assign the name of the county to lowest_income_high_pop_county.
+
+
+Answer:lowest_income_county = income["county"][income["median_income"].idxmin()]
+
+high_pop = income[income["pop_over_25"] > 500000]
+lowest_income_high_pop_county = high_pop["county"][high_pop["median_income"].idxmin()]
+
+Note:
+
+###Question: Set a random seed of 20 and generate a list of 10 random numbers between the values 0 and 10.
+Assign the list to new_sequence.
+
+Answer: import random
+random.seed(20)
+new_sequence = [random.randint(0,10) for _ in range(10)]
+
+
+Note:import random
+
+# Returns a random integer between the numbers 0 and 10, inclusive.
+num = random.randint(0, 10)
+
+# Generate a sequence of 10 random numbers between the values of 0 and 10.
+random_sequence = [random.randint(0, 10) for _ in range(10)]
+
+# Sometimes, when we generate a random sequence, we want it to be the same sequence whenever the program is run.
+# An example is when you use random numbers to select a subset of the data, and you want other people
+# looking at the same data to get the same subset.
+# We can ensure this by setting a random seed.
+# A random seed is an integer that is used to "seed" a random number generator.
+# After a random seed is set, the numbers generated after will follow the same sequence.
+random.seed(10)
+print([random.randint(0,10) for _ in range(5)])
+random.seed(10)
+# Same sequence as above.
+print([random.randint(0,10) for _ in range(5)])
+random.seed(11)
+# Different seed means different sequence.
+print([random.randint(0,10) for _ in range(5)])
+
+random.seed(20)
+new_sequence = [random.randint(0,10) for _ in range(10)]
+
+
+###Question: Set the random seed to 1, then generate a medium sample of 100 die rolls. Plot the result using a histogram with 6 bins.
+Set the random seed to 1, then generate a large sample of 10000 die rolls. Plot the result using a histogram with 6 bins.
+
+# A function that returns the result of a die roll.
+def roll():
+    return random.randint(1, 6)
+
+Answer: import matplotlib.pyplot as plt
+import random
+random.seed(1)
+medium_sample = [roll() for _ in range(100)]
+plt.hist(medium_sample, 6)
+plt.show()
+random.seed(1)
+large_sample = [roll() for _ in range(10000)]
+plt.hist(large_sample, 6)
+plt.show()
+
+Note:
+
+###Question: Set the random seed to 1, then generate probabilities for 300 trials of 100 die rolls each. Make a histogram with 20 bins.
+Set the random seed to 1, then generate probabilities for 300 trials of 1000 die rolls each. Make a histogram with 20 bins.
+
+Answer:random.seed(1)
+medium_sample = probability_of_one(300, 100)
+plt.hist(medium_sample, 20)
+plt.show()
+
+random.seed(1)
+large_sample = probability_of_one(300, 1000)
+plt.hist(large_sample, 20)
+plt.show()
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+

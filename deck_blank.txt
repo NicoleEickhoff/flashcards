@@ -1,0 +1,454 @@
+	###Question: The *** module supplies classes for manipulating dates and times in both simple and complex ways. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and manipulation. For related functionality, see also the *** and *** modules.
+
+	Answer: datetime, time, calendar
+
+	Note: Module calendar: General calendar related functions.
+	Module time: Time access and conversions.
+
+	###Question: There are two kinds of date and time objects: “***” and “***”.
+
+	Answer: naive, aware
+
+	Note: An aware object has sufficient knowledge of applicable algorithmic and political time adjustments, such as time zone and daylight saving time information, to locate itself relative to other aware objects. An aware object is used to represent a specific moment in time that is not open to interpretation
+	A naive object does not contain enough information to unambiguously locate itself relative to other date/time objects. Whether a naive object represents Coordinated Universal Time (UTC), local time, or time in some other timezone is purely up to the program, just like it is up to the program whether a particular number represents metres, miles, or mass. Naive objects are easy to understand and to work with, at the cost of ignoring some aspects of reality.
+
+	###Question: For applications requiring aware objects, *** and *** objects have an optional time zone information attribute, ***, that can be set to an instance of a subclass of the abstract [***] class. These [***] objects capture information about the offset from UTC time, the time zone name, and whether Daylight Saving Time is in effect. Note that only one concrete [***] class, the *** class, is supplied by the  *** module. The *** class can represent simple timezones with fixed offset from UTC (i.e., ***), such as UTC itself or North American EST and EDT timezones. Supporting timezones at deeper levels of detail is up to the application. The rules for time adjustment across the world are more political than rational, change frequently, and there is no standard suitable for every application aside from UTC.
+
+	Answer: datetime, time, tzinfo, timezone, datetime, timezone, Coordinated Universal Time
+
+	Note:
+
+	###Question: The datetime module exports the following constants:
+
+	Answer:datetime.MINYEAR, datetime.MAXYEAR
+
+	Note:datetime.MINYEAR
+	The smallest year number allowed in a date or datetime object. MINYEAR is 1.
+
+	datetime.MAXYEAR
+	The largest year number allowed in a date or datetime object. MAXYEAR is 9999.
+
+	###Question: copy the below:
+	import datetime
+
+	t = datetime.time(1, 2, 3)
+	print(t)
+	print('hour:', t.hour)
+	print('minute:', t.minute)
+	print('second:', t.second)
+	print('microsecond:', t.microsecond)
+	print('tzinfo:', t.tzinfo)
+
+	Answer:import datetime
+
+	t = datetime.time(1, 2, 3)
+	print(t)
+	print('hour:', t.hour)
+	print('minute:', t.minute)
+	print('second:', t.second)
+	print('microsecond:', t.microsecond)
+	print('tzinfo:', t.tzinfo)
+
+	Note: Output:
+	01:02:03
+	hour	   : 1
+	minute	 : 2
+	second	 : 3
+	microsecond: 0
+	tzinfo	 : None
+
+	Time values are represented with the time class. A time instance has attributes for hour, minute, second, and microsecond and can also include time zone information.
+	The arguments to initialize a time instance are optional, but the default of 0 is unlikely to be correct.
+
+	###Question: copy the following:
+	import datetime
+
+	print('Earliest:', datetime.time.min)
+	print('Latest:', datetime.time.max)
+	print('resolution:', datetime.time.resolution)
+
+	Answer:import datetime
+
+	print('Earliest:', datetime.time.min)
+	print('Latest:', datetime.time.max)
+	print('Resolution:', datetime.time.resolution)
+
+	Note: A time instance only holds values of time, and not a date associated with the time.
+	The min and max class attributes reflect the valid range of times in a single day.
+	The resolution for time is limited to whole microseconds.
+
+	OUtput:
+	Earliest  : 00:00:00
+	Latest	: 23:59:59.999999
+	Resolution: 0:00:00.000001
+
+	###Question: type this:
+	import datetime
+
+	for m in [1, 0, 0.1, 0.6]:
+		try:
+			print('{:02.1f} :'.format(m),
+				  datetime.time(0, 0, 0, microsecond=m))
+		except TypeError as err:
+			print('ERROR:', err)
+
+	Answer:import datetime
+
+	for m in [1, 0, 0.1, 0.6]:
+		try:
+			print('{:02.1f} :'.format(m),
+				  datetime.time(0, 0, 0, microsecond=m))
+		except TypeError as err:
+			print('ERROR:', err)
+
+	Note:Floating point values for microseconds cause a TypeError.
+	output:
+	1.0 : 00:00:00.000001
+	0.0 : 00:00:00
+	ERROR: integer argument expected, got float
+	ERROR: integer argument expected, got float
+
+	###Question: type filling in the blanks:
+	for m in [1, 0, 0.1, 0.6]:
+		try:
+			print('{:02***} :'.format(***),
+				***.***(0, 0, 0, ***=m))
+			print('{:***} :'.format(m),
+				***.***(0, 0, 0, ***=m))
+		except **** as err:
+			print('ERROR:', err)
+	&&&&&
+	output
+	1.0 : 00:00:00.000001
+	1.0 : 00:00:00.000001
+	0.0 : 00:00:00
+	0.0 : 00:00:00
+	ERROR: integer argument expected, got float
+	ERROR: integer argument expected, got float
+
+	Answer:for m in [1, 0, 0.1, 0.6]:
+		try:
+			print('{:02.1f} :'.format(m),
+				datetime.time(0, 0, 0, microsecond=m))
+			print('{:.1f} :'.format(m),
+				datetime.time(0, 0, 0, microsecond=m))
+		except TypeError as err:
+			print('ERROR:', err)
+
+	Note:Floating point values for microseconds cause a TypeError.
+
+###Question: Calendar date values are represented with the *** class. Instances have attributes for ***, ***, and ***. It is easy to create a date representing the current date using the *** class method.
+
+Answer: date, year, month, day, today()
+
+Note: Calendar date values are represented with the date class. Instances have attributes for year, month, and day. It is easy to create a date representing the current date using the today() class method.
+
+###Question: time now in the form of, e.g., '11:06 AM'
+
+Answer: from datetime import datetime
+datetime.today().strftime("%I:%M %p")
+
+Note:
+
+###Question: date today in teh form of '24 September 2016, Saturday'
+
+Answer:from datetime import datetime
+datetime.today().strftime("%d %B %Y, %A")
+
+Note:
+
+###Question: save the current time as variable t
+
+Answer: from datetime import datetime, time
+t = datetime.time(datetime.now())
+
+Note:
+
+###Question: save the current weekday as variable wd
+
+Answer: from datetimet import datetime, date
+today = datetime.today()
+wd = date.weekday(today)
+
+Note:
+
+###Question: get current day
+
+Answer:import datetime
+datetime.date.today().strftime('%d')
+
+Note:
+
+###Question: get the current month number
+
+Answer:import datetime
+datetime.date.today().strftime('%m')
+
+Note:
+
+###Question: get current month dame with full month name
+
+Answer:import datetime
+datetime.date.today().strftime('%B')
+
+Note:
+
+###Question: get current month abbreviation (Jan, Feb, Mar..)
+
+Answer: import datetime
+datetime.date.today().strftime('%b')
+
+Note:
+
+###Question: get the current year
+
+Answer: import datetime
+datetime.date.today().strftime('%Y')
+
+Note: use small y to get year in two digits
+
+###Question: number of day of week (e.g. monday = 1)
+
+Answer: import datetime
+datetime.date.today().strftime('%w')
+
+Note:
+
+###Question: get name of day like monday, tuesday, wednesday
+
+Answer: import datetime
+datetime.date.today().strftime('%A')
+
+Note:
+
+###Question: format current date in dd/mm/yyyy
+
+Answer: import datetime
+datetime.date.today().strftime('%d/%m/%Y')
+
+Note:
+
+###Question: format date in day name and month name
+
+Answer: import datetime
+datetime.date.today().strftime('%A, %d %B, %Y')
+
+Note:
+
+###Question: print current time (hh:mm:ss) with datetime. var include currenttime
+
+Answer: import datetime
+currenttime = datetime.datetime.now()
+print('%s:%s:%s' % (currenttime.hour, currenttime.month, currenttime.second))
+
+Note:
+
+###Question: display week number of the year
+
+Answer: import datetime
+datetime.date.today().strftime('%U')
+
+Note:
+
+###Question: display current date
+
+Answer: import datetime
+datetime.date.today().strftime('%x')
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Weekday as local's abbreviated name
+Example: Sun, Mon,..., Sat (en_US); So, Mo, ..., Sa (de_DE)
+
+Answer: %a
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Weeday as locale's full name
+Example: Sunday, MOnday, .., Saturday (en_US); Sonntag, Montag, ..., Samstag (de_DE)
+
+Answer: %A
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Weekday as a dicimal number, where 0 is Sunday and 6 is Saturday
+Example: 0, 1, ... 6
+
+Answer: %w
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Day of the month as a zero-padded decimal number
+Example: 01, 02, ..., 31
+
+Answer: %d
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Month as locale's abbreviated name.
+Example: Jan, Feb, ..., Dec
+
+Answer: %b
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Month as locale's full name.
+Example: January, February, ..., DEcember (en_US)
+
+Answer: %B
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Month as a zero-padded decimal number
+Example: 01, 02, ..., 12
+
+Answer: %m
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Year without century as a zero-padded decimal number.
+Example: 00, 01, ..., 99
+
+Answer: %y
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Year with century as a decimal number
+Example: 0001, 0002, ..., 2013, 2014, ..., 9998, 9999
+
+Answer: %Y
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Hour (24-hour clock) as a zero-padded decimal number
+Example: 00, 01, ..., 23
+
+Answer: %H
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Hour (12-hour clock) as a zero-padded decimal number
+Example: 01, 02, ..., 12
+
+Answer: %I
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Locale's equivalent of either AM or PM
+Example: AM, PM (en_US);
+
+Answer: %p
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: MInute as a zero-padded decimal number
+Example: 00, 01, ..., 59
+
+Answer: %M
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Second as a zero-padded decimal
+Example: 00, 01, ..., 59
+
+Answer: %S
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Time zone name (empty string if the object is naive)
+Example: (empty), UTC, EST, CST
+
+Answer: %Z
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Day of the year as a zero-padded decimal number
+Example: 001, 002, ..., 366
+
+Answer: %j
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year precedng the first Sunday are considered to be in week 0
+Example: 00, 01, ..., 53
+
+Answer: %U
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0
+Example: 00, 01, ..., 53
+
+Answer: %W
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Locale's appropraite date and time representation
+Example: Tue Aug 16 21:30:00 1988 (en_US)
+
+Answer: %c
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Locale's appropriate date representation
+Example: 08/16/88 (none): 08/16/1988 (en_US)
+
+Answer: %x
+
+Note:
+
+###Question:
+Directive: ***
+Meaning: Locale's appropriate time
+Example: 21:30: 00 (en_US)
+
+Answer: %X
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
