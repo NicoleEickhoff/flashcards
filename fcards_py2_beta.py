@@ -70,6 +70,7 @@ class Game:
 			card = random.choice([c for c in self.current_deck.cards if not c.you_got_it])
 			card.tries += 1
 			question, answer, note = card.question, card.answer, card.note
+			print('*'*20, '\n')
 			user_answer = self.multi_line_entry(question)
 			if user_answer.strip().upper() == 'THIS IS BULLSHIT':
 				self.choose_deck()
@@ -81,6 +82,7 @@ class Game:
 				print('\nThat is wrong.\n')
 				card.wrong_answers.append(user_answer)
 				print('Here is the right answer:\n{}\n'.format(answer.strip()))
+				self.multi_line_entry(question, review=True)
 		print('You got em all! Take a break!')
 	
 	def multi_line_entry(self, question, review=False):

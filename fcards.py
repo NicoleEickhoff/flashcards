@@ -79,6 +79,7 @@ class Game:
 				print('\nThat is wrong.\n')
 				card.wrong_answers.append(user_answer)
 				print('Here is the right answer:\n{}\n'.format(answer.strip()))
+				
 		print('You got em all! Take a break!')
 				
 	
