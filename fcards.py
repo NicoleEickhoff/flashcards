@@ -1,4 +1,4 @@
-
+# -*- coding: UTF-8 -*-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -6,8 +6,8 @@ import random
 import re
 import glob
 
-from bs4 import BeautifulSoup
-import urllib.request
+# from bs4 import BeautifulSoup # uncomment to use to use AutoFlash
+# import urllib.request
 
 card_text_example = '''###Question: The *** module supplies classes for manipulating dates and times in both simple and complex ways. While date and time arithmetic is supported, the focus of the implementation is on efficient attribute extraction for output formatting and manipulation. For related functionality, see also the *** and *** modules.
 
