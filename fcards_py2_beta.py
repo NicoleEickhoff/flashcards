@@ -6,6 +6,8 @@ from __future__ import print_function
 import random
 import re
 import glob
+import time
+from datetime import datetime
 
 # from bs4 import BeautifulSoup # uncomment to use to use AutoFlash
 # import urllib.request
@@ -94,6 +96,10 @@ class Game:
 	
 	def multi_line_entry(self, question, review=False):
 		response = []
+		try:
+			start_time = datetime.now()
+		except:
+			pass
 		if review:
 			entry = raw_input('Type the correct answer for practice and press space enter:\n')
 		else:
@@ -103,6 +109,12 @@ class Game:
 			entry = raw_input("...")
 		response = '\n'.join(response)
 		print('YOU ENTERED:\n', response)
+		try:
+			end_time = datetime.now()
+			print('TIME SPENT ON QUESTION:', (end_time-start_time).total_seconds(), 'seconds')
+		except:
+			pass
+		
 		return response
 	
 	def make_new_deck(self, deck_name):
