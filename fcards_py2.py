@@ -67,7 +67,7 @@ class Game:
 	def play(self):
 		self.choose_deck()
 		self.current_deck.make_cards()
-		while [c for c in self.current_deck.cards if not c.you_got_it]:
+		while [c for c in self.current_deck.cards if not c.you_got_it and c.answer!=""]:
 			card = random.choice([c for c in self.current_deck.cards if not c.you_got_it])
 			card.tries += 1
 			question, answer, note = card.question, card.answer, card.note
