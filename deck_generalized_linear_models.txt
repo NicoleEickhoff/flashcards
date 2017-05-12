@@ -31,7 +31,7 @@ Note:
 
 ###Question: A simple yet very efficient approach to fit linear models.
 It is particularly useful when the number of samples (and the number of features)
- is very large.
+ is very large. (sklearn library not specified in answer text)
 
 Answer: stochastic gradient descent
 
