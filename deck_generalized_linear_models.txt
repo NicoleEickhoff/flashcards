@@ -1,0 +1,132 @@
+###Question: Method that fits a linear model with coefficients
+w = (w_1, ..., w_p) to minimize the residual sum of squares between the
+observed responses in the dataset, and the responses predicted by the linear
+approximation.
+
+Answer: sklearn.linear_model.LinearRegression()
+
+Note: from sklearn library
+
+###Question: A form of regression that addresses some of the problems of
+Ordinary Least Squares by imposing a penalty on the size of coefficients.
+
+Answer: sklearn.linear_model.Ridge
+
+Note:
+
+###Question: A linear model that estimates sparse coefficients. It is useful in some
+contexts due to its tendency to prefer solutions with fewer parameter values,
+effectively reducing the number of variables upon which the given solution is
+dependent.
+
+Answer: sklearn.linear_model.Lasso
+
+Note:
+
+###Question: A linear model for classification rather than regression.
+
+Answer: sklearn.linear_model.LogisticRegression
+
+Note:
+
+###Question: A simple yet very efficient approach to fit linear models.
+It is particularly useful when the number of samples (and the number of features)
+ is very large.
+
+Answer: stochastic gradient descent
+
+Note: There is both a classifier and a regressor in the sklearn library.
+
+###Question: another simple algorithm suitable for large scale learning. By default:
+It does not require a learning rate.
+It is not regularized (penalized).
+It updates its model only on mistakes.
+
+
+Answer: sklearn.linear_model.Perceptron
+
+Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
+
+        ###Question:
+
+        Answer:
+
+        Note:
