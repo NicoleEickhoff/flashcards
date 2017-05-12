@@ -187,7 +187,12 @@ class AutoFlash:
 					entry = '###Question:{0}\n\nAnswer:{1}\n\nNote:\n\n'.format(q, a)
 					f.write(entry)
 
-	
+
+import subprocess
+def make_new_deck(deck_name):
+	subprocess.run('cp deck_template.txt deck_{}.txt'.format(deck_name), shell=True)
+
+make_new_deck("regression_NA")
 
 if __name__ == "__main__":
 	# aflash = AutoFlash()

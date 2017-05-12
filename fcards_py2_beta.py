@@ -95,7 +95,7 @@ class Game:
 		response = '\n'.join(response)
 		print('YOU ENTERED:\n', response)
 		return response
-
+	
 	def make_new_deck(self, deck_name):
 		pass
 
