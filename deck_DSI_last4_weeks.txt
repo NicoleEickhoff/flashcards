@@ -1,0 +1,1368 @@
+###Question: gini, vs entropy
+
+Answer:
+
+Note:
+
+###Question: 100% purity means what
+
+Answer:
+
+Note:
+
+###Question: what is bagging?
+
+Answer:
+
+Note:
+
+###Question: import sklearn.datasets as datasets
+b = datasets.load_boston()
+X, Y = b['data'], b['target']
+create classifier and regressor using gini criterion and mean squared error. use None and 5 maximum number of hierarchical decision nodes respectively for the classifier and the regressor. it the regressor and predict.  then save feature_importances
+
+Answer: 
+classifier = DecisionTreeClassifier(criterion='gini', max_depth=None)
+regressor = DecisionTreeRegressor(criterion='mse', max_depth=5)
+regressor.fit(X, Y)
+Y_pred = regressor.predict(X)
+feature_importances = regressor.feature_importances_
+
+Note:
+
+###Question: Decision tree models are *** and ***.
+(***) means that the model is definied by a sequence of questions which yield a class label or value when applied to any observation. Once trained, the model behaves like a recipe, a series of "if this then that" conditions that yields a specific result for our input data.
+(****) methods stand in contrast to models like logistic regression or ordinary least squares regression. There are no underlying assumptions about the distribution of the data or the errors. Non-parametric models essentially start with no assumed parameters about the data and construct them based on the observed data. 
+
+Answer: hierarchical, non-parametric
+
+Note:
+
+###Question: CART models are in fact a special case of ***.
+These have nodes and edges. In the golf example above, the nodes represent the decision points about the output variable given the predictors, and the edges are the "paths" between nodes that represent answers to the questions.
+The acyclic part of DAGs means that the edges do not cycle back on themselves.
+The top node is called the ***. It has 0 incoming edges, and 2+ outgoing edges.
+Internal nodes test a condition on a specific feature. They have 1 incoming edge, and 2+ outgoing edges.
+A *** contains a class label (or regression value). It has 1 incoming edge and 0 outgoing edges.
+
+Answer:
+Directed Acyclic Graphs (DAG), root note, leaf node
+Note:
+
+###Question: Building a decision tree
+Building decision trees requires algorithms capable of determining an optimal choice at each node.
+One such algorithm is *** algorithm. This is a ***, *** algorithm that leads to a ***:
+(***): the algorithm makes the most optimal decision it can at each step.
+(***): the algorithm splits task into subtasks and solves each the same way.
+(***): the algorithm finds a solution just for the given neighborhood of points.
+The algorithm works by recursively partitioning records into smaller and smaller subsets. The partitioning decision is made at each node according to a metric called ***. A node is said to be 100% pure when all of its records belong to a single class (or have the same value).
+
+Answer: Hunt's, greedy, recursive, local optimum, purity
+
+Note:
+
+###Question: To achieve maximum purity we need an *** to optimize.
+We want our (***) to measure the gain in purity from a particular split. Therefore it depends on the class distribution over the nodes (before and after the split).
+For example, let p(i|t) be the probability of class i in the data at node t (e.g., the fraction of records labeled i at node t)
+We then define an impurity function that will smoothly vary between the two extreme cases of minimum impurity (one class or the other only) and the maximum impurity case as an equal mix.
+
+Answer: objective function
+Note:
+
+###Question: make an array that looks like this:
+array([  0.1,   0.2,   0.3,   0.4,   0.5,   0.6,   0.7,   0.8,   0.9,
+         1. ,   1.1,   1.2,   1.3,   1.4,   1.5,   1.6,   1.7,   1.8,
+         1.9,   2. ,   2.1,   2.2,   2.3,   2.4,   2.5,   2.6,   2.7,
+         2.8,   2.9,   3. ,   3.1,   3.2,   3.3,   3.4,   3.5,   3.6,
+         3.7,   3.8,   3.9,   4. ,   4.1,   4.2,   4.3,   4.4,   4.5,
+         4.6,   4.7,   4.8,   4.9,   5. ,   5.1,   5.2,   5.3,   5.4,
+         5.5,   5.6,   5.7,   5.8,   5.9,   6. ,   6.1,   6.2,   6.3,
+         6.4,   6.5,   6.6,   6.7,   6.8,   6.9,   7. ,   7.1,   7.2,
+         7.3,   7.4,   7.5,   7.6,   7.7,   7.8,   7.9,   8. ,   8.1,
+         8.2,   8.3,   8.4,   8.5,   8.6,   8.7,   8.8,   8.9,   9. ,
+         9.1,   9.2,   9.3,   9.4,   9.5,   9.6,   9.7,   9.8,   9.9,  10. ])
+
+Answer:  np.linspace(0.1, 10, 100)
+
+Note:
+
+###Question: plot 100 points that are within 2 of the sin curve with range of -20 to 20 
+
+Answer: x = np.linspace(0.1, 10, 100)
+ysin = np.sin(x)*20 + np.random.normal(0, 2, size=100)
+fig = plt.figure(figsize=(9, 7))
+sns.regplot(x=x, y=d['ysin'], scatter_kws={'s':70})
+
+Note:
+
+###Question: Addressing overfitting with CART
+
+
+Answer:
+Setting a maximum depth:
+Minimum observations to make a split:
+
+Note: stopping criterion determines when to no longer construct further nodes.
+We can stop when all records belong to the same class, or when all records have the same attributes. This maximizes variance at the expense of bias, leading to overfitting.
+A simple way to prevent overfitting is to set a hard limit on the "depth" of the decision tree.
+An alternative to maximum depth (and can be used at the same time), is to specify the minimum number of datapoints reqired to make a split at a node.
+
+###Question: What is hypothesis space
+
+Answer: ‣The hypothesis space is all hypotheses that could explain parts of the observed data. In any supervised learning task, we’re essentially looking within the hypothesis space for the most appropriate function to describe the relationship between our features and our target
+
+Note:
+
+###Question: How does ensemble help
+
+Answer: If the training data you have is small compared to the size of the hypothesis space, your algorithm may find many different hypotheses in the hypothesis space that all give the same accuracy on the data.
+An ensemble method will let you ‘average out’ base classifier
+predictions to find a good approximation of that true hypothesis
+
+Many learning algorithms work by performing some form a local search and may get stuck in a local optima. With decision trees for example, an exhaustive search of the entire hypothesis space is extremely complex.
+An ensemble method in this case allows you to run local searches from many different starting points. This would be more effective than depending on just one classifier.
+
+Sometimes our true function cannot be expressed in terms of our hypothesis at all. For example, we learned that decision trees work by forming rectilinear partitions of feature space. But what if our true function is a diagonal line?
+An ensemble method in this case allows us to expand the space of representable functions and better approximate our true function.
+
+Note:
+
+###Question: What are characteristics of Ensemble methods?
+
+Answer: ‣Characteristics of Ensemble methods
+‣In order for an ensemble classifier to outperform a single base classifier, the following conditions must be met:
+‣Accuracy: The base classifiers must outperform random guessing
+‣Diversity: There must be some misclassification on different training examples
+
+Note:
+
+###Question: What is bagging?
+
+Answer: ‣Bagging (or bootstrap aggregating) is a method that involves manipulating the training set by resampling with replacement.
+‣Samples are independently created by resampling training data using uniform weights. In other words, each model in the ensemble votes with equal weight.
+‣Bagging helps reduce overfitting (high variance) by aggregating multiple base classifiers together
+‣Example of bagging: random forests
+
+Note:
+
+###Question: What is boosting?
+
+Answer: ‣Boosting involves building out base estimators sequentially, where each new estimator tries to reduce the bias of the combined estimator. Boosting is particularly useful where we’re trying to combine several weak models (shallow trees, for example) to build a powerful ensemble.
+‣Example of boosting: AdaBoost, Gradient Tree Boosting, XGBoost
+
+Note:
+
+###Question: What is advantage of random forest
+
+Answer: As we have seen, decision trees are very powerful machine learning models. Random forests, a step beyond decision trees are very widely used classifiers and regressors. They are relatively simple to use because they require very few parameters to set and they perform pretty well. Glossing over the finer details, for right now we'll think of random forests as bagged decision trees. (We'll see shortly that this isn't precisely correct, but that this is a good way to think about random forests for now.)
+Check: What are the main advantages of decision trees?
+On the other hand decision trees have some limitations. In particular, trees that are grown very deep tend to learn highly irregular patterns (a.k.a. they overfit their training sets). Bagging (bootstrap aggregating) helps to mitigate this problem by exposing different trees to different sub-samples of the whole training set.
+
+Random forests are a method of further averaging multiple deep decision trees, trained on different parts of the same training set, with the goal of reducing the variance. This comes at the expense of a small increase in the bias and some loss of interpretability, but generally greatly boosts the performance of the final model.
+
+Note:
+
+###Question: How do random forests differ from decision trees?
+
+Answer: Random forests differ from bagging decision trees in only one way: they use a modified tree learning algorithm that selects, at each candidate split in the learning process, a random subset of the features. This process is sometimes called feature bagging.
+Why might we do this?
+The reason for doing this is the correlation of the trees in an ordinary bootstrap sample: if one or a few features are very strong predictors for the response variable (target output), these features will be selected in many of the bagging base trees, causing them to become correlated. By selecting a random subset of the features at each split, we counter this correlation between base trees, strengthening the overall model.
+For a problem with $p$ features, it is typical to use:
+$\sqrt{p}$ (rounded down) features in each split for a classification problem.
+$p/3$ (rounded down) with a minimum node size of 5 as the default for a regression problem.
+While this is a rule-of-thumb, Hastie and Tibshirani (authors of Introduction to Statistical Learning and Elements of Statistical Learning) have suggested this as a good rule-of-thumb in the absence of a rationale to do something different.
+
+
+Note:
+
+
+
+###Question: PCA Algorithm
+
+Answer: Covariance Matrix of X (measure of association between each of teh input variables)
+Eigenvectors of Cov(X) (directions of our data)
+Eigenvalues of Cov(X) (importance/magnitute of directions)
+
+Note: 
+
+###Question: What is a linear combination?
+
+Answer: aX1 + bX2
+
+Note:
+
+###Question: What is a SVM. 
+
+Answer: A Support Vector Machine is a binary linear classifier whose decision boundary is explicitly constructed to minimize generalization error
+
+Note: ‣ Binary classifier: solves a two-class problem
+‣ Linear classifier: creates a linear decision boundary
+
+###Question: ‣ The *** is derived using geometric reasoning (as opposed to the algebraic reasoning we've used to derive other classifiers). The generalization error is equated with the geometric concept of margin, which is the region along the decision boundary that is free of data points.
+
+Answer: decision boundary
+Note:
+
+###Question: ‣ Support vectors are the elements of the training set that would *** of the dividing hyperplane (UCF) 
+
+Answer: change the position
+
+Note:
+
+###Question: ‣ The quest to find the optimal hyper plane is an ***
+‣ Because of this, support vector machines have discriminative solutions
+
+Answer: optimization problem
+Note:
+
+###Question: SVM ‣ Given these conditions
+‣ To have a closed form solution, our planes MUST be
+***.
+‣ We will not arrive at a solution if this is not the case. (For now, to be resolved later)
+
+Answer: linearly separable
+
+Note:
+
+###Question: ‣ We are producing our own unit vector (measuring stick) that is *** to our hyperplanes
+
+Answer:orthagonal 
+
+Note:
+
+###Question: What is the goal of SVM
+
+Answer: create the linear decision boundary with the largest margin 
+
+Note: The goal of an SVM is to create the linear decision boundary with the largest margin. This is commonly called the maximum margin hyperplane (MMH).
+
+###Question: What are nonlinear apps of SVM
+
+Answer: ‣ Nonlinear applications of SVM rely on an implicit (nonlinear) mapping that sends vectors from the original feature space K into a higher-dimensional feature space K'. Nonlinear classification in K is then obtained by creating a linear decision boundary in K'. In practice, this involves no computations in the higher dimensional space, thanks to what is called the kernel trick.
+
+Note:
+
+###Question: ‣ Remember: SVM solves for the decision boundary that minimizes generalization error, or equivalently, that has the ***. These are equivalent since using the MMH as the decision boundary minimizes the probability that a small perturbation in the position of a point produces a classification
+  
+Answer: maximum margin
+
+Note: ‣ Selecting the MMH is a straightforward exercise in analytic geometry ‣ The margin depends only on a subset of the training data; namely, those points that are nearest to the decision boundary. These points are called the support vectors. The other points (far from the decision boundary) don't affect the construction of the MMH at all. ‣ Class overlap is achieved by relaxing the minimization problem or softening the margin. ‣ The hyper-parameter C (soft-margin constant) controls the overall complexity by specifying penalty for training error. This is yet another example of regularization.
+
+###Question: grid search gamma range SVM model
+digits_X, digits_y = digits.data, digits.target
+
+Answer: from sklearn import svm
+from sklearn.grid_search import GridSearchCV
+clf = svm.SVC(C=1)
+gamma_range = 10.**np.arange(-5, 2)
+param_grid = dict(gamma=gamma_range)
+grid = GridSearchCV(clf, param_grid, cv=10, scoring='accuracy')
+grid.fit(digits_X, digits_y)
+
+Note:
+
+###Question: grid search gamma range (-5,2), C-range (-200, 300) and kernel range ('rbf', 'sigmoid', 'linear', 'poly') with gridsearch
+
+Answer: clf = svm.SVC()
+gamma_range = 10.**np.arange(-5, 2)
+C_range = 10.**np.arange(-2, 3)
+kernel_range = ['rbf', 'sigmoid', 'linear', 'poly']
+param_grid = dict(gamma=gamma_range, C=C_range, kernel=kernel_range)
+grid = GridSearchCV(clf, param_grid, cv=10, scoring='accuracy')
+grid.fit(digits_X, digits_y)
+
+Note:
+
+###Question: What's the difference between supervised and unsupervised learning problems?
+ 
+
+Answer: Supervised Learning: We have, as part of our training data, observed Y values.
+Unsupervised Learning: We have, as part of our training data, no observed Y values.
+
+Note:
+
+###Question: K Means
+My FirstTM Clustering Algorithm
+1. ***
+2. Initialize k 'centroids' (starting points) in your data
+3. Create your clusters. Assign each point to the nearest centroid.
+4. Make your clusters better. Move each centroid to the center of its cluster.
+5. Repeat steps 3-4 until your centroids converge.
+
+Answer:
+Pick a value for k (the number of clusters to create)
+Note:
+
+###Question: My FirstTM Clustering Algorithm
+1. Pick a value for k (the number of clusters to create)
+2. ***
+3. Create your clusters. Assign each point to the nearest centroid.
+4. Make your clusters better. Move each centroid to the center of its cluster.
+5. Repeat steps 3-4 until your centroids converge.
+
+Answer: Initialize k 'centroids' (starting points) in your data
+Note:
+
+###Question: My FirstTM Clustering Algorithm
+1. Pick a value for k (the number of clusters to create)
+2. Initialize k 'centroids' (starting points) in your data
+3. ***
+4. Make your clusters better. Move each centroid to the center of its cluster.
+5. Repeat steps 3-4 until your centroids converge.
+
+Answer: Create your clusters. Assign each point to the nearest centroid.
+Note:
+
+###Question: My FirstTM Clustering Algorithm
+1. Pick a value for k (the number of clusters to create)
+2. Initialize k 'centroids' (starting points) in your data
+3. Create your clusters. Assign each point to the nearest centroid.
+4. *** 
+5. Repeat steps 3-4 until your centroids converge.
+
+Answer: Make your clusters better. Move each centroid to the center of its cluster.
+
+Note:
+
+###Question: My FirstTM Clustering Algorithm
+1. Pick a value for k (the number of clusters to create)
+2. Initialize k 'centroids' (starting points) in your data
+3. Create your clusters. Assign each point to the nearest centroid.
+4. Make your clusters better. Move each centroid to the center of its cluster.
+5. ***
+
+Answer: Repeat steps 3-4 until your centroids converge.
+
+Note:
+
+###Question:  Metrics for k-Means
+
+Answer: Inertia, Silhouette Score
+
+Note: Inertia -- sum of squared errors for each cluster (http://scikit-learn.org/stable/modules/clustering.html#k-means)
+Low inertia = dense cluster
+Silhouette Score -- measure of how far apart clusters are (http://scikit-learn.org/stable/modules/clustering.html#silhouette-coefficient)
+High Silhouette Score = clusters are well-separated
+
+###Question: what does high silhouette score mean?
+
+Answer: High Silhouette Score = clusters are well-separated
+
+Note:
+
+###Question: Describe the KMeans algorithm
+
+Answer: The KMeans algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares. This algorithm requires the number of clusters to be specified. It scales well to large number of samples and has been used across a large range of application areas in many different fields.
+
+Note: The k-means algorithm divides a set of N samples X into K disjoint clusters C, each described by the mean \mu_j of the samples in the cluster. The means are commonly called the cluster “centroids”; note that they are not, in general, points from X, although they live in the same space. The K-means algorithm aims to choose centroids that minimise the inertia, or within-cluster sum of squared criterion:
+\sum_{i=0}^{n}\min_{\mu_j \in C}(||x_j - \mu_i||^2)
+
+K-means is often referred to as Lloyd's algorithm. In basic terms, the algorithm has three steps. The first step chooses the initial centroids, with the most basic method being to choose k samples from the dataset X. After initialization, K-means consists of looping between the two other steps. The first step assigns each sample to its nearest centroid. The second step creates new centroids by taking the mean value of all of the samples assigned to each previous centroid. The difference between the old and the new centroids are computed and the algorithm repeats these last two steps until this value is less than a threshold. In other words, it repeats until the centroids do not move significantly.
+
+###Question: What is inertia and what are its drawbacks
+
+Answer: Inertia, or the within-cluster sum of squares criterion, can be recognized as a measure of how internally coherent clusters are. It suffers from various drawbacks:
+Inertia makes the assumption that clusters are convex and isotropic, which is not always the case. It responds poorly to elongated clusters, or manifolds with irregular shapes.
+Inertia is not a normalized metric: we just know that lower values are better and zero is optimal. But in very high-dimensional spaces, Euclidean distances tend to become inflated (this is an instance of the so-called “curse of dimensionality”). Running a dimensionality reduction algorithm such as PCA prior to k-means clustering can alleviate this problem and speed up the computations
+
+Note:
+
+###Question: give an example of k-means clustering
+
+Answer: The idea is based on a few basic concepts.  As an over-simplified example, let's say you have two groups of people – Group A and Group B.
+
+Group A has people in it that are clearly taller and weigh more than those in Group B.  If you were measuring the height and weight of each group of people, then your “features” are “height” and “weight.” The average (“mean”) weight and the average height of all the people in Group A will be larger than those in Group B.  Each person who has their height and weight measured is called a “sample.”
+
+If you were to graph this, you could plot the height measurement of each person as the x-value and the weight of each person as the y-value.  Since we mentioned before that there was a clear separation, you would expect to see one “cluster” or grouping of points closely together (Group A), separated clearly from another set of points grouped closely together (Group B).
+
+The average or mean of all the height measurements is the mean x-value and the average or mean of all the weight measurements is the mean y-value.  If you plot the mean x value and the mean y value, that is the “center” (or centroid) of your cluster.  In the same way, this cluster center serves as a comparison measurement.  If the groups are clearly separated, you would expect a small person's height and weight to be closer to the average or mean of the small people group.
+
+The K-means clustering algorithm attempts to show which group each person belongs to.  In this case, we've already established there is a clear grouping of people, but in other situations, and with more complex data, the associations will not be so clear.  You can tell the algorithm how many groups you want it to have and also how you want it to calculate the groups, but we will not cover that here.
+
+In our example, the K-means algorithm would attempt to group those people by height and weight, and when it is done you should see the clustering mentioned above.
+
+The K-means clustering algorithm does this by calculating the distance between a point and the current group average of each feature.  If you start with one person (sample), then the average height is their height, and the average weight is their weight.  The K-means algorithm then evaluates another sample (person).  If you asked for two groups, then person one and person two would be their own groups after two steps.  The algorithm then takes another person (person 3), and measures the distance on a graph between their height (x-value) and the current average x-value for Group A vs. Group B.  Whichever it is closest two, it is added to that group, and then a new mean for that group is calculated.  It then does this with every other sample / person, adding them to whichever group their measurements are closest to.  To make the data easier to understand, you can plot it on a graph and see who belongs to which group.  This is usually done by coloring the areas of each group, so you can clearly see that (for example), person / sample 1 belongs to Group B (or Group A) because all the points in the group are the same color.
+
+Note:
+
+###Question: what is the silhouette score / coefficient
+
+Answer: Silhouette Score/Coefficient
+The silhouette score, or silhouette coefficient, is the measure of how closely related a point is to members of its cluster rather than members of other clusters. If the resulting score is high, then the clustering analysis has an appropriate number of clusters. If the score is low, there are either too many or too few clusters.
+The best value is 1 and the worst value is -1
+Negative values generally indicate that several of the observations in a cluster have been assigned to the wrong cluster, as a different cluster is more similar.
+Silhouette Algorithm
+
+a: The mean distance between an observation and all other points in the same class.
+b: The mean distance between an observation and all other points in the next nearest cluster.
+Note:
+
+###Question: what is completeness score, homogeneity, v measure score 
+
+Answer: Silhouette Score is a useful metric for unsupervised learning, but there is more than one way to skin a cat. Traditional supervised clustering evaluations include, but are not limited too:
+Accuracy Score
+Confusion Matrix
+Classification Reports
+Some new ways to skin a clustering cat:
+Completeness Score
+Homogeneity
+V Measure Score
+Mutual Information Score
+Completeness Score- All members of a given class are assigned to the same cluster.
+A clustering result satisfies completeness if all the data points that are members of a given class are elements of the same cluster. (If a cluster contains all of the data points of a single class.)
+Score between 0.0 and 1.0. 1.0 stands for perfectly complete labeling
+Homogeneity: each cluster contains only members of a single class.
+A clustering result satisfies homogeneity if all of its clusters contain only data points which are members of a single class. (Every cluster is composed of data points from only 1 class. Essentually there are representative of a class)
+Score between 0.0 and 1.0. 1.0 stands for perfectly homogeneous labeling
+V Measure Score
+The V-measure is the harmonic mean between homogeneity and completeness:
+v = 2 * (homogeneity x completeness) / (homogeneity + completeness)
+Note:
+
+###Question: what is a scree plot? 
+
+Answer: Dunno
+A scree plot displays the eigenvalues associated with a component or factor in descending order versus the number of the component or factor. You can use scree plots in principal components analysis and factor analysis to visually assess which components or factors explain most of the variability in the data. 
+The ideal pattern in a scree plot is a steep curve, followed by a bend and then a flat or horizontal line. Retain those components or factors in the steep curve before the first point that starts the flat line trend. You might have difficulty interpreting a scree plot. Use your knowledge of the data and the results from the other approaches of selecting components or factors to help decide the number of important components or factors.
+
+Note:
+
+###Question: what is an eigenvector; what is an eigenvalue?
+
+Answer: dunno
+
+Note:
+
+###Question: What is clustering
+
+Answer: Clustering is an unsupervised learning technique we employ to group “similar” data points together
+‣ With unsupervised learning, remember: there is no clear objective, there is no “right answer” (hard to tell how we're doing), there is no response variable, just observations with features, and labeled data is not required
+
+Note:
+
+###Question: What does DBSCAN stand for?
+
+Answer: ‣ DBSCAN: Density-based Spatial Clustering of Applications with Noise
+‣ For DBSCAN, clusters of high density are separated by clusters of low density
+‣ DBSCAN is the most widely used and applicable clustering algorithm - given that it takes minimum predefined input and can discover clusters of any shape, not just the sphere-like clusters that k-means often computes. This way, we can discover less pre-defined patterns and glean some more useful insights.
+
+Note:
+
+###Question: ‣ DBSCAN is a ***, meaning that the algorithm finds clusters by seeking areas of the dataset that have a higher density of points than the rest of the dataset.
+‣ Given this, unlike in our previous examples, after you apply DBSCAN there may be data points that aren't assigned to any cluster at all!
+‣ When we use DBSCAN, it requires two input parameters - ***, which is the minimum distance between two points for them to be considered a cluster, and the *** necessary to form a cluster, which we'll call the minimum points.
+
+Answer: density based clustering algorithm
+epsilon
+minimum number of points 
+
+Note:
+
+###Question:   HOW DOES DBSCAN WORK?
+
+Answer:
+‣ DBSCAN Algorithm:
+‣ 1. Choose an “epsilon” and “min_samples”
+‣ 2. Pick an arbitrary point, and check if there are at least “min_samples” points within distance “epsilon”
+‣ If yes, add those points to the cluster and check each of the new points
+‣ If no, choose another arbitrary point to start a new cluster
+‣ 3. Stop once all points have been checked 
+
+Note:
+
+###Question: describe DBSCAN
+
+Answer: ‣ DBSCAN algorithm in words/review of concept:
+‣ DBSCAN will take the epsilon and minimum points we provided it and cluster all of the points in a neighborhood, first passing the minimum points requirement and then clustering each of the points within epsilon distance to form the clusters. Once one cluster is formed, the algorithm then moves to a new datapoint, and seeks to find related points to form yet another cluster; this will continue until DBSCAN simply runs out of points!
+
+Note:
+
+###Question: HOW DOES DBSCAN COMPARE TO K-MEANS AND HIERARCHICAL?
+
+Answer:
+‣ Whereas k-means can be thought of as a "general" clustering approach, DBSCAN performs especially well with unevenly distributed, non-linear clusters.
+‣ The fundamental difference with DBSCAN lies in the fact that it is density based rather than k-means, which calculates clusters based on distance from a central point, or hierarchical clustering. When choosing epsilon in the minimum points in DBSCAN, a selection of < 2 will result in a linkage cluster - essentially the same result as if you were to perform a hierarchical clustering. To diversify the DBSCAN, we therefore must give it a significant amount of points to form a cluster.
+‣ DBSCAN is density based, which means that it determines clusters based on the number of points in a certain area
+‣ By choosing too few points for DBSCAN, i.e. less than two, we'll effectively get a straight line if we connect the points, just like linkage clustering.
+‣ DBSCAN can be useful to us when we have a lot of dense data. If we used k- means on this data, the algorithm would effectively give us just one large cluster! However with DBSCAN, we can actually break down this cluster into smaller groups to see their attributes.
+‣ ADVANTAGES – Class?
+‣ DISADVANTAGES – Class?
+
+Note: 
+
+###Question: advantages and disadvantages of DBSCAN
+
+Answer: ‣ ADVANTAGES –
+‣ Clusters can be any size or shape
+‣ No need to choose number of clusters
+‣ DISADVANTAGES –
+‣ More parameters to tune
+‣ Doesn't work with clusters of varying density
+‣ NOTE: Not every point is assigned to a cluster!
+
+Note:
+
+###Question: implement DBSCAN in python
+
+Answer: from sklearn.cluster import DBSCAN
+X, y = iris.data, iris.target
+db = DBSCAN(eps=0.3, min_samples=10).fit(X)
+
+Note: HOW DO WE IMPLEMENT DBSCAN?
+‣ To implement DBSCAN in Python, we first import it from sklearn:
+‣from sklearn.cluster import DBSCAN
+‣ Next, assuming that we are using the classic Iris dataset, we define X as the data and y are the class variables
+‣X, y = iris.data, iris.target
+‣ Next, we call DBSCAN from sklearn:
+‣db = DBSCAN(eps=0.3, min_samples=10).fit(X)
+‣ Given the above input, what have we said about our clusters?
+Here, we've set epsilon to a standard value of .3 and set the minimum number of points at 10, and then fit the model to our data X.
+
+###Question: rule of thumb for DBSCAN
+
+Answer: ‣ As a general rule when choosing the minimum points - you should always aim to have the minimum number of points be greater or equal to the amount of dimensions in your data, plus one. This typically will give the algorithm a good estimation of how to evaluate the clusters. Calculating epsilon is a bit trickier and uses a method called the k-distance, which can help visualize the best epsilon.
+
+Note:
+
+###Question: what does DBSCAN algorithm return?
+
+Answer: ‣ The DBSCAN algorithm in Python returns two items - the core samples and the labels. The core samples are the points which the algorithm initially finds and searches around the neighborhood to form the cluster, and the labels are simply the cluster labels.
+
+
+Note:
+
+###Question: code DBSCAN from scratch
+
+Answer: import pandas as pd
+import numpy as np
+from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets, linear_model, metrics
+import matplotlib.pyplot as plt
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+X = StandardScaler().fit_transform(X)
+plt.scatter(X[:,0], X[:,1])
+plt.scatter(X[:,1], X[:,2])
+plt.scatter(X[:,2], X[:,3])
+dbscn = DBSCAN(eps = .5, min_samples = 5).fit(X)  
+labels = dbscn.labels_  
+core_samples = np.zeros_like(labels, dtype = bool)  
+core_samples[dbscn.core_sample_indices_] = True 
+print(core_samples)
+n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+print('Estimated number of clusters: %d' % n_clusters_)
+print("Homogeneity: %0.3f" % metrics.homogeneity_score(y, labels))
+print("Completeness: %0.3f" % metrics.completeness_score(y, labels))
+print("V-measure: %0.3f" % metrics.v_measure_score(y, labels))
+print("Silhouette Coefficient: %0.3f"
+      % metrics.silhouette_score(X, labels))
+
+Note: 
+import pandas as pd
+import numpy as np
+from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
+from sklearn import datasets, linear_model, metrics
+import matplotlib.pyplot as plt
+
+# load the data
+iris = datasets.load_iris()
+
+# identify target and features
+X, y = iris.data, iris.target
+
+# Standardize X
+X = StandardScaler().fit_transform(X)
+
+# Explore our data to look or potential clusters - see any?
+plt.scatter(X[:,0], X[:,1])
+
+plt.scatter(X[:,1], X[:,2])
+
+plt.scatter(X[:,2], X[:,3])
+
+# setup DBSCAN
+dbscn = DBSCAN(eps = .5, min_samples = 5).fit(X)  
+
+# set labels
+labels = dbscn.labels_  
+print(labels) # comprehension: what do these mean? How many are there?
+
+# identify core samples
+core_samples = np.zeros_like(labels, dtype = bool)  
+core_samples[dbscn.core_sample_indices_] = True 
+print(core_samples)
+
+
+# declare number of clusters
+n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+
+# Now, we can use a handy chunk of code from the Scitkit documentation to measure the performance of our model
+print('Estimated number of clusters: %d' % n_clusters_)
+print("Homogeneity: %0.3f" % metrics.homogeneity_score(y, labels))
+print("Completeness: %0.3f" % metrics.completeness_score(y, labels))
+print("V-measure: %0.3f" % metrics.v_measure_score(y, labels))
+print("Silhouette Coefficient: %0.3f"
+      % metrics.silhouette_score(X, labels))
+
+###Question:  what is difference between C and gamma for SVM
+
+Answer: gamma parameter defines how far the influence of a single training example reaches, with low values meaning ‘far’ and high values meaning ‘close’. 
+The C parameter trades off misclassification of training examples against simplicity of the decision surface. A low C makes the decision surface smooth, while a high C aims at classifying all training examples correctly by giving the model freedom to select more samples as support vectors.
+
+Note: This example illustrates the effect of the parameters gamma and C of the Radial Basis Function (RBF) kernel SVM.
+Intuitively, the gamma parameter defines how far the influence of a single training example reaches, with low values meaning ‘far’ and high values meaning ‘close’. The gamma parameters can be seen as the inverse of the radius of influence of samples selected by the model as support vectors.
+The C parameter trades off misclassification of training examples against simplicity of the decision surface. A low C makes the decision surface smooth, while a high C aims at classifying all training examples correctly by giving the model freedom to select more samples as support vectors.
+
+###Question: 
+Of course, there are some assumptions involved in SLR.
+Name them
+
+Answer: Linearity, Independence, Normality, Equality of Variances
+
+Note: Linearity: Y and X must have an approximately linear relationship.
+Independence: Errors (residuals) e_i and e_j must be independent of one another for any i != j.
+Normality: The errors (residuals) follow a Normal distribution.
+Equality of Variances: The errors (residuals) should have a roughly consistent pattern, regardless of the value of X. (There should be no discernable relationship between X and the residuals.)
+The mnemonic LINE is a useful way to remember these four assumptions.
+
+###Question: Inference vs Prediction
+
+Answer:
+
+Note:
+
+###Question: parameter vs statistic
+
+Answer: A parameter is a measure that describes the entire population, whereas a statistic describes a sample of the population. For example, say my population is all of the students at some high school. If I were to take the mean SAT score of all the students, that would be a parameter, since the mean is describing the entire population  (all of the students.) But, if I took the mean SAT score of a randomly selected group of 50 students, then that mean would be a statistic, since it describes only part of the population.
+
+
+Note:
+
+###Question: # Get the optimal slope and y intercept
+
+def lin_reg(x,y):
+    # Necessary imports so this can work as a standalone
+    
+    # Using other libraries for standard deviation and pearson correlation coef.
+    # Pearson Co. Coef returns a tuple so it needs to be sliced/indexed
+    
+    #Print the optimal values
+
+Answer:def lin_reg(x,y):
+    import numpy as np
+    import scipy.stats
+    
+    beta_1 = (scipy.stats.pearsonr(x,y)[0])*(np.std(y)/np.std(x))
+    beta_0 = np.mean(y)-(beta_1*np.mean(x)) 
+    
+    print 'The optimal y-intercept is ', beta_0
+    print 'The optimal slope is ', beta_1
+
+
+Note:
+def lin_reg(x,y):
+    # Necessary imports so this can work as a standalone
+    import numpy as np
+    import scipy.stats
+    
+    # Using other libraries for standard deviation and pearson correlation coef.
+    beta_1 = (scipy.stats.pearsonr(x,y)[0])*(np.std(y)/np.std(x))
+    # Pearson Co. Coef returns a tuple so it needs to be sliced/indexed
+    beta_0 = np.mean(y)-(beta_1*np.mean(x)) 
+    
+    #Print the optimal values
+    print('The optimal y-intercept is ', beta_0)
+    print('The optimal slope is ', beta_1)
+
+
+###Question: Just like SLR, there are assumptions in MLR. Luckily, they're really similar to the SLR assumptions.
+
+
+Answer: Linearity, Independence, Normality, Equality of Variances, Independence Part 2
+
+Note:
+Linearity: Y must have an approximately linear relationship with each independent X_i.
+Independence: Errors (residuals) e_i and e_j must be independent of one another for any i != j.
+Normality: The errors (residuals) follow a Normal distribution.
+Equality of Variances: The errors (residuals) should have a roughly consistent pattern, regardless of the value of the X_i. (There should be no discernable relationship between X_1 and the residuals.)
+Independence Part 2: The independent variables X_i and X_j must be independent of one another for any i != j.
+The mnemonic LINEI is a useful way to remember these five assumptions. (That's not true.)
+
+###Question: Interaction Terms
+
+Sometimes we want to include two variables that are highly correlated with one another. This would violate the assumption of independence between X_i and X_j, but by including an interaction term - that is, an additional variable X_i * X_j - we are able to overcome this issue by explicitly modeling the dependence between the two variables.
+
+Answer: If your model includes an interaction term X_i * X_j that is "statistically significant," it is customary to include X_i * X_j, X_i, and X_j in your final model - even if X_i or X_j are not statistically significant!
+
+Note:
+
+###Question: define 'Statistical inference', 'Point estimate', 'standard error', 'p-value', and 'confidence interval'
+
+
+Answer:
+Statistical inference is when we use sample statistics to learn more about population parameters.
+A point estimate is the value of a statistic, or a "best guess" for the true value of the parameter. (Call of Duty sniper rifle.)
+A standard error is the standard deviation of a statistic and helps us to quantify the variability of our estimator.
+A p-value is the probability that we get a statistic as extreme or more extreme if we re-ran the experiment. If our p-value is less than alpha, we reject our null hypothesis. Otherwise, we fail to reject the null hypothesis.
+A confidence interval is a set of possible values for the parameter. 
+
+Note:
+
+###Question: Training set, testing set; advantages disadvantages
+
+Answer: Training set: Used to train the classifier
+Testing set: Used to estimate the error rate of the trained classifier
+Advantages: Fast, computationally inexpensive
+Disadvantages: eliminating data, imperfect splits
+
+
+
+Note:
+
+###Question: What is leave one out cross validation (LOOCV)
+
+
+Answer: K-folds taken to logical extreme: K = N
+For dataset of N examples, perform N experiments
+Average model against EACH of those iterations
+Choose model and TEST it against the final fold
+
+Note:
+
+###Question: Pros/Cons of large/low number of folds
+
+Answer: Large number --> 
+Error due to bias is low
+Variance is quite high
+Computationally expensive
+
+Low number -->
+Error due to variance is low
+Error due to bias is large
+Computationally cheaper
+
+
+Note: for large datasets, k=3 typically ok
+Sparse datasets, LOOCV
+
+###Question: Three way data split. When used.  What is are the three sets.
+
+Answer:
+‣ If model selection and true error estimates are to be computed simultaneously, three disjoint data sets are best.
+‣ Training set: a set of example used for learning – what parameters of the classifier
+‣ Validation set: a set of examples used to tune the parameters of the classifier ‣ Testing set: a set of examples used ONLY to assess the performance of the
+fully-trained classifier
+
+Note:
+‣ Validation and testing must be separate data sets. Once you have the final model set, you cannot do any additional tuning after testing.
+
+###Question: outline procedure 
+
+Answer: 
+‣ 1. Divide data into training, validation, testing sets
+‣ 2. Select architecture (model type) and training parameters (k)
+‣ 3. Train the model using the training set
+‣ 4. Evaluate the model using the training set
+‣ 5. Repeat 2-4 selecting different architectures (models) and tuning parameters ‣ 6. Select the best model
+‣ 7. Assess the model with the final testing set
+
+Note:
+
+###Question: ‣ The demo covers a basic test/train split as well as k-fold cross-validation Check: Is 2-fold cross-validation the same as a 50:50 test/train split?
+‣ Will two different 50:50 (or x:y) splits produce the same model score?
+
+Answer:
+
+Note:
+
+###Question: ‣ What is overfitting?
+
+‣ How does overfitting occur?
+
+‣ What is the impact?
+
+
+Answer:
+‣Building a model that matches the training data "too closely”
+‣ Learning from the noise in the data, rather than just the signal
+
+‣Evaluating a model by testing it on the same data that was used to train it
+‣ Creating a model that is "too complex"
+
+‣ Model will do well on the training data, but won't generalize to out-of-sample
+data
+‣ Model will have low bias, but high variance
+
+Note: remember Overfitting with KNN, Overfitting with polynomial regression, Overfitting with decision trees
+
+
+###Question: What are the general characteristics of linear models?
+
+Answer:
+‣ Low model complexity
+‣ High bias, low variance
+‣ Does not tend to overfit
+
+Note:
+
+###Question: Nevertheless, overfitting can still occur with linear models if you allow them to have high variance. Here are some common causes:
+
+Answer: "Irrelevant features", Correlated features, Large Coefficients
+
+Note: ‣ Linear models can overfit if you include "irrelevant features", meaning
+features that are unrelated to the response. Why?
+‣Because it will learn a coefficient for every feature you include in the model, regardless of whether that feature has the signal or the noise.
+‣ This is especially a problem when p (number of features) is close to n
+(number of observations), because that model will naturally have high
+variance.
+
+CAUSE 2: CORRELATED FEATURES
+‣ Linear models can overfit if the included features are highly correlated with
+one another. Why?
+‣ From the scikit-learn documentation:
+‣ "...coefficient estimates for Ordinary Least Squares rely on the
+independence of the model terms. When terms are correlated and the
+columns of the design matrix X have an approximate linear dependence,
+the design matrix becomes close to singular and as a result, the leastsquares
+estimate becomes highly sensitive to random errors in the
+observed response, producing a large variance.”
+‣ http://scikit-learn.org/stable/modules/linear_model.html#ordinary-leastsquares
+
+CAUSE 3: LARGE COEFFICIENTS
+‣ Linear models can overfit if the coefficients (after feature standardization)
+are too large. Why?
+‣Because the larger the absolute value of the coefficient, the more power it
+has to change the predicted response, resulting in a higher variance
+
+###Question: sqlite, check scheme
+
+Answer: .schema
+
+Note:
+
+###Question: REGULARIZATION OF LINEAR MODELS
+
+Answer: ‣ Regularization is a method for
+"constraining" or "regularizing" the size
+of the coefficients, thus "shrinking"
+them towards zero.
+‣ It reduces model variance and thus
+minimizes overfitting.
+‣ If the model is too complex, it tends to
+reduce variance more than it
+increases bias, resulting in a model
+that is more likely to generalize.
+‣ Our goal is to locate the optimum model complexity, and thus
+regularization is useful when we believe our model is too complex.
+
+Note:
+
+###Question: HOW DOES REGULARIZATION WORK?
+
+
+Answer:
+‣ For a normal linear regression model, we estimate the coefficients using the least
+squares criterion, which minimizes the residual sum of squares (RSS): 
+
+RIDGE REGRESSION
+‣ We seek to minimize the squared errors AND some penalty term, whose power is
+equal to lambda.
+
+LASSO REGRESSION REGRESSION
+‣ We seek to minimize the squared errors AND some penalty term, whose power is
+equal to lambda.
+
+RIDGE VS LASSO REGRESSION
+‣ Lasso Regression (L1 norm): shrink towards 0 using the sum of the absolute
+value of our coefficients as a constraint
+‣ Ridge Regression (L2 norm): shrink the squares of our our coefficients
+
+Note:
+
+###Question:  RIDGE VS LASSO REGRESSION
+
+Answer: ‣ Lasso Regression (L1 norm): shrink towards 0 using the sum of the absolute value of our coefficients as a constraint
+‣ Ridge Regression (L2 norm): shrink the squares of our our coefficients
+
+
+Note: We are fitting a linear regression model with two features, x1 and x2.
+‣ β̂represents the set of two coefficients, β1 and β2, which minimize the RSS for the unregularized
+model.
+‣ Regularization restricts the allowed positions of β̂to the blue constraint region:
+‣ For lasso, this region is a diamond because it constrains the absolute value of the coefficients.
+‣ For ridge, this region is a circle because it constrains the square of the coefficients.
+‣ The size of the blue region is determined by α (our budget!), with a smaller α resulting in a larger
+region:
+‣ When α is zero, the blue region is infinitely large, and thus the coefficient sizes are not constrained.
+‣ When α increases, the blue region gets smaller and smaller. Ridge Regression (L2 norm): shrink the
+squares of our our coefficients
+
+###Question: RIDGE VS LASSO REGRESSION
+‣But one more thing!
+‣Should features be standardized?
+
+Answer:
+‣Yes, because otherwise, features would be penalized simply because of their scale.
+‣Also, standardizing avoids penalizing the intercept, which wouldn't make intuitive
+sense.
+‣ How should you choose between Lasso regression and Ridge regression?
+‣ Lasso regression is preferred if we believe many features are irrelevant or if we
+prefer a sparse model.
+‣ If model performance is your primary concern, it is best to try both.
+‣ElasticNet regression is a combination of lasso regression and ridge Regression.
+
+Note:
+
+###Question: Bias - variance tradeoff summary 
+
+Answer:
+Bias is error due to the difference between the correct model and our predicted value
+Variance is the error due to the variability of a model for a given data point
+As complexity increases, bias decreases
+As complexity increases, variance increases
+Note:
+
+###Question: what is an f1 score
+
+Answer: F Score: This is a weighted average of the true positive rate (recall) and precision. 
+tradeoff between precisiona dn recall (review this)
+
+Note:
+
+###Question: what is the difference between sensitivity and recall, if any?
+Sensitivity and specificity.
+
+Answer: 
+Sensitivity/recall – how good a test is at detecting the positives. A test can cheat and maximize this by always returning “positive”.
+Specificity – how good a test is at avoiding false alarms. A test can cheat and maximize this by always returning “negative”.
+Precision – how many of the positively classified were relevant. A test can cheat and maximize this by only returning positive on one result it’s most confident in.
+The cheating is resolved by looking at both relevant metrics instead of just one. E.g. the cheating 100% sensitivity that always says “positive” has 0% specificity.
+
+
+Note:
+
+###Question: true positive, true negative, false positive, false negative
+
+Answer: true positives (TP): These are cases in which we predicted yes (they have the disease), and they do have the disease.
+true negatives (TN): We predicted no, and they don't have the disease.
+false positives (FP): We predicted yes, but they don't actually have the disease. (Also known as a "Type I error.")
+false negatives (FN): We predicted no, but they actually do have the disease. (Also known as a "Type II error.")
+
+Note:
+
+###Question: specificity 
+
+Answer: Specificity: When it's actually no, how often does it predict no?
+TN/actual no = 50/60 = 0.83
+equivalent to 1 minus False Positive Rate
+Precision: When it predicts yes, how often is it correct?
+TP/predicted yes = 100/110 = 0.91
+
+Note:
+
+###Question: accuracy, misclassification rate, true positive rate, false positive rate, specificity, precision, prevalence
+
+Answer: Accuracy: Overall, how often is the classifier correct?
+(TP+TN)/total = (100+50)/165 = 0.91
+Misclassification Rate: Overall, how often is it wrong?
+(FP+FN)/total = (10+5)/165 = 0.09
+equivalent to 1 minus Accuracy
+also known as "Error Rate"
+True Positive Rate: When it's actually yes, how often does it predict yes?
+TP/actual yes = 100/105 = 0.95
+also known as "Sensitivity" or "Recall"
+False Positive Rate: When it's actually no, how often does it predict yes?
+FP/actual no = 10/60 = 0.17
+Specificity: When it's actually no, how often does it predict no?
+TN/actual no = 50/60 = 0.83
+equivalent to 1 minus False Positive Rate
+Precision: When it predicts yes, how often is it correct?
+TP/predicted yes = 100/110 = 0.91
+Prevalence: How often does the yes condition actually occur in our sample?
+actual yes/total = 105/165 = 0.64
+
+
+Note:
+
+###Question: girdsearch, CV, alphas, penalties, tolerance, C, lambda? 
+
+Answer: what are these? 
+C is the same as alpha in scikit learn;
+
+Note:
+
+###Question: what is the default in scikit learn
+
+Answer: L2 - ridge 
+
+Note:
+
+###Question: KNN Lazy means...
+
+Answer: Lazy means (...) all training data is saved in memory; computationally expensive
+
+Note:
+
+###Question: Non-parametric
+
+Answer: no assumption about the underlying distribution . flexible in how it makes its predictions
+
+Note:
+
+###Question: what is EDA? 
+
+Answer:
+
+Note:
+
+###Question: evaluating classifiers, sensitivity, precision, recall, specificity, ROC curve, etc
+
+Answer: First ask if this is a data science problem.
+
+Note:
+
+###Question: Variable selection, bias-variance tradeoff, regularization, train-test-split, cross-validation, evaluate model, gridsearch
+
+Answer:
+
+Note:
+
+###Question: population, sample, parameter, statistics
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:

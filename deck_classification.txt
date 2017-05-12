@@ -1,0 +1,594 @@
+###Question: # make an instance of a KNeighborsClassifier object
+
+# predict the response values for the observations in X ("test the model")
+
+# store the predicted response values
+
+# compute classification accuracy
+
+Answer:  from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X, y)
+knn.predict(X)
+y_pred_class = knn.predict(X)
+from sklearn import metrics
+print(metrics.accuracy_score(y, y_pred_class))
+
+Note:
+
+###Question: features of k-nearest neighbors
+
+Answer: Non-parametric, Lazy, Based on feature similarity
+
+Note:‣KNN is an non-parametric lazy learning algorithm that predicts outcomes based
+on the similarity (near-ness) of inputted features to the training set
+‣ Non-parametric: Makes assumptions about the underlying distribution of our data
+‣ Lazy: Training phase is minimal – KNN uses all (or nearly all) of the training data
+‣Based on feature similarity: How closely out-of-sample features resemble our
+training set determines how we classify a given data point
+‣Because of this above, kNN can be thought to be a spatial algo
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: create train test sets 
+
+
+# STEP 1: split X and y into training and testing sets (using random_state for reproducibility)
+
+# STEP 2: train the model on the training set (using K=1)
+
+# STEP 3: test the model on the testing set, and check the accuracy
+
+# test with 50 neighbors
+
+Answer: from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=99)
+
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X_train, y_train)
+
+y_pred_class = knn.predict(X_test)
+print(metrics.accuracy_score(y_test, y_pred_class))
+
+knn = KNeighborsClassifier(n_neighbors=50)
+knn.fit(X_train, y_train)
+y_pred_class = knn.predict(X_test)
+print(metrics.accuracy_score(y_test, y_pred_class))
+
+Note:
+
+###Question: # import load_iris function from datasets module
+# save "bunch" object containing iris dataset and its attributes
+
+# print the names of the four features
+# print integers representing the species of each observation
+# print the encoding scheme for species: 0 = setosa, 1 = versicolor, 2 = virginica
+
+Answer: from sklearn.datasets import load_iris
+iris = load_iris()
+print(iris.feature_names)
+print(iris.target)
+print(iris.target_names)
+
+Note:
+
+###Question: what are the requirements for working with data in scikit-learn
+
+
+Answer: Features and response are separate objects
+Features and response are numeric
+Features and response are NumPy arrays
+Features and response have specific shapes
+
+Note:
+
+###Question: # check the types of the features and response for iris
+
+Answer: print(type(iris.data))
+print(type(iris.target))
+
+
+Note:
+
+###Question: # check the shape of the features (first dimension = number of observations, second dimensions = number of features)
+# check the shape of the response (single dimension matching the number of observations)
+# store feature matrix in "X"
+
+# store response vector in "y"
+
+Answer: print(iris.data.shape)
+print(iris.target.shape)
+X = iris.data
+y = iris.target
+
+Note:
+
+###Question: KNN Nearest Neighbors on iris dataset
+# import load_iris function from datasets module
+# save "bunch" object containing iris dataset and its attributes
+# store feature matrix in "X"
+# store response vector in "y"
+# print the shapes of X and y
+Step 1: Import the class you plan to use
+Step 2: "Instantiate" the "estimator"
+"Estimator" is scikit-learn's term for model
+"Instantiate" means "make an instance of"
+Name of the object does not matter
+Can specify tuning parameters (aka "hyperparameters") during this step
+All parameters not specified are set to their defaults
+Step 3: Fit the model with data (aka "model training")
+Model is learning the relationship between X and y
+Occurs in-place
+Step 4: Predict the response for a new observation
+New observations are called "out-of-sample" data
+Uses the information it learned during the model training process
+[3, 5, 4, 2]
+array([2])
+Returns a NumPy array
+Can predict for multiple observations at once
+In [10]:
+## [3, 5, 4, 2], [5, 4, 3, 2]
+Out[10]:
+array([2, 1])
+
+
+Answer: from sklearn.datasets import load_iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+print(X.shape)
+print(y.shape)
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1)
+print(knn)
+knn.fit(X, y)
+knn.predict([[3, 5, 4, 2]])
+X_new = [[3, 5, 4, 2], [5, 4, 3, 2]]
+knn.predict(X_new)
+
+Note:
+
+###Question: # instantiate the model (using the value K=5)
+
+# fit the model with data
+
+# predict the response for new observations
+
+Answer: knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X, y)
+knn.predict(X_new) 
+
+Note:
+
+###Question: use logistic regression to predict iris type 
+# import the class
+# instantiate the model (using the default parameters)
+# fit the model with data
+# predict the response for new observations
+
+Answer: from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+logreg.fit(X, y)
+logreg.predict(X_new)
+
+Note:
+
+###Question: # read in the iris data
+# create X (features) and y (response)
+# import the class
+# instantiate the model (using the default parameters)
+# fit the model with data
+# predict the response values for the observations in X
+# store the predicted response values
+# check how many predictions were generated
+# compute classification accuracy for the logistic regression model
+Classification accuracy:
+Proportion of correct predictions
+Common evaluation metric for classification problems
+In [5]:
+
+0.96
+Known as training accuracy when you train and test the model on the same data 
+
+Answer: from sklearn.datasets import load_iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+logreg.fit(X, y)
+logreg.predict(X)
+y_pred = logreg.predict(X)
+len(y_pred)
+from sklearn import metrics
+print(metrics.accuracy_score(y, y_pred))
+
+Note:
+
+###Question: 
+KNN (K=5); test accuracy
+
+
+Answer: from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X, y)
+y_pred = knn.predict(X)
+print(metrics.accuracy_score(y, y_pred))
+
+Note: from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X, y)
+y_pred = knn.predict(X)
+print(metrics.accuracy_score(y, y_pred))
+0.966666666667
+
+###Question: KNN(K=1)
+1.0
+
+Answer: from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X, y)
+y_pred = knn.predict(X)
+print(metrics.accuracy_score(y, y_pred))
+
+Note:
+
+###Question: # try K=1 through K=25 and record testing accuracy
+Answer: k_range = list(range(1, 26))
+scores = []
+for k in k_range:
+	knn = KNeighborsClassifier(n_neighbors=k)
+	knn.fit(X_train, y_train)
+	y_pred = knn.predict(X_test)
+	scores.append(metrics.accuracy_score(y_test, y_pred))
+
+
+Note:
+
+###Question: # 10-fold cross-validation with K=5 for KNN (the n_neighbors parameter)
+
+
+Answer: knn = KNeighborsClassifier(n_neighbors=5)
+scores = cross_val_score(knn, X, y, cv=10, scoring='accuracy')
+print(scores) 
+
+Note:
+
+###Question: 
+Goal: Compare the best KNN model with logistic regression on the iris dataset
+# 10-fold cross-validation with the best KNN model
+knn = KNeighborsClassifier(n_neighbors=20)
+print(cross_val_score(knn, X, y, cv=10, scoring='accuracy').mean())
+# 10-fold cross-validation with logistic regression
+from sklearn.linear_model import LogisticRegression
+logreg = LogisticRegression()
+print(cross_val_score(logreg, X, y, cv=10, scoring='accuracy').mean()) 
+
+Answer: 
+
+Note:
+
+###Question: Below, show the feature importances for each variable predicting private vs. not, sorted by most important feature to least.
+
+Answer: sorted(zip(X.columns.tolist(), clf.feature_importances_.tolist()), key=lambda x: x[1])[::-1]
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
