@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac0597f0-43b1-4971-90dd-4602edc5da0b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deck_classification.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_svm.txt" afterPath="$PROJECT_DIR$/deck_deeplearning.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_abc.txt" afterPath="$PROJECT_DIR$/ag_deck_abc.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_builtins.txt" afterPath="$PROJECT_DIR$/ag_deck_builtins.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_cmath.txt" afterPath="$PROJECT_DIR$/ag_deck_cmath.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_codecs.txt" afterPath="$PROJECT_DIR$/ag_deck_codecs.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_random.txt" afterPath="$PROJECT_DIR$/ag_deck_random.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/deck_types.txt" afterPath="$PROJECT_DIR$/ag_deck_types.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/longflashre.txt" afterPath="$PROJECT_DIR$/deck_regex.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deck_generalized_linear_models.txt" afterPath="$PROJECT_DIR$/deck_generalized_linear_models.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fcards_py2.py" afterPath="$PROJECT_DIR$/fcards_py2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fcards_py2_beta.py" afterPath="$PROJECT_DIR$/fcards_py2_beta.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,6 +37,60 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ag_deck_types.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ag_deck_types.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deck_regex.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deck_regex.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="6" column="257" lean-forward="false" selection-start-line="6" selection-start-column="257" selection-end-line="6" selection-end-column="257" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deck_generalized_linear_models.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deck_generalized_linear_models.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fcards_py2_beta.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fcards_py2_beta.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="96" column="36" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fcards_py2.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fcards_py2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="63" column="25" lean-forward="true" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="25" />
+              <folding>
+                <element signature="e#24#62#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,60 +125,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deck_deeplearning.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deck_deeplearning.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deck_deeplearning.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-765">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deck_linreg.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deck_linreg.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deck_pandas.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deck_pandas.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2100">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deck_practice.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deck_practice.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deck_pandas2.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deck_pandas2.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3015">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deck_pandas3.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/deck_pandas3.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -151,12 +163,13 @@
         <option value="$PROJECT_DIR$/deck_practice.txt" />
         <option value="$PROJECT_DIR$/autoflash.py" />
         <option value="$PROJECT_DIR$/deck_template.txt" />
-        <option value="$PROJECT_DIR$/fcards_py2.py" />
         <option value="$PROJECT_DIR$/fcards.py" />
-        <option value="$PROJECT_DIR$/fcards_py2_beta.py" />
         <option value="$PROJECT_DIR$/deck_datavis.txt" />
         <option value="$PROJECT_DIR$/deck_countvect.txt" />
         <option value="$PROJECT_DIR$/deck_classification.txt" />
+        <option value="$PROJECT_DIR$/deck_generalized_linear_models.txt" />
+        <option value="$PROJECT_DIR$/fcards_py2_beta.py" />
+        <option value="$PROJECT_DIR$/fcards_py2.py" />
       </list>
     </option>
   </component>
@@ -523,7 +536,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="1275" height="777" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25019607" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -556,7 +569,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/deck_codecs.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_abc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -564,23 +577,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_random.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deck_abc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deck_builtins.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_builtins.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -614,7 +611,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_codecs.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_codecs.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -622,7 +619,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_random.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_random.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
@@ -630,7 +627,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_abc.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_abc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -638,7 +635,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_builtins.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_builtins.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -672,7 +669,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_codecs.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_codecs.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -680,7 +677,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_random.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_random.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
@@ -688,7 +685,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_abc.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_abc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -696,7 +693,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_builtins.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_builtins.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -755,7 +752,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/autoflash.py" />
-    <entry file="file://$PROJECT_DIR$/deck_builtins.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_builtins.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -763,7 +760,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_abc.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_abc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -771,18 +768,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_codecs.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_codecs.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deck_types.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -795,30 +784,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fcards_py2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="90" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fcards.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="60" column="86" lean-forward="false" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
-          <folding>
-            <element signature="e#24#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fcards_py2_beta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
             <element signature="e#24#62#0" expanded="true" />
           </folding>
@@ -873,7 +842,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deck_random.txt">
+    <entry file="file://$PROJECT_DIR$/ag_deck_random.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
           <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
@@ -966,6 +935,50 @@
         <state relative-caret-position="-765">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ag_deck_types.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deck_regex.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="6" column="257" lean-forward="false" selection-start-line="6" selection-start-column="257" selection-end-line="6" selection-end-column="257" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deck_generalized_linear_models.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="4" lean-forward="false" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fcards_py2_beta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="96" column="36" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fcards_py2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="63" column="25" lean-forward="true" selection-start-line="63" selection-start-column="25" selection-end-line="63" selection-end-column="25" />
+          <folding>
+            <element signature="e#24#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -60,7 +60,8 @@ class Game:
 		deck_num = int(raw_input('\ndeck number:  '))
 		self.current_deck_path = self.deck_paths[deck_num]
 		print('You chose {}. That is a great choice, we are all rooting for you.\n'.format(self.current_deck_path))
-		raw_input('hit ENTER to start! After starting, type "THIS IS BULLSHIT" to quit\n')
+		raw_input('hit ENTER to start! After starting, type "THIS IS BULLSHIT" to quit. Type SPACE ENTER to submit '
+		          'answer.\n')
 		self.current_deck = Deck(self.current_deck_path)
 	
 	def play(self):
@@ -88,7 +89,7 @@ class Game:
 	def multi_line_entry(self, question, review=False):
 		response = []
 		if review:
-			entry = raw_input('Type the correct answer for practice and press enter:\n')
+			entry = raw_input('Type the correct answer for practice and press space enter:\n')
 		else:
 			entry = raw_input('Question:\n' + question.strip() + '\n\n')
 		while entry != " ":
