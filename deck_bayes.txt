@@ -1,0 +1,585 @@
+###Question:  Answer, Event, Sample Space
+
+Answer: Experiment: A procedure that can be repeated infinitely many times and has a
+well-defined set of outcomes.
+
+Event: Any collection of outcomes of an experiment.
+
+Sample Space: The set of all possible outcomes of an experiment, denoted S.
+
+Note:
+
+###Question: Two branches of stats
+
+Answer: Frequentism, Bayesian
+
+Note:
+
+###Question: What is a posterior distribution
+
+Answer:
+
+Note:
+
+###Question: what are two interpretations of P(A)
+
+Answer: In the long run, how many times will A occur relative to how many times we conduct our experiment?
+This is called the frequentist interpretation of probability.
+
+What is one’s degree of belief in the statement A, possibly given
+evidence?
+This is called the Bayesian interpretation of probability.
+
+Note:
+Frequentist inference and Bayesian inference have different interpretations,
+and these interpretations give rise to different methods of analysis.
+‣Example: The average height of women at Ohio State, denoted u.
+‣Frequentists treat u as fixed: u = 64 inches
+‣Bayesians treat u as a parameter with a distribution: u ∼ N 64, 2
+‣Example: 95% confidence/credible interval
+‣Frequentist interval: “I am 95% confident u is in between 60 and 68 inches.”
+‣Bayesian (credible) interval: “There is a 95% chance u is in between 60 and 68 inches.”
+
+###Question: What is A/B testing
+
+Answer: ‣A/B Testing is a term for a randomized experiment with two variants, A and B.
+These tests consist of test design, data collection, and data analysis stages
+
+Note:
+
+###Question: what is sensitivity and specificity
+
+Answer: sensitivity: true positive; specificity: true negative
+
+Note:
+
+###Question: what is sensitivity / specificity / prevalence for ELISA test
+
+Answer: sensitivity: P(+|HIV); specificity: P(-|no HIV); prevalence: P(HIV)
+
+Note: prior probability if you know nothing about the recruit is just the prevalence
+
+###Question:  what is P(HIV|+)?
+
+Answer: P(HIV)*P(+|HIV) / P(+)
+
+Note: this is called the posterior probability
+
+###Question: If an individual is at a higher risk for having HIV than a randomly sampled person from this population, how, if at all, would you expect P(HIV|tested+) to change?
+
+Answer: increase
+
+Note:
+
+###Question: If the false positive rate of the test is higher than previous 1% how, if at all, would you expect P(HIV|tested+) to change?
+
+Answer: decrease
+
+Note:
+
+###Question: What is the bayesean correlary to confidence interval
+
+Answer: credible intervals
+
+Note:
+
+###Question: Define p-value
+
+Answer: Probability of the observed or more extreme outcome given that the null hypothesis is true
+
+Note: i.e. more extreme in the direction of the alternative hypothesis 
+
+###Question: what is the likelihood in bayes context?
+
+Answer: P(data|model)
+
+Note: in pregnancy example where we have 20 pregnancies four of which are from teh treatment group = P(k=4|n=20, p)
+
+###Question: use Bayes' rule to calculate the posterior probability, i.e. P(model|data)
+
+Answer: P(model|data) = P(model & data) / P(data) = P(data|model) * P (model) / P(data)
+
+Note:
+
+###Question: 1) Julia is having an outdoor wedding ceremony tomorrow. In recent years, it has rained on average 50
+days per year. Unfortunately, the meteorologist has predicted rain for her wedding day. When it rains,
+the meteorologist will have correctly predicted it 80 percent of the time. When it does not rain, the
+meteorologist will have incorrectly predicted rain 30 percent of the time. Given this information, what is
+the probability that it rains on Julia’s wedding day?
+
+Answer: 0.297
+
+Note:  From the problem description,
+p(P
++|R+) = 4/5 and p(P
++|R−) = 3/10. Further, since it rains on average 50 days in a year and there are
+365 days in a year, our prior probability that it rains is p(R+) = 50/365, which implies p(R−) = 315/365.
+
+###Question: Suppose we have two hypotheses, H0 and H1. Assuming our prior places equal weight on H0 and H1,
+which of the following statements is false?
+
+a) If the posterior probability of H0 is less than .05, the p-value under H0 will also be less than .05.
+b) If the p-value is less than .05, the probability that we see data at least as extreme as our observed
+data is less than .05, given that H0 is true.
+
+c) If the cost of making a type-I error is the same as the cost of making a type II error and the posterior
+probability of H1 is greater than the posterior probability of H0, we should reject H0.
+
+Answer:
+
+Note: a) If the posterior probability of H0 is less than .05, the p-value under H0 will also be less than .05.
+False. A simple but extreme counterexample: Suppose the prior probability P(H0) = 0. Then regardless
+of the how well H0 explains the data (which increases the p-value), the posterior probability of
+H0 will also be zero.
+b) If the p-value is less than .05, the probability that we see data at least as extreme as our observed
+data is less than .05, given that H0 is true.
+True. This is the definition of a p-value and is very important to remember. When the p-value is low,
+either a rare event occurred or H0 is false.
+
+c) If the cost of making a type-I error is the same as the cost of making a type II error and the posterior
+probability of H1 is greater than the posterior probability of H0, we should reject H0.
+True. If the cost of making a wrong decision is the same regardless of which decision we make, we
+should choose the hypothesis with the highest posterior probability. This corresponds to a {0, 1} loss
+function, which you will learn about later in the course.
+
+###Question: 3) Suppose 20 people are randomly sampled from the population and their sex is recorded. Which of the
+following best represents the likelihood of the number of males observed k?
+
+Answer: Solution The likelihood corresponds to the probability of observing the data, given the parameters of
+the data model. In this case, since 20 people are randomly (and hence independently) sampled from
+the population, we can model the number of males we see as coming from a binomial distribution with
+parameter p, the true proportion of males in the population.
+Hence, since we observe exactly k males out of 20 people in the data, the phrase that best represents the
+likelihood is ”the probability of observing exactly k males in 20 samples, given p, the true population
+proportion of males.”
+
+Note:
+
+###Question: 4) Which of the following statements is consistent with both Bayesian and frequentist interpretations of
+probability?
+a) Probability can be represented by a degree of belief, which changes as more data are collected.
+b) Probability can be represented by the long-run frequency of an event divided by the number of trials.
+c) Probability is the tendency of an experiment to produce a certain outcome, even if it is performed
+only once.
+d) Probability is a measure of the likelihood that an event will occur.
+
+Answer:
+a) Probability can be represented by a degree of belief, which changes as more data are collected.
+No, this statement is only consistent with a Bayesian interpretation of probability. Bayesians view
+probability as a degree of belief, which can be quantified by indifference to a wager.
+b) Probability can be represented by the long-run frequency of an event divided by the number of trials.
+No, this statement is only consistent with a Frequentist interpretation of probability.
+c) Probability is the tendency of an experiment to produce a certain outcome, even if it is performed
+only once.
+No, this statement is too narrow for a Bayesian. Probabilities are found outside the context of experiments.
+d) Probability is a measure of the likelihood that an event will occur.
+Yes, probability is a measure of the likelihood that an event will occur. This likelihood can be treated
+as a degree of belief by a Bayesian or a long-run frequency proportion by a frequentist. 
+Note:
+
+###Question: You are told that either a coin has either a strong tails bias (p = 0.2), a weak tails bias (p = 0.4 ),
+no bias (p = 0.5), a weak heads bias (p = 0.6), or a strong heads bias ( p = 0.8). You assign a prior
+probability of 1/2 that the coin is fair and distribute the remaining 1/2 prior probability equally over the
+other four possible scenarios. You flip the coin three times and it comes up heads all three times. What
+is the posterior probability that the coin is biased towards heads? 
+
+Answer: Let D represent the data, in this case the coin coming up heads three times in three flips.
+We can model the number of heads as coming from a binomial distribution with probability p. As such, 
+the likelihood of the data given p is p
+3
+.
+Using Bayes’ rule, we can find the probability that the coin is biased towards heads by computing the
+following:
+P(p = 0.6 or p = 0.8|D) = P(D|p = 0.6)P(p = 0.6) + P(D|p = 0.8)P(p = 0.8)
+P(D)
+Since the prior P(p = 0.5) = 0.5 and the remaining probability is distributed equally over the other four
+scenarios, P(p = 0.2) = P(p = 0.4) = P(p = 0.6) = P(p = 0.8) = 0.125. Plugging the likelihood and
+prior probabilities into the formula above, we get
+P(p = 0.6 or p = 0.8|D) = (0.6)3
+(0.125) + (0.8)3
+(0.125)
+(0.6)3(0.125) + (0.8)3(0.125) + (0.4)3(0.125) + (0.2)3(0.125) + (0.5)3(0.5)
+≈ 0.56
+
+Note:
+
+###Question: You draw two balls from one of three possible large urns, labelled A, B, and C. Urn A has 1/2 blue balls, 1/3 green balls, and 1/6 red balls. Urn B has 1/6 blue balls, 1/2 green balls, and 1/3 red balls. Urn C has 1/3 blue balls, 1/6 green balls, and 1/2 red balls. With no prior information about which urn your are drawing from, you draw one red ball and one blue ball. What is the probability that you drew from urn C?
+
+19/36
+
+5/9
+
+1/3
+
+6/11
+
+Answer:
+
+Note:
+
+###Question: Suppose ten people are sampled from the population and their heights are recorded. Further suppose their heights are distributed normally, with unknown mean μ and unknown variance σ2 . Which of the following statements best describes the likelihood of the data Y in this situation?
+
+The probability of observing the data, given μ, σ2.
+
+The probability of observing heights with a mean at least as extreme as Y¯ , given μ and σ2.
+
+The probability of observing the data, given the prior beliefs about the distribution of μ and σ2 .
+
+The probability of observing the data, given μ , σ2, and the prior.
+
+Answer:
+
+Note:
+
+###Question: You go to Las Vegas and sit down at a slot machine. You are told by a highly reliable source that, for each spin, the probability of hitting the jackpot is either 1 in 1,000 or 1 in 1,000,000, but you have no prior information to tell you which of the two it is. You play ten times, but do not win the jackpot. What is the posterior probability that the true odds of hitting the jackpot are 1 in 1,000?
+
+0.269
+
+0.475
+
+0.498
+
+0.500
+
+Answer:
+
+Note:
+
+###Question: The posterior distribution after repeating the same experiment twice and then analyzing the data from both experiments at the same time is the same as that after running the second experiment with the posterior of the first experiment as the prior.
+
+True
+
+False
+
+Answer:
+
+Note:
+
+###Question: Which of the following corresponds to a Frequentist interpretation of the statement “the probability of rain tomorrow is 30 percent”?
+
+If we predicted rain tomorrow, we would be 30% confident in our prediction.
+
+A degree of belief of 0.3, where 0 means rain is impossible and 1 means rain is certain.
+
+If conditions identical to tomorrow occurred an infinite number of times, we would observe rain on 30 percent of those days.
+
+Under similar conditions, it has rained 30 percent of the time in the past.
+
+Answer:
+
+Note:
+
+###Question: Which of the following statements can be used to describe a 95 percent Bayesian credible interval for a parameter μ, but not a 95 percent Frequentist confidence interval?
+
+The probability that μ falls within the interval is 0.95
+
+If we ran an infinite number of experiments, 95 percent of our intervals generated this way would contain the true value of μ .
+
+μ is in this interval 95 percent of the time.
+
+μ is either in the interval, or it is not. More data can increase or decrease our uncertainty that μ is in the interval.
+
+Answer:
+
+Note:
+
+###Question: Hearing about your brilliant success in working with M&Ms, Mars Inc. transfers you over to the Skittles department. They recently have had complaints about tropical Skittles being mixed in with original Skittles. You decide to conduct a frequentist analysis. If the findings suggest that more than 1% of sampled supposedly original skittles are actually tropical, you will recommend action to be taken and the production process to be corrected. You will use a significance level of α=0.1. You randomly sample 300 supposedly original skittles, and you find that five of them are tropical. What should be the conclusion of your hypothesis test? Hint- H0:p=0.01 and H1:p>0.01.
+
+Fail to reject H0, since the p-value is equal to 0.101, which is greater than α=0.1
+
+Fail to reject H0, since the p-value is equal to 0.184, which is greater than α=0.1
+
+Fail to reject H0, since the p-value is equal to 0.245, which is greater than α=0.1
+
+Reject H0, since the p-value is equal to 0.027, which is less than α=0.1
+
+Answer:
+
+Note:
+
+###Question: In the NFL, a professional American football league, there are 32 teams, of which 12 make the playoffs. In a typical season, 20 teams (the ones that don’t make the playoffs) play 16 games, 4 teams play 17 games, 6 teams play 18 games, and 2 teams play 19 games. At the beginning of each game, a coin is flipped to determine who gets the football first. You are told that an unknown team won ten of its coin flips last season. Given this information, what is the posterior probability that the team did not make the playoffs (i.e. played 16 games)?
+
+0.556
+
+0.589
+
+0.612
+
+0.625
+
+Answer:
+
+Note:
+
+###Question: Which of the following statements is false?
+
+If we were modeling a coin flip, the likelihood would be based on a Binomial Distribution.
+
+No matter the likelihood, a prior probability of zero ensures that the posterior probability is also zero.
+
+Bayesian inferences are made using both the prior and the posterior distributions.
+
+In general, the prior becomes less influential as the sample size increases.
+
+Answer:
+
+Note:
+
+###Question: Define improper prior, uninformative prior, informative prior, hierarchical modeling, and hyperparameter
+
+Answer:
+
+Note:
+
+###Question: If our prior is too specific, then 
+
+Answer: our posterior will be “dominated by” the prior.
+
+Note:
+
+###Question: If our prior is too vague, 
+
+Answer: then our posterior will be “dominated by” the data through the likelihood.
+
+Note:
+
+###Question:  • German tank problem.
+• A railroad numbers its locomotives 1, ..., n. You see a railcar with the number 60
+painted on it.
+• Estimate how many locomotives the railroad has.
+• Hypotheses
+• Data
+• Likelihood
+
+Answer: ?
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

@@ -1,0 +1,701 @@
+###Question: (Gauss’s Method) If a linear system is changed to another by one of
+these operations
+(1) *** 
+(2) ***
+(3) ***
+then the two systems have the same set of solutions
+
+Answer:(1) an equation is swapped with another
+(2) an equation has both sides multiplied by a nonzero constant
+(3) an equation is replaced by the sum of itself and a multiple of another
+
+Note:
+
+###Question: solve using gauss method 
+''' x − z = 0
+    3x + y = 1
+    −x + y + z = 4 '''
+
+Answer:A = np.array([[1., 0, -1, 0], [3, 1, 0, 1], [-1, 1, 1, 4]])
+
+A[1] = A[0] * -3 + A[1]
+A[2] = A[0] + A[2]
+
+Note: A[1] = A[0] * -3 + A[1]
+--> 
+array([[ 1.,  0., -1.,  0.],
+       [ 0.,  1.,  3.,  1.],
+       [-1.,  1.,  1.,  4.]])
+
+A[2] = A[0] + A[2]
+array([[ 1.,  0., -1.,  0.],
+       [ 0.,  1.,  3.,  1.],
+       [ 0.,  1.,  0.,  4.]])
+
+ --> so, y = 4, z = -1, x = -1 
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions. 
+-3x 	+	 2y = 0
+			-2y = 0	
+
+Answer: unique solution
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions.
+x	+	y	 	= 4
+		y	-z 	= 0
+
+Answer: infinitely many solutions
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions.
+x 	+	y 		= 4
+		y 	-z 	= 0
+			0 	= 0
+
+Answer: infinitely many solutions
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions.
+x	+	y	=4
+	+	0	=4
+
+Answer: no solution
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions.
+3x 	+	6y	+	z= -0.5
+				-z= 2.5
+
+Answer: infinitely many solutions
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions. (f)
+x - 3y = 2
+	0 = 0
+
+Answer: infinitely many solutions
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions. (g)
+2x + 2y = 4
+	y = 1
+	0 = 4
+
+Answer: no solution
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions. (h)
+2x + y = 0
+
+Answer: infinitely many solutions
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions. (i)
+x - y = -1
+	0 = 0
+	0 = 4
+
+Answer: no solutions
+
+Note:
+
+###Question: say whether the system has a unique solution, no solution, or infinitely many solutions.(j)
+x + y -3z = -1
+	y - z = 2
+		z = 0
+		0 = 0
+
+Answer: unique solution
+
+Note:
+
+###Question: 1.19 Use Gauss’s Method to solve each system or conclude ‘many solutions’ or ‘no solutions’.
+(a) 2x+2y=5 ; x−4y=0
+
+Answer: A = np.array([[2., 2, 5], [1, -4, 0]])
+A[1] = A[0] * -0.5 + A[1]
+
+Note:A = np.array([[2., 2, 5], [1, -4, 0]])
+A[1] = A[0] * -0.5 + A[1]
+--> array([[ 2. ,  2. ,  5. ],
+      		 [ 0. , -5. , -2.5]])
+y = 2.5/5 = .5
+x = (5 - 2*y)/2 = 2
+
+###Question: 1.19 Use Gauss’s Method to solve each system or conclude ‘many solutions’ or ‘no solutions’. 
+(b) -x + y = 1; x + y = 2
+
+Answer: A = np.array([[-1., 1, 1], [1, 1, 2]])
+A[1] = A[0] + A[1]
+
+Note:y = 3. / 2
+x = -1 * (1 - y)
+print(x, y)
+--> .5 , 1.5
+
+###Question: 1.19 Use Gauss’s Method to solve each system or conclude ‘many solutions’ or ‘no solutions’. 
+(c) x - 3y + z = 1
+	x + y + 2z = 14
+
+Answer: many solutions 
+
+Note:
+
+###Question: 1.19 Use Gauss’s Method to solve each system or conclude ‘many solutions’ or ‘no solutions’. 
+(d) -x -y = 1
+	-3x - 3y = 2
+
+Answer: no solution
+
+Note:
+
+###Question: 1.19 Use Gauss’s Method to solve each system or conclude ‘many solutions’ or ‘no solutions’. 
+(e)
+	 4y + z = 20
+2x - 2y + z = 0
+x  		+ z = 5
+x  + y - z = 10
+
+
+Answer: A = np.array([[0., 4, 1, 20], [2, -2, 1, 0], [1, 0, 1, 5], [1, 1, -1, 10]])
+A[1] = A[0] * 0.5 + A[1]
+A[2] = A[1] * -0.5 + A[2]
+A[3] = A[1] * -0.5 + A[3]
+z = 0; y = 5; x = 5
+
+
+Note: 
+A[1] = A[0] * 0.5 + A[1]
+array([[  0.  ,   4.  ,   1.  ,  20.  ],
+       [  2.  ,   0.  ,   1.5 ,  10.  ],
+       [  0.  ,   0.  ,   0.25,   0.  ],
+       [  1.  ,   1.  ,  -1.  ,  10.  ]])
+A[2] = A[1] * -0.5 + A[2]
+array([[  0.  ,   4.  ,   1.  ,  20.  ],
+       [  2.  ,   0.  ,   1.5 ,  10.  ],
+       [  0.  ,   0.  ,   0.25,   0.  ],
+       [  1.  ,   1.  ,  -1.  ,  10.  ]])
+A[3] = A[1] * -0.5 + A[3]
+array([[  0.  ,   4.  ,   1.  ,  20.  ],
+       [  2.  ,   0.  ,   1.5 ,  10.  ],
+       [  0.  ,   0.  ,   0.25,   0.  ],
+       [  0.  ,   1.  ,  -1.75,   5.  ]])       
+
+###Question: 1.19 Use Gauss’s Method to solve each system or conclude ‘many solutions’ or ‘no solutions’.  
+(f) 
+2x 		+ z + w = 5
+	y		- w = -1
+3x		-z - w = 0
+4x + y + 2z + w = 9
+
+Answer: many solutions
+
+Note: A = np.array([[2., 0, 1, 1, 5], [0, 1, 0, -1, -1],
+             [3, 0, -1, -1, 0], [4, 1, 2, 1, 9]])
+A[2] = A[0] * -3./2 + A[2]
+array([[ 2. ,  0. ,  1. ,  1. ,  5. ],
+       [ 0. ,  1. ,  0. , -1. , -1. ],
+       [ 0. ,  0. , -2.5, -2.5, -7.5],
+       [ 4. ,  1. ,  2. ,  1. ,  9. ]])
+A[3] = A[0] * -2 + A[3]
+array([[ 2. ,  0. ,  1. ,  1. ,  5. ],
+       [ 0. ,  1. ,  0. , -1. , -1. ],
+       [ 0. ,  0. , -2.5, -2.5, -7.5],
+       [ 0. ,  1. ,  0. , -1. , -1. ]])
+A[3] = A[1] * -1 + A[3]
+array([[ 2. ,  0. ,  1. ,  1. ,  5. ],
+       [ 0. ,  1. ,  0. , -1. , -1. ],
+       [ 0. ,  0. , -2.5, -2.5, -7.5],
+       [ 0. ,  0. ,  0. ,  0. ,  0. ]])
+
+###Question: (1.22) For which values of k are there no solutions, many solutions, or a unique solution to this system?
+x− y=1 ; 3x−3y=k
+
+Answer: pass
+
+Note:
+
+###Question: 2sinα − cosβ + 3tanγ = 3 4sinα + 2cosβ − 2tanγ = 10 6sinα − 3cosβ + tanγ = 9
+post reduction looks like this
+
+Out[9]:
+array([[ 2., -1.,  3.,  3.],
+       [ 0.,  4., -4.,  4.],
+       [ 0.,  0., -8.,  0.]])
+
+Answer: Let x = sinα, y = cosβ, and z = tanγ:
+A = np.array([[2., -1, 3, 3], [4, 2, 2, 10], [6, -3, 1, 9]])
+A[1] = A[0] * -2 + A[1]
+A[2] = A[0] * -3 + A[2]
+z = 0
+y = 1
+x = 2
+no solution
+note that no α satisfies that requirement.
+
+Note:
+
+###Question: What conditions must the constants, the b’s, satisfy so that each of these systems has a solution? Hint.
+Apply Gauss’s Method and see what happens to the right side.
+(a) x−3y=b1 3x+ y=b2 x+7y=b3 2x+4y=b4
+
+Answer: x - 3y = b1
+10y = -3b1 + b2
+10y = -b1 + b3
+10y = -2b1 + b4
+b3 = -2b1 + b2
+b4 = -b1 + b2
+
+Note:
+
+###Question: What conditions must the constants, the b’s, satisfy so that each of these systems has a solution? Hint.
+Apply Gauss’s Method and see what happens to the right side.(b)
+x1 +2x2 +3x3 =b1 2x1 +5x2 +3x3 =b2 x1 +8x3 =b3
+
+Answer: x1 + 2x2 + 3x3 = b1
+x2 −3x3 = −2b1 + b2 
+−2x2 + 5x3 = −b1 + b3
+x1 + 2x2 + 3x3 = b1
+x2 −3x3 = −2b1 + b2 
+−x3 = −5b1 + 2b2 + b3
+
+Note: shows that each of b1, b2, and b3 can be any real number this system always has a unique solution.
+
+###Question: 1.25 True or false: a system with more unknowns than equations has at least one solution. (As always, to say ‘true’ you must prove it, while to say ‘false’ you must produce a counterexample.) 
+
+Answer: false
+
+Note:z + x + y + w = b
+y = 0
+y = 1
+and
+This system with more unknowns than equations x+y+z=0 x+y+z=1 has no solution.
+
+###Question:  1.27 Find the coefficients a, b, and c so that the graph of f(x) = ax^2 + bx + c passes through the points (1, 2), (−1, 6), and (2, 3).
+
+Answer: A = np.array([[1., 1, 1, 2], [1, -1, 1, 6], [4, 2, 1, 3]])
+A[1] = A[0] * -1 + A[1]
+A[2] = A[0] * -4 + A[2]
+A[2] = A[1] * -1 + A[2]
+c = 3
+b = -2
+a = 1
+f(x) = 1x^2 - 2x + 3
+
+Note:
+
+###Question:After Theorem 1.5 we note that multiplying a row by 0 is not allowed because that could change a solution set. Give an example of a system with solution set S0 where after multiplying a row by 0 the new system has a solution set S1 and S0 is a proper subset of S1, that is, S0 ̸= S1. Give an example where S0 = S1. 
+
+Answer: x + y = 2
+x - 1 = 0
+
+x + y = 2
+2x + 2y = 4
+
+Note: Here S0 = {(1,1)}
+x+y=2 0ρ2 x+y=2 −→
+x−y=0 0=0
+while S1 is a proper superset because it contains at least two points: (1, 1) and (2, 0). In this example the solution set does not change.
+x+ y=2 0ρ2 x+y=2 −→
+2x+2y=4 0=0
+
+###Question: (a) Can we derive the equation 3x − 2y = 5 by a sequence of Gaussian reduction steps from the equations in this system?
+x+y=1 4x−y=6
+
+Answer: yes
+A = np.array([[1., 1, 1], [4, -1, 6]])
+A[1] = A[0] * -1 + A[1]
+
+Note:
+
+###Question: (b) Can we derive the equation 5x − 3y = 2 with a sequence of Gaussian reduction steps from the equations in this system?
+2x+2y=5
+3x+ y=4
+
+Answer: no
+
+Note:(b) No. The pair (1, 1) satisfies the given equation. However, that pair does not
+satisfy the first equation in the system.
+
+###Question: (c) Can we derive 6x − 9y + 5z = −2 by a sequence of Gaussian reduction steps
+from the equations in the system?
+2x+ y−z=4
+6x−3y+z=5
+
+Answer: A = np.array([[2, 6, 6], [1, -3, -9], [-1, 1, 5], [4, 5, -2]])
+A[1] = A[0] * -0.5 + A[1]
+b = 2
+a = -3
+A2 = np.array([[2, 1, -1, 4], [6, -3, 1, 5]])
+A2[1] = A2[0] * -3 + A2[1] * 2
+
+
+Note: (c) Yes. To see if the given row is c1ρ1 + c2ρ2, solve the system of equations
+relating the coefficients of x, y, z, and the constants:
+2c1+6c2= 6 c1 −3c2 =−9 −c1 + c2 = 5 4c1 +5c2 =−2
+andgetc1 =−3andc2 =2,sothegivenrowis−3ρ1+2ρ2.
+
+###Question: Prove that, where a, b, c, d, e are real numbers with a ̸= 0, if this linear equation
+ax + by = c has the same solution set as this one
+ax+dy = e then they are the same equation. What if a = 0?
+
+Answer: x = (c - by)/a
+a(c/a) = e
+c = e
+a((c-b)/a) + d = e
+c-b+d=e
+b = d
+
+Note:If a ̸= 0 then the solution set of the first equation is this.
+{(x,y)∈R2 |x=(c−by)/a=(c/a)−(b/a)·y} (∗)
+Thus, given y we can compute the associated x. Taking y = 0 gives the solution (c/a, 0), and since the second equation ax + dy = e is supposed to have the same solution set, substituting into it gives that a(c/a) + d · 0 = e, so c = e. Taking y=1in(∗)givesa((c−b)/a)+d·1=e,andsob=d. Hencetheyarethesame equation.
+When a = 0 the equations can be different and still have the same solution set: e.g., 0x + 3y = 6 and 0x + 6y = 12.
+
+###Question: 1.34 Is there a two-unknowns linear system whose solution set is all of R2?
+
+Answer:  Yes, this one-equation system:
+0x + 0y = 0
+
+Note:
+
+###Question: what is the unit vector that makes angle theta withthe x-axis
+
+Answer: (cos theta, sin theta)
+
+Note:
+
+###Question: write sin(@) in terms of cos and cos in terms of sin
+
+Answer: sin(@) = cos(90 - @)
+cos(@) = sin(90-@)
+
+Note:
+
+###Question: sides of 30-60-90 triangle in terms of the shortest leg x 
+
+Answer: x, 2x, x*3**0.5
+
+Note: if you double the triangle you get a 60 60 60 triangle with all sides 2x (thus hypot of original triangle is 2x)
+
+###Question: sides of 30-60-90 triangle in terms of the second longest leg x
+
+Answer: x, x/(3**.5), x*2/(3**.5)
+
+Note: 
+
+###Question: sides of 30-60-90 triangle in terms of the hyp x
+
+Answer: x, x/2, x*3**.5 /2
+
+Note:
+
+###Question: csc(a)
+
+Answer: 1 / sin(a)
+
+Note:
+
+###Question: 1 / cos(a)
+
+Answer: sec(a)
+
+Note:
+
+###Question: 1 / tan(a)
+
+Answer: cot(a)
+
+Note:
+
+###Question: law of sines for triangle with 
+angle a opposite side A
+angle b opposite side B
+angle c opposite side C
+
+Answer: sin(a)/A = sin(b)/B = sin(c)/C
+
+Note: proof -- drop altitude of triangle with length x.  
+sin(a) = x/B
+sin(b) = x/A
+B * sin(a) = x = A * sin(b)
+sin(a) / A = sin(b) / B
+same for third side C and angle c
+
+
+###Question: what is sin^2(a) + cos^2(a)
+
+Answer: 1
+
+Note: think unit circle. sin(a) is the vertical length of right triangle
+and cos(a) is vertical length and a^2 + b^2 = 1
+
+###Question: what is the law of cosines
+
+Answer: c**2 = a**2 + b**2 - 2*a*b*cos(C)
+
+Note:
+
+###question: distance from her house to Alnitak is 736 and to Mintaka is 915, which are endpoints of Orion's Belt. The angle between the stars is 3 degrees. What is the width of Orion's Belt. 
+
+Answer: a = 736; b = 915; C = 3
+c = (a**2 + b**2 - 2*a*b*cos(radians(C)))**0.5
+
+Note: c = 184
+law of cosines
+
+###Question: A billiard ball is struck by a cue. It travels 100cm before ricocheting off a rail and traveling another 120cm into a corner pocket. The angle between the path as the ball approaches the rail and the path after it strikes the rail is 45 degree.
+How far is the corner pocket from where the cue initially struck the ball?
+
+Answer: a = 120
+b = 100
+C = 45
+c = (a**2 + b**2 - 2*a*b*cos(radians(C)))**0.5
+
+Note: c = 86.194
+
+###Question: A = np.array([[1., 2, 1], [3, 8, 1], [0, 4, 1]])
+subtract 3 of row 1 from row two
+
+Answer:B = np.array([[1, 0, 0], [-3, 1, 0], [0, 0, 1]])
+B.dot(A)
+
+Note:
+
+###Question: A = np.array([[ 1.,  2.,  1.],
+       [ 0.,  2., -2.],
+       [ 0.,  4.,  1.]])
+       # Subtract 2 * row 2 from row 3
+
+note: answer in form B = np.array([
+[
+
+
+Answer:B = np.array([
+[1, 0, 0],
+[0, 1, 0],
+[0, -2, 1]])
+B.dot(A)
+
+Note:
+
+###Question: permutation matrix that exchanges rows 1 and 2 of 3 by three matrix A
+
+Answer:B = np.array([
+[0, 1, 0],
+[1, 0, 0],
+[0, 0, 1]])
+B.dot(A)
+
+Note:
+
+###Question: what is the inverse of 
+[1, 0, 0],
+[-3, 1, 0],
+[0, 0, 1]?
+
+Answer:[1, 0, 0],
+[3, 1, 0],
+[0, 0, 1]
+
+Note:give identity matrix
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+		###Question: 
+
+		Answer:
+
+		Note:
+
+		###Question: 1.10 Definition In each row of a system, the first variable with a nonzero coefficient is the row’s ***. A system is in ### if each (***) is to the right of the (***) in the row above it, except for the (***) in the first row, and any all-zero rows are at the bottom.
+
+		Answer:leading variable, echelon form
+
+		Note:

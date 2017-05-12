@@ -1,0 +1,505 @@
+###Question: Initialize a new Git project
+
+Answer: git init
+
+Note:
+
+###Question: check the status of changes in working directory 
+
+Answer: git status
+
+Note:
+
+###Question: add a file 'filename' to the staging area
+
+Answer: git add filename
+
+Note:
+
+###Question: check the differences between the working directory and the staging area with... then exit diff mode
+
+Answer:git diff filename
+q
+
+Note:
+
+###Question: permanently store changes from teh stagin area inside the repository with a message "completed header"
+
+Answer: git commit -m "completed header"
+
+Note:
+
+###Question: Commits are stored chronologically in the repository and can be viewed with:
+
+Answer: git log
+
+Note:
+
+###Question: Use Git commands to help keep track of changes made to a project:
+***creates a new Git repository
+***inspects the contents of the working directory and staging area
+***adds files from the working directory to the staging area
+***shows the difference between the working directory and the staging area
+***permanently stores file changes from the staging area in the repository
+***shows a list of all previous commits 
+
+Answer:git init 
+git status 
+git add 
+git diff
+git commit 
+git log 
+
+Note:
+
+###Question:Adding an existing project to GitHub using the command line
+Create a new repository on GitHub. To avoid errors, do not initialize the new repository with README, license, or gitignore files. You can add these files after your project has been pushed to GitHub.
+Open Terminal.
+
+Change the current working directory to your local project.
+
+Initialize the local directory as a Git repository.
+
+***
+Add the files in your new local repository. This stages them for the first commit.
+
+***
+# Adds the files in the local repository and stages them for commit. To unstage a file, use 'git reset HEAD YOUR-FILE'.
+Commit the files that you've staged in your local repository.
+
+*** (use "First commit" as message)
+# Commits the tracked changes and prepares them to be pushed to a remote repository. To remove this commit and modify the file, use 'git reset --soft HEAD~1' and commit and add the file again.
+Copy remote repository URL fieldAt the top of your GitHub repository's Quick Setup page, click  to copy the remote repository URL.
+
+In Terminal, add the URL for the remote repository where your local repository will be pushed.
+
+*** (URL = remote repository URL)
+# Sets the new remote
+***
+# Verifies the new remote URL
+Push the changes in your local repository to GitHub.
+
+***
+# Pushes the changes in your local repository up to the remote repository you specified as the origin 
+
+Answer:git init
+git add .
+git commit -m "First commit"
+git remote add origin URL
+git remote -v
+git push -u origin master
+
+Note:
+
+###Question: To see the HEAD commit.. 
+
+Answer: git show HEAD
+
+Note:
+
+###Question: https://github.com/amznlabs/amazon-dsstne.git is the URL of the git repository that we're cloning. This code will automatically create a folder called amazon-dsstne in our current folder, and place the repository there:
+
+Answer:git clone https://github.com/amznlabs/amazon-dsstne.git
+
+Note:
+
+###Question: This code will clone the repository from /dataquest/user/git/chatbot, a path on our local computer, to our current folder, and place it into a folder called silentbot
+
+Answer:git clone /dataquest/user/git/chatbot silentbot
+
+Note:
+
+###Question: see what branches exist in the repo
+
+Answer: git branch
+
+Note:
+
+###Question: show what the most recent commit did
+
+git log:
+
+
+commit 6a95e94ea10caa28013b767510d4bc59369d83fa                                 
+Author: Dataquest <me@dataquest.io>                                             
+Date:   Wed May 18 21:56:27 2016 +0000                                          
+​
+    Updated README.md                                                           
+​
+commit 8a1ca35dd5c5de8f93aa6cbbd153caa40233386c                                 
+Author: Dataquest <me@dataquest.io>                                             
+Date:   Wed May 18 21:55:33 2016 +0000                                          
+​
+    Add the initial version of README.md    
+</me@dataquest.io></me@dataquest.io>
+
+Answer: git show 6a95e94ea10caa28013b767510d4bc59369d83fa
+
+Note:
+
+###Question: show difference between last two commits
+
+git log:
+
+
+commit 6a95e94ea10caa28013b767510d4bc59369d83fa                                 
+Author: Dataquest <me@dataquest.io>                                             
+Date:   Wed May 18 21:56:27 2016 +0000                                          
+​
+    Updated README.md                                                           
+​
+commit 8a1ca35dd5c5de8f93aa6cbbd153caa40233386c                                 
+Author: Dataquest <me@dataquest.io>                                             
+Date:   Wed May 18 21:55:33 2016 +0000                                          
+​
+    Add the initial version of README.md    
+</me@dataquest.io></me@dataquest.io>
+
+Answer:git diff 6a95 8a1ca
+
+Note:You can see the difference between two commits by using git diff. Just pass the two commit hashes as arguments to git diff. If you want to save yourself typing time, you can also use the first few characters of the commit hash (usually 4 is enough) to uniquely identify the commit. The order in which you pass the two hashes to git diff influences whether changes appear as deletions or additions.
+
+You'll need to use q to exit git diff when you're done.
+
+###Question: create a branch rocky then switch to it
+
+Answer:git checkout -b rocky
+
+Note:
+
+###Question: Clone the repo chatbot from /dataquest/user/git/chatbot to /home/dq/chatbot.
+Create a branch called more-speech in the repo chatbot.
+Switch to the branch more-speech.
+Run bot.py using python to see what happens.
+
+Answer:git clone /dataquest/user/git/chatbot chatbot 
+cd chatbot
+git branch more-speech
+git checkout more-speech
+
+Note:
+
+###Question: delete the more-speech branch
+
+Answer: git branch -d more-speech
+
+Note:
+
+###Question: Abort the merge from the last screen that had conflicts.
+
+Answer:git merge --abort
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

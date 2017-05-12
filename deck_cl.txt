@@ -1,0 +1,445 @@
+###Question: take the standard output of printing the contents of 'a.txt' and redirect it to 'b.txt'
+
+Answer: cat a.txt > b.txt
+
+Note: > takes the standard output of the command on the left, and redirects it to the file on the right.
+
+###Question: print out "date === Display or change the date & time" in the terminal
+
+Answer: echo "date === Display or change the date & time"
+
+Note: The echo command accepts the string , e.g. , "Hello" as standard input, and echoes the string "Hello" back to the terminal as standard output.
+
+###Question: set the variable "display" equal to "inline|block|flex|inline-block|inline-flex|inline-table|list-item|run-in|table|table-caption|table-column-group|table-header-group|" and print out the contents of the "display" variable, then unset the variable
+
+Answer: display="inline|block|flex|inline-block|inline-flex|inline-table|list-item|run-in|table|table-caption|table-column-group|table-header-group|"
+echo $display
+unset display
+
+Note:
+
+###Question: set variable "countitem" to "a_list.count('item')", and write the contents of the variable to new file counter.txt, then print contents of counter.txt
+
+Answer: countitem="a_list.count('item')"
+echo $countitem > counter.txt
+cat counter.txt
+
+Note: output will be--> a_list.count('item')
+
+###Question: what directs standard output to a file
+
+Answer: the '>' command
+
+Note:$ echo "Hello" > hello.txt
+The > command redirects the standard output to a file. Here, "Hello" is entered as the standard input. The standard output "Hello" is redirected by > to the file hello.txt.
+
+###Question: set variable "cc" to "dd" and write to new file "ee.txt", then write contents of ee.txt to gg.txt then print gg.txt
+
+Answer: cc="dd"
+echo $cc > ee.txt
+cat ee.txt > gg.txt
+cat gg.txt
+
+Note:$ cat oceans.txt > continents.txt
+> takes the standard output of the command on the left, and redirects it to the file on the right. Here the standard output of cat oceans.txt is redirected to continents.txt. Remember that > overwrites all original content in continents.txt. When you view the output data by typing cat on continents.txt, you will see only the contents of oceans.txt.
+
+###Question: what happens if you type cat gg.txt >> gg.txt
+
+Answer: infinite loop 
+
+Note: IL because gg.txt contents are continuously appended to itself; press Ctrl+c to get out of this
+
+###Question: write 'del a_list[1]' to file 'aa.txt', then write 'a_list.remove('new')' to file 'bb.txt' then append contents of aa.txt to bb.txt, then print contents of bb.txt
+
+Answer: echo 'del a_list[1]' > aa.txt
+echo "a_list.remove('new')" > bb.txt
+cat aa.txt >> bb.txt
+cat bb.txt
+
+
+Note:$ cat glaciers.txt >> rivers.txt
+>> takes the standard output of the command on the left and appends (adds) it to the file on the right. You can view the output data of the file with cat and the filename. Here, the the output data of rivers.txt will contain the original contents of rivers.txt with the content of glaciers.txt appended to it.
+
+###Question: What does $ cat < lakes.txt do?
+
+Answer: < takes the standard input from the file on the right and inputs it into the program on the left. Here, lakes.txt is the standard input for the cat command. The standard output appears in the terminal.
+
+Note: $ echo < cat bb.txt  doesn't work because the thing on the right needs to be a FILE!
+
+###Question: set variable removereturnlastitem to "a_list.pop()", write variable contents to file dd.txt, use redirection to print contents of dd.txt to screen
+
+Answer: removereturnlastitem="a_list.pop()"
+echo $removereturnlastitem > dd.txt
+cat < dd.txt
+
+Note: $ cat < lakes.txt
+< takes the standard input from the file on the right and inputs it into the program on the left. Here, lakes.txt is the standard input for the cat command. The standard output appears in the terminal.
+
+###Question: write "user_input = raw_input('Who are you?')" to aa.txt, then write the number of lines, words and characters in aa.txt to bb.txt
+
+Answer: echo "user_input = raw_input('Who are you?')" > aa.txt
+cat aa.txt | wc > bb.txt
+
+Note: $ cat volcanoes.txt | wc
+| is a "pipe". The | takes the standard output of the command on the left, and pipes it as standard input to the command on the right. You can think of this as "command to command" redirection. Here the output of cat volcanoes.txt is the standard input of wc. in turn, the wc command outputs the number of lines, words, and characters in volcanoes.txt, respectively.
+
+###Question: write "Without music, life would be a mistake." with each word on a new line to aa.txt
+
+Answer: echo "Without music, life would be a mistake." | tr ' ' '\n' > aa.txt
+
+Note: The tr utility copies the given input to produce the output with substitution or deletion of selected characters. tr abbreviated as translate or transliterate. It takes as parameters two sets of characters, and replaces occurrences of the characters in the first set with the corresponding elements from the other set i.e. it is used to translate characters.
+
+###Question: write "He who has a why to live can bear almost any how." with each word on a new line to aa.txt; then, print each word out in alphabetical order
+
+Answer: echo "He who has a why to live can bear almost any how." | tr ' ' '\n' > aa.txt
+sort aa.txt
+
+Note: $ sort lakes.txt
+sort takes the standard input and orders it alphabetically for the standard output. Here, the lakes in sort lakes.txt are listed in alphabetical order.
+$ cat lakes.txt | sort > sorted-lakes.txt
+Here, the command takes the standard output from cat lakes.txt and "pipes" it to sort. The standard output of sort is redirected to sorted-lakes.txt.
+
+###Question: write "All truly great thoughts are conceived by walking." with each word on a new line to aa.txt, then copy it to bb.txt, then append it again to bb.txt, then write bb.txt to cc.txt removing duplicates from the bb.txt
+
+Answer: echo "All truly great thoughts are conceived by walking." | tr ' ' '\n' > aa.txt
+cat aa.txt > bb.txt
+cat aa.txt >> bb.txt
+sort bb.txt | uniq > cc.txt
+
+
+Note:$ uniq deserts.txt
+uniq stands for "unique" and filters out adjacent, duplicate lines in a file. Here uniq deserts.txt filters out duplicates of "Sahara Desert", because the duplicate of 'Sahara Desert' directly follows the previous instance. The "Kalahari Desert" duplicates are not adjacent, and thus remain.
+$ sort deserts.txt | uniq
+A more effective way to call uniq is to call sort to alphabetize a file, and "pipe" the standard output to uniq. Here by piping sort deserts.txt to uniq, all duplicate lines are alphabetized (and thereby made adjacent) and filtered out.
+
+###Question: search for the word 'Arctic' in the directory '/home/ccuser/workspace/geography' showing first all files containing string and line where string appears and second all names of files containing string
+
+Answer: grep -R Arctic /home/ccuser/workspace/geography
+grep -Rl Arctic /home/ccuser/workspace/geography
+
+Note:$ grep -R Arctic /home/ccuser/workspace/geography
+grep -R searches all files in a directory and outputs filenames and lines containing matched results. -R stands for "recursive". Here grep -R searches the /home/ccuser/workspace/geography directory for the string "Arctic" and outputs filenames and lines with matched results.
+$ grep -Rl Arctic /home/ccuser/workspace/geography
+grep -Rl searches all files in a directory and outputs only filenames with matched results. -R stands for "recursive" and l stands for "files with matches". Here grep -Rl searches the /home/ccuser/workspace/geography directory for the string "Arctic" and outputs filenames with matched results.
+
+###Question: creat a variable "Nietzsche" with value 'He who has a why to live can bear almost any how.' then, write 'He who has a why to live can bear almost any how.' to aa.txt; then write aa.txt to bb.txt adding 'Nietzsche said:' to the beginning of the line
+
+Answer: Nietzsche="He who has a why to live can bear almost any how."
+echo $Nietzsche > aa.txt
+cat aa.txt | sed 's/He/Nietzsche said: He/g' > bb.txt
+
+Note: $ sed 's/snow/rain/' forests.txt
+sed stands for "stream editor". It accepts standard input and modifies it based on an expression, before displaying it as output data. It is similar to "find and replace". Let's look at the expression 's/snow/rain/':
+s: stands for "substitution". it is always used when using sed for substitution.
+snow: the search string, the text to find.
+rain: the replacement string, the text to add in place.
+In this case, sed searches forests.txt for the word "snow" and replaces it with "rain." Importantly, the above command will only replace the first instance of "snow" on a line.
+$ sed 's/snow/rain/g' forests.txt
+The above command uses the g expression, meaning "global". Here sed searches forests.txt for the word "snow" and replaces it with "rain", globally. All instances of "snow" on a line will be turned to "rain".
+
+###Question: type and save this into a text file called "Nietzsche" using nano "The individual has always had to struggle to keep from being overwhelmed by the tribe. If you try it, you will be lonely often, and sometimes frightened. But no price is too high to pay for the privilege of owning yourself." Then save and exit 
+
+Answer: nano Nietzsche.txt
+The individual has always had to struggle to keep from being overwhelmed by the tribe. If you try it, you will be lonely often, and sometimes frightened. But no price is too high to pay for the privilege of owning yourself.
+Ctrl+O
+Enter
+Ctrl+X
+
+Note:$ nano hello.txt
+nano is a command line text editor. It works just like a desktop text editor like TextEdit or Notepad, except that it is accessible from the command line and only accepts keyboard input. The command nano hello.txt opens a new text file named hello.txt in the nano text editor.
+"Hello, I am nano" is a text string entered in nano through the cursor.
+The menu of keyboard commands at the bottom of the window allow us to save changes to hello.txt and exit nano. The ^ stands for the Ctrl key.
+Ctrl + O saves a file. 'O' stands for output.
+Ctrl + X exits the nano program. 'X' stands for exit.
+Ctrl + G opens a help menu.
+clear clears the terminal window, moving the command prompt to the top of the screen.
+
+###Question: open file used to store environment settings
+
+Answer: nano ~/.bash_profile
+
+Note: $ nano ~/.bash_profile
+~/.bash_profile is the name of file used to store environment settings. It is commonly called the "bash profile". When a session starts, it will load the contents of the bash profile before executing commands.
+The ~ represents the user's home directory.
+The . indicates a hidden file.
+The name ~/.bash_profile is important, since this is how the command line recognizes the bash profile.
+The command nano ~/.bash_profile opens up ~/.bash_profile in nano.
+The text echo "Welcome, Jane Doe" creates a greeting in the bash profile, which is saved. It tells the command line to echo the string "Welcome, Jane Doe" when a terminal session begins.
+The command source ~/.bash_profile activates the changes in ~/.bash_profile for the current session. Instead of closing the terminal and needing to start a new session, source makes the changes available right away in the session we are in.
+
+###Question: Instead of closing the terminal and needing to start a new session, *** makes the changes to bash profile available right away in the session we are in.
+
+Answer: source ~/.bash_profile
+
+Note:The command source ~/.bash_profile activates the changes in ~/.bash_profile for the current session. Instead of closing the terminal and needing to start a new session, source makes the changes available right away in the session we are in.
+
+###Question: add to bash_profile so when I type flashcards anywhere, python opens that file
+
+Answer: alias flashcards="cd /Users/nicholasatwood/Desktop/QuickUsePython/Flashcards/; python flashcards.py"
+
+Note:
+
+###Question: set environment variable USER to "Jane Doe"
+
+Answer: nano ~/.bash_profile
+export USER="Jane Doe"
+Ctrl+O
+Enter
+Ctrl+X
+source ~/.bash_profile
+
+Note: export USER="Jane Doe"
+environment variables are variables that can be used across commands and programs and hold information about the environment.
+The line USER="Jane Doe" sets the environment variable USER to a name "Jane Doe". Usually the USER variable is set to the name of the computer's owner.
+The line export makes the variable to be available to all child sessions initiated from the session you are in. This is a way to make the variable persist across programs.
+At the command line, the command echo $USER returns the value of the variable. Note that $ is always used when returning a variable's value. Here, the command echo $USER returns the name set for the variable.
+
+###Question: change command prompt to '>>'
+
+Answer:nano ~/.bash_profile
+export PS1=">>"
+Ctrl+O
+Enter
+Ctrl+X
+source ~/.bash_profile
+
+Note:What happens when this is stored in ~/.bash_profile?
+export PS1=">> "
+PS1 is a variable that defines the makeup and style of the command prompt.
+export PS1=">> " sets the command prompt variable and exports the variable. Here we change the default command prompt from $ to >>.
+After using the source command, the command line displays the new command prompt.
+
+###Question: what commandreturns a list of the environment variables for the current user?
+
+Answer: env
+
+Note: The env command stands for "environment", and returns a list of the environment variables for the current user. Here, the env command returns a number of variables, including PATH, PWD, PS1, and HOME.
+env | grep PATH is a command that displays the value of a single environment variable. Here the standard output of env is "piped" to the grep command. grep searches for the value of the variable PATH and outputs it to the terminal.
+
+###Question: returns a colon separated list of file paths. It is customized in advanced cases. 
+
+Answer: PATH
+
+Note: this is an environment variable. ev are variables that can be used across commands and programs and hold information about the environment.
+
+###Question: Using export in your bash script ____
+
+Answer: Makes the variable available in all sub programs of the current shell.
+
+Note:
+
+###Question: To make it so when you type la, the ls -a command will run you must enter in your bash script:
+
+Answer: alias la="ls -a"
+
+Note:
+
+###Question: add a greeting with the word "Hello"
+
+Answer: nano ~/.bash_profile
+echo "Hello"
+Ctrl+O
+Enter
+Ctrl+X
+clear
+source ~/.bash_profile
+
+Note:
+
+###Question: Type *** to check your username.
+
+
+Answer:whoami 
+
+Note:
+
+###Question: make new directory 'test' using the verbose option 
+
+Answer: mkdir -v test2
+
+Note:
+
+###Question: Type to see the contents of the current dir
+
+Answer:ls -l 
+
+Note:
+
+###Question:Echo All bears should juggle into the test.txt file that we created earlier. 
+
+Answer:  echo "All bears should juggle" > test.txt
+
+Note:
+
+###Question: octal permissions
+Here are the combinations and their corresponding digits:
+
+	no permissions, corresponds to 0.
+	execute only permission, corresponds to 1.
+	write only permissions, corresponds to 2.
+	write and execute permissions, corresponds to 3.
+	read only permissions, corresponds to 4.
+	read and execute permissions, corresponds to 5.
+	read and write permissions, corresponds to 6.
+	grants read, write, and execute permissions, corresponds to 7. 
+
+Answer: ---
+--x
+-w-
+-wx
+r--
+r-x
+rw-
+rwx
+
+Note:
+
+###Question: Modify test.txt so it has the following permissions:
+owner -- read, write, and execute
+group -- read and write
+everyone -- no permissions
+
+
+Answer: chmod 0760 test.txt                                           
+
+
+Note:
+
+###Question: Make a directory called test in the current dir
+move the test.txt file to the test folder. 
+
+Answer:mkdir test
+mv test.txt test
+
+Note:
+
+###Question: Rename test.txt to test_no_extension.
+
+Answer:mv test.txt test_no_extension
+
+Note:
+
+###Question: Move the nfl.csv into the problematic folder.
+Rename the folder problematic to csv_datasets.
+
+Answer:mv nfl.csv problematic
+mv problematic csv_datasets                                        
+
+
+Note:
+
+###Question: Create a variable FOOD containing the value Shrimp gumbo.
+
+Answer:FOOD="Shrimp gumbo" 
+
+Note:
+
+###Question: print the value of the FOOD variable.
+
+Answer: echo $FOOD
+
+Note:
+
+###Question:   create an environment variable called FOOD with value "Chicken and waffles"
+
+Answer:export FOOD="Chicken and waffles"
+
+Note:
+
+###Question: print out teh environment variable "FOOD" from within the python interpreter
+
+Answer:import os
+print(os.environ["FOOD"])
+
+Note:
+
+###Question: show which folders are in teh PATH variable
+
+Answer:echo $PATH  
+
+Note:
+
+###Question: list all of the files in a long format.
+
+Answer:ls -al
+
+Note:
+
+###Question: create venv python3
+
+Answer:virtualenv -p /usr/bin/python3 python3
+
+Note:
+
+###Question: Add code to the file that will read the first command line argument passed in and print it out.
+
+
+Answer:import sys
+if __name__ == '__main__':
+	print(sys.argv[1])
+
+Note:
+
+###Question: Edit the file permissions for script.py so that only the current user can access it.
+Assign read, write, and execute permissions to the current user.
+Assign no permissions to your group, or other users.
+
+Answer:chmod 0700 script.py 
+
+Note:
+
+###Question: Create a Python 3 virtualenv called script.
+Activate the script virtualenv.
+
+Answer:
+
+Note:
+
+###Question: clear the browser
+
+Answer: command-k
+
+Note:
+
+###Question: what is the markdown that creates a link? 
+
+Answer: [bracket]?(filename.txt)
+
+Note:
+
+###Question: return to root
+
+Answer: cd 
+
+Note:
+
+###Question: get update from the master upstream
+
+Answer: git pull upstream master
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

@@ -1,0 +1,504 @@
+###Question: What does "spatiotermporal" data mean
+
+Answer: data that has a space component and a time component
+
+Note: 
+
+###Question: What does stationarity mean?
+
+Answer:Stationarity means that the relationship (covariance!) between observation a and observation b depends only on the distance between them.
+
+Note:
+
+###Question: Example of spatial stationarity and temporal stationarity 
+
+Answer: ‣ Spatial: If we’re attempting to predict temperature and believe stationarity to hold true, then we’d say that the relationship between temperatures in D.C. and Baltimore is the same as the relationship between temperatures in Cincinnati and Dayton.
+‣ Temporal: If we’re attempting to predict temperature and believe stationarity to hold true, then we’d say that the relationship between temperature on January 1 and February 1 is the same as the relationship between temperature on April 1 and May 1.
+
+Note:
+
+###Question: What is a stochastic process?
+
+Answer: A univariate time series is a sequence of measurements of the same variable collected over time.
+
+Note: Formally, we call this a stochastic process and might denote these
+measurements as random variables. Most often (but not always) these measurements will be made at regular time intervals.
+
+###Question: Strongly stationary?
+
+Answer: A stochastic process {Yt: t=0,1,...} is strongly stationary if f(Yt0, Yt1, ..., Ytn) = f(Yt0+k, Yt1+k, ..., Ytn+k) for all ti and k
+
+Note: uti = uti + k
+cov(Yt, Yt+k) = var(Yk)
+corr(Yt, Yt+k) = var(Yk)/var(Y0)
+
+###Question: Weakly stationary?
+
+Answer: A stochastic process {Yt: t=0, 1, ...} is weakly stationary if:
+uti = c for all ti
+cov(Yt, Yt+k) = cov(Y0,Yk)
+
+Note:
+
+###Question: What does stationarity mean?
+
+Answer: Stationarity means that some characteristic of the distribution of a stochastic process does not depend on the spatial location, only the displacement (distance) between the times/locations.
+
+Note:
+
+###Question: What is an example of stationary process:
+
+Answer: Example of stationary processes:
+• Rainfall: The relationship between rainfall in 2015 and 2017 is the same as the relationship between rainfall in 2014 and 2016, which is the same as the relationship between rainfall in 2013 and 2015, and so on.
+• Stationarity means that the relationship between the rainfall in one year and rainfall in another year depends only on the “distance” or “amount of time” between the two and nothing else.
+
+Note:
+
+###Question: What is a condition of moving average models?
+
+Answer:Weak stationarity
+
+Note:
+
+###Question: What is AR
+
+Answer: Autoregressive (AR) models use data from previous time points to predict the next time point.
+These are essentially regression models where the predictors are previous timepoints of the outcome.
+
+Note: We say this model is AR(p) because it includes the previous p values of Y.
+• The most common autoregressive model is AR(1).
+
+###Question: What might be our biggest concern with fitting an AR(p)model? 
+
+Answer: A time series with high autocorrelation implies that the data is highly dependent on previous values – therefore, an autoregressive model would perform well!
+• Autoregressive models are useful for learning “falls” or “rises” in our series.
+• Typically this model type is useful for small-scale trends.
+
+Note:
+
+###Question: Moving average models take previous error terms as inputs.
+What is different from Autoregresssive models
+
+Answer: By contrast: Autoregressive (AR) models use data from previous time points to predict the next time point.
+
+Note:
+
+###Question: Moving average models predict the next value based on...
+
+Answer: Moving average models predict the next value based on the overall average and how incorrect our previous predictions were.
+• This is useful for modeling a sudden occurrence – like something going out of stock and thus sales are affected, or Donald Trump tweets about an organization and its stock price falls.
+
+Note:
+
+###Question:  As with AR models, we have an order term q and we call our moving average model ***.
+
+Answer:MA(q)
+Yt = u + et + B1et-1 + B2et-2 + ... + Bqet-q
+
+Note:
+
+###Question:  MA models require a more complex fitting procedure than AR models because they...
+
+Answer:
+• Iteratively fit model.
+• Compute errors.
+• Refit.
+
+
+Note:
+
+###Question: • Note that MA models include the mean of the time series. Thus the behavior of an MA model is characterized by random jumps around the mean value.
+
+Answer:
+
+Note:
+
+###Question: Moving average models take, as inputs, 
+
+Answer: previous errors.
+
+Note:
+
+###Question: ARMA(p,q) models combine the 
+
+Answer:autoregressive and moving average models.
+
+Note:
+
+###Question: What does the “i” stand for? Why does that matter?
+
+Answer: ‣ “i” stands for integrated: we are combining AR and MA techniques into a single
+model: ARIMA.
+‣ Integrating the two tactics results in us selecting some differencing term, d,
+where we are now predicting the DIFFERENCE between one prior period and
+the new period, rather than predicting the new period’s value itself.
+
+
+Note:
+
+###Question: relate ARIMA to ARMA
+
+Answer: y_t - y_(t-1) = ARMA(p, q)
+
+Note:
+
+###Question: We now know there are three values we may consider tuning with a standard ARIMA model: 
+
+Answer:AR(p) MA(q) and differencing (d)
+
+Note:
+
+###Question: ‣ Recall: what did we say p may reflect? What about q? And d?
+
+Answer:  Our p indicates how many prior time periods we’re taking into consideration for
+explained autocorrelation. Increasing p would increase the dependency on
+previous values further (longer lag).
+‣ Our q indicates how many prior time periods we’re considering for observing
+sudden trend changes.
+‣ Our d indicates what difference we are anticipating predicting. d=1 may cause
+stationarity for us; d=2 may capture exponential movements
+
+Note:
+
+###Question: whats test of stationarity
+
+Answer: For brevity, we’ll discuss the test’s output: if the ‘Test Statistic’ is greater than
+the ‘Critical Value’ than the time series is stationary.
+
+Note:
+
+###Question: We know ARIMA enables us to identify regular autocorrelations (*), stationize our data (*), and anticipate trend shocks in our error terms (*)
+
+Answer: p, d, q
+
+Note:
+
+###Question: We know ARIMA enables us to identify regular autocorrelations (p), stationize
+our data (d), and anticipate trend shocks in our error terms (q)
+‣ What would I be saying by passing values of (1,0,2)?
+Answer:
+‣ (1,0,2) implies each term is correlated with one output prior (p=1). The two prior error terms may be useful in predicting my next output (q=2). My data is already stationary (d=0).
+
+
+Note:
+
+###Question: How could we account for an error that occurs regularly, but not in every time
+period? (In other words, what if there are seasonal effects on my data?)
+
+Answer: ‣ We can use Seasonal ARIMA to capture these effects. Based on our model:
+‣ p = non-seasonal AR order
+‣ d = non-seasonal differencing
+‣ q = non-seasonal MA order
+‣P = seasonal AR order
+‣ D = seasonal differencing
+‣ Q = seasonal MA order m = number of periods per season
+
+Note: 
+
+###Question: What is ACF / PACF?
+
+Answer: The ACF is the autocorrelated function: how much a variable is correlated with itself by lag time.
+The PACF is the partial correlation function by lag time.
+‣ In general, the "partial" correlation between two variables is the amount of correlation between
+them which is not explained by their mutual correlations with a specified set of other variables. For
+example, if we are regressing a variable Y on other variables X1, X2, and X3, the partial correlation
+between Y and X3 is the amount of correlation between Y and X3 that is not explained by their
+common correlations with X1 and X2. This partial correlation can be computed as the square root of
+the reduction in variance that is achieved by adding X3 to the regression of Y on X1 and X2.
+
+Note:
+
+###Question: What does the following imply about our ACF and PACF? ARIMA(0,0,0)(0,0,1)12
+
+Answer: ‣ We are expecting seasonal intervals of 12 months. In our ACF, we may see a significant spike at k=12, but none others. We capture this seasonal 12 month spike’s impact in our Q (the “random error getter”). Moreover, we would expect that the PACF demonstrates exponential decay at intervals of k=12—every future iteration of the 12th period is less powerful. It is a one-off event, and that
+is why we would consider it to be a part of Q.
+
+
+Note:
+
+###Question: If the data you are investigating displays a seasonal pattern that is both strong and stable
+over time (i.e. temperatures are higher in the Summer, lower in the Winter), then it is likely that
+your Seasonal Difference term D should be set to *. This will prevent the seasonal pattern from
+"dying out" in the long-term forecasts.
+
+Answer: 1
+
+Note:
+
+###Question:  What is partial auto-correlation
+
+Answer: A partial autocorrelation is the amount of correlation between a variable and a lag of itself that is not explained by correlations at all lower-order-lags. The autocorrelation of a time series Y at lag 1 is the coefficient of correlation between Yt and Yt-1, which is presumably also the correlation between Yt-1 and Yt-2. But if Yt is correlated with Yt-1, and Yt-1 is equally correlated with Yt-2, then we should also expect to find correlation between Yt and Yt-2. In fact, the amount of correlation we should expect at lag 2 is precisely the square of the lag-1 correlation. Thus, the correlation at lag 1 "propagates" to lag 2 and presumably to higher-order lags. The partial autocorrelation at lag 2 is therefore the difference between the actual correlation at lag 2 and the expected correlation due to the propagation of correlation at lag 1.
+
+Note:
+
+###Question:  Akaike Information Criteria
+
+Answer: A relative measure of information gain from our model. Lower AIC values are
+better.
+‣ It cannot tell us quality in an absolute sense.
+‣Parsimonious models are the goal—as few features (includes lags) as possible
+
+Note: It should be clear that forecasting model evaluation is especially tied to the data
+scientist’s exploratory data analysis and familiarity with the subject. Choosing
+useful p,d,q values and adding seasonal effects is almost entirely a contextdriven
+endeavor. In addition, there are a few key tactics we can explore:
+‣ 1.) Plotting our residuals
+‣ 2.) Ljung-Box Test
+‣ 3.) Akaike Information Criteria
+
+###Question: Formula for spatial data
+
+Answer:{Y(s)|s E D}, where Y(s) are our random vairables, s is our spatial input, and D is the "Spatial domain."
+
+Note: ‣ You can think of s as the different locations in space, Y(s) as the value of interest at those locations in space (i.e. temperature, amount of snow, etc.), and D is the list of all possible locations s.
+‣ The spatial domain D determines what resources we have at our disposal
+
+###Question: what is areal, geostatistical, pattern process
+
+Answer: ‣ If our spatial domain D is a set of non-overlapping regions, then we are working with an
+areal process. (i.e. states, ZIP codes)
+‣ If our spatial domain D is continuous (likely two-dimensional or three-dimensional
+space), then we are working with a geostatistical process. (i.e. rainfall)
+‣ “I want to understand what is happening.”
+‣ If our spatial domain D is a collection of random points, then we are working with a point
+pattern process. (i.e. locations of terror attacks)
+‣ “I want to understand where it is happening.”
+
+Note:
+
+###Question: Weight/Proximity/Distance Matrix?
+
+Answer: We often use a weight matrix W to assess how closely related two regions are. This
+describes, for region i, how much weight to assign to region j.
+
+wii = 0 in all cases.
+
+Note:
+
+###Question: What is a Stationary, Isotropic, Separable spatio-temporal process?
+
+Answer: ‣ Stationary: A stationary spatio-temporal process is one that has:
+‣ 1. A constant mean * ",$ that does not depend on space or time.
+‣ 2. A covariance that depends only on spatial lag h and temporal lag u, not the actual points themselves " and $: Cov , " + h,$ + u , , ",$ = Cov , h, 1
+
+‣ Isotropy: An isotropic spatio-temporal process is one where spatial distance matters, but
+spatial direction does not.
+‣ Separability: A separable spatio-temporal process is one where the covariance in space is independent of the covariance in time.
+
+Note:
+
+###Question: Why might using a simple random sample of 30% of our data for testing be improper?
+
+Answer: ‣ Training and testing our model is important to manage bias and variance.
+‣ Why might using a simple random sample of 30% of our data for testing be improper?
+‣ Use stratified random sampling to ensure a good cross-section of space and time data in
+both the training and testing sets. (Recommended.)
+‣ Alternatively, you may use certain representative locations as the test locations. (This is
+known as a cluster sample.)
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

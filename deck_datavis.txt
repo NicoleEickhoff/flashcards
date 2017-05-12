@@ -1,0 +1,1069 @@
+###Question: Read unrate.csv into a DataFrame and assign to unrate.
+Use the pandas.to_datetime function to convert the DATE column into a series of datetime values.
+Display the first 12 rows in unrate.
+
+Answer:import pandas as pd
+unrate = pd.read_csv('unrate.csv')
+unrate['DATE'] = pd.to_datetime(unrate['DATE'])
+print(unrate.iloc[:12])
+
+Note:
+
+###Question: import pyplot module
+
+Answer: import matplotlib.pyplot as plt
+
+Note:
+
+###Question: Generate a line chart that visualizes the unemployment rates from 1948:
+x-values should be the the first 12 values in the DATE column
+y-values should be the first 12 values in the VALUE column
+Display the plot.
+df is called unrate
+
+Answer: x_values = unrate['DATE'].iloc[:12]
+y_values = unrate['DATE'].iloc[:12]
+plt.plot(x_values, y_values)
+
+Note:
+
+###Question: Generate the same line chart from the last screen that visualizes the unemployment rates from 1948:
+x-values should be the the first 12 values in the DATE column
+y-values should be the first 12 values in the VALUE column
+Use pyplot.xticks() to rotate the x-axis tick labels by 90 degrees.
+Display the plot.
+
+Answer:x_values = unrate['DATE'].iloc[:12]
+y_values = unrate['VALUE'].iloc[:12]
+plt.plot(x_values, y_values)
+plt.xticks(rotation=90)
+plt.show()
+
+Note:
+
+###Question: Generate the same line chart from the last screen that visualizes the unemployment rates from 1948:
+x-values should be the the first 12 values in the DATE column
+y-values should be the first 12 values in the VALUE column
+Rotate the x-axis tick labels by 90 degrees.
+Set the x-axis label to "Month".
+Set the y-axis label to "Unemployment Rate".
+Set the plot title to "Monthly Unemployment Trends, 1948".
+Display the plot.
+
+Answer:x_values = unrate['DATE'].iloc[:12]
+y_values = unrate['VALUE'].iloc[:12]
+plt.plot(x_values, y_values)
+plt.xticks(rotation=90)
+plt.xlabel('Month')
+plt.ylabel('Unemployment Rate')
+plt.title('Monthly Unemployment Trends, 1948')
+plt.show()
+
+Note:
+
+###Question: Read unrate.csv into a DataFrame and assign to unrate.
+Use Pandas.to_datetime to convert the DATE column into a Series of datetime values.
+Generate a line chart that visualizes the unemployment rates from 1948:
+x-values should be the the first 12 values in the DATE column
+y-values should be the first 12 values in the VALUE column
+Use pyplot.xticks() to rotate the x-axis tick labels by 90 degrees.
+Use pyplot.xlabel() to set the x-axis label to "Month".
+Use pyplot.ylabel() to set the y-axis label to "Unemployment Rate".
+Use pyplot.title() to set the plot title to "Monthly Unemployment Trends, 1948".
+Display the plot.
+
+
+Answer: import pandas as pd
+import matplotlib.pyplot as plt
+
+unrate = pd.read_csv('unrate.csv')
+unrate['DATE'] = pd.to_datetime(unrate['DATE'])
+first_twelve = unrate[0:12]
+plt.plot(first_twelve['DATE'], first_twelve['VALUE'])
+plt.xticks(rotation=90)
+plt.xlabel('Month')
+plt.ylabel('Unemployment Rate')
+plt.title('Monthly Unemployment Trends, 1948')
+plt.show()
+
+Note:
+
+###Question: In the following code block, assign a number to each survey response that corresponds with its position on the scale ("none" is 0, and so on).
+Compute the average value of all the survey responses, and assign it to average_smoking.
+survey_responses = ["none", "some", "a lot", "none", "a few", "none", "none"]
+
+Answer: mapping = {'none': 0, 'some': 2, 'a few': 1, 'a lot': 3}
+survey_responses = list(map(lambda x: mapping[x], survey_responses))
+average_smoking = sum(survey_responses)/ len(survey_responses)
+
+Note:
+
+###Question:Compute the average savings for everyone who is "male". Assign the result to male_savings.
+Compute the average savings for everyone who is "female". Assign the result to female_savings. 
+
+Answer: gender = ["male", "female", "female", "male", "male", "female"]
+savings = [1200, 5000, 3400, 2400, 2800, 4100]
+both_sexes = zip(gender, savings)
+male_savings = sum([b for a, b in both_sexes if a=='male'])/len([x for x in gender if x=='male'])
+both_sexes = zip(gender, savings)
+female_savings = sum([b for a, b in both_sexes if a=='female'])/len([x for x in gender if x=='female'])
+
+Note:
+
+###Question: Plot a histogram of student_scores.
+
+Answer:import matplotlib.pyplot as plt
+plt.hist(student_scores)
+plt.show()
+
+Note:
+
+###Question: Plot a histogram of average_speed with only 2 bins.
+
+Answer:plt.hist(average_speed, bins=2)
+plt.show()
+
+Note:
+
+###Question: Assign the skew of test_scores_positive to positive_skew.
+Assign the skew of test_scores_negative to negative_skew.
+Assign the skew of test_scores_normal to no_skew.
+
+Answer:from scipy.stats import skew
+positive_skew = skew(test_scores_positive)
+negative_skew = skew(test_scores_negative)
+no_skew = skew(test_scores_normal)
+
+Note:
+
+###Question: Assign the kurtosis of test_scores_platy to kurt_platy.
+Assign the kurtosis of test_scores_lepto to kurt_lepto.
+Assign the kurtosis of test_scores_meso to kurt_meso.
+
+Answer:from scipy.stats import kurtosis
+kurt_platy = kurtosis(test_scores_platy)
+kurt_lepto = kurtosis(test_scores_lepto)
+kurt_meso = kurtosis(test_scores_meso)
+
+Note:
+
+###Question: # Let's plot the mean and median side-by-side in a negatively skewed distribution.
+# Unfortunately, arrays don't have a nice median method, so we have to use a numpy function to compute it.
+
+
+# Plot the histogram
+plt.hist(test_scores_negative)
+# Compute the median
+median = numpy.median(test_scores_negative)
+
+# Plot the median in blue (the color argument of "b" means blue)
+
+
+# Plot the mean in red
+
+# Notice how the median is further to the right than the mean.
+# It's less sensitive to outliers, and isn't pulled to the left.
+
+
+Answer:import numpy
+import matplotlib.pyplot as plt
+plt.axvline(median, color="b")
+plt.axvline(test_scores_negative.mean(), color="r")
+plt.show()
+
+
+Note:
+
+###Question: Plot a histogram for test_scores_positive.
+Add a blue line for the median.
+Add a red line for the mean.
+
+Answer:import numpy
+import matplotlib.pyplot as plt
+plt.hist(test_scores_positive)
+median = numpy.median(test_scores_positive)
+plt.axvline(median, color='b')
+plt.axvline(test_scores_positive.mean(), color='r')
+plt.show()
+
+Note:
+
+###Question: Remove the NaN values in the "age" and "sex" columns.
+Assign the result to new_titanic_survival.
+
+Answer:new_titanic_survival = titanic_survival.dropna(subset=['age', 'sex'])
+
+Note:
+
+###Question: Plot a histogram of the "age" column in new_titanic_survival.
+Add a blue line for the median.
+Add a red line for the mean.
+
+Answer:import matplotlib.pyplot as plt
+import numpy
+age = new_titanic_survival['age']
+plt.hist(age)
+median = numpy.median(age)
+plt.axvline(median, color='b')
+plt.axvline(age.mean(), color='r')
+plt.show()
+
+Note:
+
+###Question: Assign the mean of the "age" column of new_titanic_survival to mean_age.
+Assign the median of the "age" column of new_titanic_survival to median_age.
+Assign the skew of the "age" column of new_titanic_survival to skew_age.
+Assign the kurtosis of the "age" column of new_titanic_survival to kurtosis_age.
+
+Answer:import numpy as np
+import matplotlib.pyplot as plt
+import scipy.stats
+age = new_titanic_survival['age']
+mean_age = age.mean()
+median_age = np.median(age)
+skew_age = scipy.stats.skew(age)
+kurtosis_age = scipy.stats.kurtosis(age)
+
+Note:
+
+###Question: Compute the variance of the nba_stats data set's "pts" column, which holds the total number of points each player scored.
+Assign the result to point_variance.
+
+Answer:pts_mean = nba_stats['pts'].mean()
+point_variance = sum([(i - pts_mean)**2 for i in nba_stats['pts']]) / len(nba_stats['pts'])
+
+Note:
+
+###Question: Write a function that calculates the standard deviation of a given column in the nba_stats data.
+Use the new function to calculate the standard deviation of the minutes played column ("mp"). Assign the results to mp_dev.
+Use the function to calculate the standard deviation of the assists column ("ast"). Assign the results to ast_dev.
+
+# We've already loaded the NBA stats into the nba_stats variable.
+
+
+Answer:def std(column_name):
+    column = nba_stats[column_name]
+    mean = column.mean()
+    variance = sum([(i-mean)**2 for i in column]) / len(column)
+    stdev = variance ** .5
+    return stdev
+
+mp_dev = std('mp')
+ast_dev = std('ast')
+
+Note:
+
+###Question: generate a numpy vector called points
+# The vector  will start at -1, and go up to, but not including 1
+# It will proceed in "steps" of .01.  So the first element will be -1, the second -.99, the third -.98, all the way up to .99.
+take the points vector and convert it into a probability vector
+# Each element in the vector will correspond to the normal distribution (earlier elements and later element smaller, peak in the center)
+# The distribution will be centered on 0, and will have a standard devation of .3
+
+# Plot the points values on the x-axis and the corresponding probabilities on the y-axis
+# See the bell curve?
+
+Answer:import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+points = np.arange(-1, 1, 0.01)
+probabilities = norm.pdf(points, 0, .3)
+plt.plot(points, probabilities)
+plt.show()
+
+Note:
+
+###Question: Create a matplotlib subplot grid with the following properties:
+4 rows by 1 column,
+figsize of 5 (width) by 12 (height),
+each Axes instance should have an x-value range of 0.0 to 5.0.
+Generate the following histograms:
+First plot (top most): Histogram of normalized Rotten Tomatoes scores by users.
+Second plot: Histogram of normalized Metacritic scores by users.
+Third plot: Histogram of Fandango scores by users.
+Fourth plot (bottom most): Histogram of IMDB scores by users.
+
+
+Answer:import matplotlib.pyplot as plt
+import pandas as pd
+movie_reviews = pd.read_csv("fandango_score_comparison.csv")
+fig = plt.figure(figsize=(5,12))
+ax1 = fig.add_subplot(4,1,1)
+ax2 = fig.add_subplot(4,1,2)
+ax3 = fig.add_subplot(4,1,3)
+ax4 = fig.add_subplot(4,1,4)
+
+ax1.set_xlim(0,5.0)
+ax2.set_xlim(0,5.0)
+ax3.set_xlim(0,5.0)
+ax4.set_xlim(0,5.0)
+
+movie_reviews["RT_user_norm"].hist(ax=ax1)
+movie_reviews["Metacritic_user_nom"].hist(ax=ax2)
+movie_reviews["Fandango_Ratingvalue"].hist(ax=ax3)
+movie_reviews["IMDB_norm"].hist(ax=ax4)
+
+Note: Create Axes instances using the Figure method add_subplot(). Use the set_xlim method to specify the x value range for each Axes instance. Use the Pandas hist() method to generate each of the histograms, passing in the appropriate Axes instance to the ax parameter.
+
+###Question: Plot the equation y=x−1y=x−1, using the existing x variable.
+Plot the equation y=x+10y=x+10, using the existing x variable.
+
+Answer:y = x - 1
+plt.plot(x, y)
+plt.show()
+
+y = x + 10
+plt.plot(x, y)
+plt.show()
+
+Note:
+
+###Question: Calculate the slope you would need to predict the "quality" column (y) using the "density" column (x).
+Assign the slope to slope_density.
+
+Answer: # The wine quality data is loaded into wine_quality
+from numpy import cov
+slope_density = cov(wine_quality['quality'], wine_quality['density']) / wine_quality['density'].var()
+
+Note:
+
+###Question: Use plt.figure() to create a figure and assign to fig.
+Use Figure.add_subplot() to create two subplots above and below each other
+Assign the top Axes object to ax1.
+Assign the top Axes object to ax2.
+Use plt.show() to display the resulting plot.
+
+Answer: import matplotlib.pyplot as plt
+fig = plt.figure()
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+plt.show()
+
+Note:
+
+###Question: Create 2 line subplots in a 2 row by 1 column layout:
+In the top subplot, plot the data from 1948. (use unrate as dataframe)
+For the x-axis, use the first 12 values in the DATE column.
+For the y-axis, use the first 12 values in the VALUE column.
+In the bottom subplot, plot the data from 1949.
+For the x-axis, use the values from index 12 to 24 in the DATE column.
+For the y-axis, use the values from index 12 to 24 in the VALUE column.
+Use plt.show() to display all the plots.
+
+Answer:import matplotlib.pyplot as plt
+fig = plt.figure()
+ax1 = fig.add_subplot(2, 1, 1)
+ax2 = fig.add_subplot(2, 1, 2)
+
+x_values = unrate['DATE'].iloc[:12]
+y_values = unrate['VALUE'].iloc[:12]
+ax1.plot(x_values, y_values)
+
+x_values = unrate['DATE'].iloc[12:24]
+y_values = unrate['VALUE'].iloc[12:24]
+ax2.plot(x_values, y_values)
+
+plt.show()
+
+Note:
+
+###Question: generalize use of figsize parameter
+
+Answer: fig = plt.figure(figsize=(width, height))
+
+Note:
+
+###Question:  set the width of the plotting area to 12 inches and the height to 6 inches.
+
+Answer: fig = plt.figure(figsize=(12, 6))
+
+Note:
+
+###Question: Set the width of the plotting area to 12 inches and the height to 12 inches.
+Generate a grid with 5 rows and 1 column and plot data from the individual years. Start with 1948 in the top subplot and end with 1952 in the bottom subplot.
+Use plt.show() to display the plots.
+
+Answer:fig = plt.figure(figsize=(12, 12))
+ax1 = fig.add_subplot(5, 1, 1)
+ax2 = fig.add_subplot(5, 1, 2)
+ax3 = fig.add_subplot(5, 1, 3)
+ax4 = fig.add_subplot(5, 1, 4)
+ax5 = fig.add_subplot(5, 1, 5)
+
+ax1.plot(unrate[:12]['DATE'], unrate[:12]['VALUE'])
+ax2.plot(unrate[12:24]['DATE'], unrate[12:24]['VALUE'])
+ax3.plot(unrate[24:36]['DATE'], unrate[24:36]['VALUE'])
+ax4.plot(unrate[36:48]['DATE'], unrate[36:48]['VALUE'])
+ax5.plot(unrate[48:60]['DATE'], unrate[48:60]['VALUE'])
+plt.show()
+
+Note:
+
+###Question: create new column 'MONTH' for unrate equal to the month value of datetime object in the 'DATE' column
+
+Answer: unrate['MONTH'] = unrate['DATE'].dt.month
+
+Note:
+
+###Question: Set the plotting area to a width of 6 inches and a height of 3 inches.
+Generate 2 line charts in the base subplot, using the MONTH column for the x-axis instead of the DATE column:
+One line chart using data from 1948, with the line color set to "red".
+One line chart using data from 1949, with the line color set to "blue".
+Use plt.show() to display the plots.
+
+
+Answer: unrate['MONTH'] = unrate['DATE'].dt.month
+fig = plt.figure(figsize=(6, 3))
+plt.plot(unrate[0:12]['MONTH'], unrate[0:12]['VALUE'], c='red')
+plt.plot(unrate[12:24]['MONTH'], unrate[12:24]['VALUE'], c='blue')
+plt.show()
+
+Note:
+
+###Question: Set the plotting area to a width of 10 inches and a height of 6 inches.
+Generate the following plots in the base subplot:
+1948: set the line color to "red"
+1949: set the line color to "blue"
+1950: set the line color to "green"
+1951: set the line color to "orange"
+1952: set the line color to "black"
+Use plt.show() to display the plots.
+
+Answer: 
+fig = plt.figure(figsize=(10,6))
+colors = ['red', 'blue', 'green', 'orange', 'black']
+for i in range(5):
+    start_index = i*12
+    end_index = (i+1)*12
+    subset = unrate[start_index:end_index]
+    plt.plot(subset['MONTH'], subset['VALUE'], c=colors[i])
+    
+plt.show()
+
+Note:
+
+###Question: Modify the code from the last screen that overlaid 5 plots to include a legend. Use the year value for each line chart as the label.
+E.g. the plot of 1948 data that uses "red" for the line color should be labeled "1948" in the legend.
+Place the legend in the "upper left" corner of the plot.
+Display the plot using plt.show().
+previous assignment: Set the plotting area to a width of 10 inches and a height of 6 inches.
+Generate the following plots in the base subplot:
+1948: set the line color to "red"
+1949: set the line color to "blue"
+1950: set the line color to "green"
+1951: set the line color to "orange"
+1952: set the line color to "black"
+Use plt.show() to display the plots.
+
+
+Answer:fig = plt.figure(figsize=(10,6))
+colors = ['red', 'blue', 'green', 'orange', 'black']
+labels = [str(y) for y in range(1948, 1953)]
+for i in range(5):
+    start_index = i*12
+    end_index = (i+1)*12
+    subset = unrate[start_index:end_index]
+    plt.plot(subset['MONTH'], subset['VALUE'], c=colors[i], label=labels[i])
+plt.legend(loc='upper left')
+plt.show()
+
+
+Note:
+
+###Question: Modify the code from the last screen:
+Set the title to "Monthly Unemployment Trends, 1948-1952".
+Set the x-axis label to "Month, Integer".
+Set the y-axis label to "Unemployment Rate, Percent".
+
+Answer: plt.title('Monthly Unemployment Trends, 1948-1952')
+plt.xlabel('Month, Integer')
+plt.ylabel('Unemployment Rate, Percent')
+plt.show()
+
+Note:
+
+###Question: use pyplot.subplots() to first generate a single subplot and return both the Figure and Axes object.  
+
+Answer: fig, ax = plt.subplots()
+
+Note: 
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a bar plot with:
+left set to bar_positions
+height set to bar_heights
+width set to 0.5
+Use plt.show() to display the bar plot.
+
+Answer: import matplotlib.pyplot as plt
+from numpy import arange
+num_cols = ['RT_user_norm', 'Metacritic_user_nom', 'IMDB_norm', 'Fandango_Ratingvalue', 'Fandango_Stars']
+
+bar_heights = norm_reviews.ix[0, num_cols].values
+bar_positions = arange(5) + 0.75
+fig, ax = plt.subplots()
+ax.bar(bar_positions, bar_heights, 0.5)
+plt.show()
+
+Note:
+
+###Question: set the x-axis labels and rotate by 90 degrees
+num_cols = ['RT_user_norm', 'Metacritic_user_nom', 'IMDB_norm', 'Fandango_Ratingvalue', 'Fandango_Stars']
+
+Answer: ax.set_xticklabels(num_cols, rotation=90)
+
+Note:
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a bar plot with:
+left set to bar_positions
+height set to bar_heights
+width set to 0.5
+Set the x-axis tick positions to tick_positions.
+Set the x-axis tick labels to num_cols and rotate by 90 degrees.
+Set the x-axis label to "Rating Source".
+Set the y-axis label to "Average Rating".
+Set the plot title to "Average User Rating For Avengers: Age of Ultron (2015)".
+Use plt.show() to display the bar plot.
+
+num_cols = ['RT_user_norm', 'Metacritic_user_nom', 'IMDB_norm', 'Fandango_Ratingvalue', 'Fandango_Stars']
+bar_heights = norm_reviews.ix[0, num_cols].values
+bar_positions = arange(5) + 0.75
+tick_positions = range(1,6)
+
+Answer:fig, ax = plt.subplots()
+ax.bar(bar_positions, bar_heights, 0.5)
+ax.set_xticks(tick_positions)
+ax.set_xticklabels(num_cols, rotation=90)
+ax.set_xlabel('Rating Source')
+ax.set_ylabel('Average Rating')
+ax.set_title('Average User Rating For Avengers: Age of Ultron (2015)')
+plt.show()
+
+Note:
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a bar plot with:
+bottom set to bar_positions
+width set to bar_widths
+height set to 0.5
+Set the y-axis tick positions to tick_positions.
+Set the y-axis tick labels to num_cols.
+Set the y-axis label to "Rating Source".
+Set the x-axis label to "Average Rating".
+Set the plot title to "Average User Rating for Avengers: Age of Ultron (2015)".
+Use plt.show() to display the bar plot.
+
+import matplotlib.pyplot as plt
+from numpy import arange
+num_cols = ['RT_user_norm', 'Metacritic_user_nom', 'IMDB_norm', 'Fandango_Ratingvalue', 'Fandango_Stars']
+
+bar_widths = norm_reviews.ix[0, num_cols].values
+bar_positions = arange(5) + 0.75
+tick_positions = range(1,6)
+
+
+Answer:fig, ax = plt.subplots()
+ax.barh(bar_positions, bar_widths, 0.5)
+ax.set_yticks(tick_positions)
+ax.set_yticklabels(num_cols)
+ax.set_ylabel('Rating Source')
+ax.set_xlabel('Average Rating')
+ax.set_title('Average User Rating for Avengers: Age of Ultron (2015)')
+plt.show()
+
+Note:
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a scatter plot with the Fandango_Ratingvalue column on the x-axis and the RT_user_norm column on the y-axis.
+Set the x-axis label to "Fandango" and the y-axis label to "Rotten Tomatoes".
+Use plt.show() to display the resulting plot. 
+
+Answer: fig, ax = plt.subplots()
+ax.scatter(norm_reviews['Fandango_Ratingvalue'], norm_reviews['RT_user_norm'])
+ax.set_xlabel('Fandango')
+ax.set_ylabel('Rotten Tomatoes')
+plt.show()
+
+Note:
+
+###Question: For the subplot associated with ax1:
+Generate a scatter plot with the Fandango_Ratingvalue column on the x-axis and the RT_user_norm column on the y-axis.
+Set the x-axis label to "Fandango" and the y-axis label to "Rotten Tomatoes".
+For the subplot associated with ax2:
+Generate a scatter plot with the RT_user_norm column on the x-axis and the Fandango_Ratingvalue column on the y-axis.
+Set the x-axis label to "Rotten Tomatoes" and the y-axis label to "Fandango".
+Use plt.show() to display the resulting plot.
+fig = plt.figure(figsize=(5,10))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+Answer: ax1.scatter(norm_reviews['Fandango_Ratingvalue'], norm_reviews['RT_user_norm'])
+ax1.set_xlabel('Fandago')
+ax1.set_ylabel('Rotten Tomatoes')
+
+ax2.scatter(norm_reviews['RT_user_norm'], norm_reviews['Fandango_Ratingvalue'])
+ax2.set_xlabel('Rotten Tomatoes')
+ax2.set_ylabel('Fandango')
+
+plt.show()
+
+Note:
+
+###Question: For the Subplot associated with ax1:
+Generate a scatter plot with the Fandango_Ratingvalue column on the x-axis and the RT_user_norm column on the y-axis.
+Set the x-axis label to "Fandango" and the y-axis label to "Rotten Tomatoes".
+Set the x-axis and y-axis data limits to range from 0 and 5.
+For the Subplot associated with ax2:
+Generate a scatter plot with the Fandango_Ratingvalue column on the x-axis and the Metacritic_user_nom column on the y-axis.
+Set the x-axis label to "Fandango" and the y-axis label to "Metacritic".
+Set the x-axis and y-axis data limits to range from 0 and 5.
+For the Subplot associated with ax3:
+Generate a scatter plot with the Fandango_Ratingvalue column on the x-axis and the IMDB_norm column on the y-axis.
+Set the x-axis label to "Fandango" and the y-axis label to "IMDB".
+Set the x-axis and y-axis data limits to range from 0 and 5.
+Use plt.show() to display the plots.
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(5,10))
+ax1 = fig.add_subplot(3,1,1)
+ax2 = fig.add_subplot(3,1,2)
+ax3 = fig.add_subplot(3,1,3)
+
+Answer: ax1.scatter(norm_reviews['Fandango_Ratingvalue'], norm_reviews['RT_user_norm'])
+ax1.set_xlabel('Fandango')
+ax1.set_ylabel('Rotten Tomatoes')
+ax1.set_xlim(0, 5)
+ax1.set_ylim(0, 5)
+
+ax2.scatter(norm_reviews['Fandango_Ratingvalue'], norm_reviews['Metacritic_user_nom'])
+ax2.set_xlabel('Fandango')
+ax2.set_ylabel('Metacritic')
+ax2.set_xlim(0, 5)
+ax2.set_ylim(0, 5)
+
+ax3.scatter(norm_reviews['Fandango_Ratingvalue'], norm_reviews['IMDB_norm'])
+ax3.set_xlabel('Fandango')
+ax3.set_ylabel('Metacritic')
+ax3.set_xlim(0, 5)
+ax3.set_ylim(0, 5)
+
+plt.show()
+
+Note:
+
+###Question: compare the frequency distributions of user ratings from Fandango with those from IMDB using tables.  return the frequency distribution of the 'Fandango_Ratingvalue' column of df as Series object. use Series.sort_index() to sort the frequency distribution in ascending order by the values in the column (which make up the index for the Series object):
+
+
+
+Answer: freq_counts = df['Fandango_Ratingvalue'].value_counts()
+sorted_freq_counts = freq_counts.sort_index()
+
+Note:
+
+###Question: Use the value_counts() method to return the frequency counts for the Fandango_Ratingvalue column. Sort the resulting Series object by the index and assign to fandango_distribution.
+Use the value_counts() method to return frequency counts the IMDB_norm column. Sort the resulting Series object by the index and assign to imdb_distribution.
+Use the print() function to display fandango_distribution and imdb_distribution.
+
+Answer: fandango_distribution = norm_reviews['Fandango_Ratingvalue'].value_counts().sort_index()
+imdb_distribution = norm_reviews['IMDB_norm'].value_counts().sort_index()
+print(fandango_distribution)
+print(imdb_distribution)
+
+Note:
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a histogram from the values in the Fandango_Ratingvalue column of the norm_reviews df. 
+Use plt.show() to display the plot.
+
+
+Answer:fig, ax = plt.subplots()
+ax.hist(norm_reviews['Fandango_Ratingvalue'], range=(0, 5))
+plt.show()
+
+Note:
+
+###Question: For the subplot associated with ax1:
+Generate a histogram of the values in the Fandango_Ratingvalue column using 20 bins and a range of 0 to 5.
+Set the title to Distribution of Fandango Ratings.
+For the subplot associated with ax2:
+Generate a histogram of the values in the RT_user_norm column using 20 bins and a range of 0 to 5.
+Set the title to Distribution of Rotten Tomatoes Ratings.
+For the subplot associated with ax3:
+Generate a histogram of the values in the Metacritic_user_nom column using 20 bins and a range of 0 to 5.
+Set the title to Distribution of Metacritic Ratings.
+For the subplot associated with ax4:
+Generate a histogram of the values in the IMDB_norm column using 20 bins and a range of 0 to 5.
+Set the title to Distribution of IMDB Ratings.
+For all subplots:
+Set the y-axis range to 0 to 50 using Axes.set_ylim().
+Set the y-axis label to Frequency using Axes.set_ylabel().
+Use plt.show() to display the plots.
+fig = plt.figure(figsize=(5,20))
+ax1 = fig.add_subplot(4,1,1)
+ax2 = fig.add_subplot(4,1,2)
+ax3 = fig.add_subplot(4,1,3)
+ax4 = fig.add_subplot(4,1,4)
+
+Answer:
+ax1.hist(norm_reviews['Fandango_Ratingvalue'], bins=20, range=(0, 5))
+ax1.set_title('Distribution of Fandango Ratings')
+ax1.set_ylim(0, 50)
+
+ax2.hist(norm_reviews['RT_user_norm'], 20, range=(0, 5))
+ax2.set_title('Distribution of Rotten Tomatoes Ratings')
+ax2.set_ylim(0, 50)
+
+ax3.hist(norm_reviews['Metacritic_user_nom'], 20, range=(0, 5))
+ax3.set_title('Distribution of Metacritic Ratings')
+ax3.set_ylim(0, 50)
+
+ax4.hist(norm_reviews['IMDB_norm'], 20, range=(0, 5))
+ax4.set_title('Distribution of IMDB Ratings')
+ax4.set_ylim(0, 50)
+
+plt.show()
+
+Note:
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a box plot from the values in the RT_user_norm column.
+Set the y-axis limit to range from 0 to 5.
+Set the x-axis tick label to Rotten Tomatoes.
+Use plt.show() to display the plot.
+
+Answer:fig, ax = plt.subplots()
+ax.boxplot(norm_reviews['RT_user_norm'])
+ax.set_ylim(0, 5)
+ax.set_xticklabels(['Rotten Tomatoes'])
+plt.show()
+
+Note:
+
+###Question: Create a single subplot and assign the returned Figure object to fig and the returned Axes object to ax.
+Generate a box plot containing a box-and-whisker diagram for each column in num_cols.
+Set the x-axis tick labels to the column names in num_cols and rotate the ticks by 90 degrees.
+Set the y-axis limit to range from 0 to 5.
+Use plt.show() to display the plot.
+
+num_cols = ['RT_user_norm', 'Metacritic_user_nom', 'IMDB_norm', 'Fandango_Ratingvalue']
+
+Answer: fig, ax = plt.subplots()
+ax.boxplot(norm_reviews[num_cols].values)
+ax.set_xticklabels(num_cols, rotation=90)
+ax.set_ylim(0, 5)
+plt.show()
+
+Note:
+
+###Question: Generate a line chart that visualizes the historical percentage of Biology degrees awarded to women:
+Set the x-axis to the Year column from women_degrees.
+Set the y-axis to the Biology column from women_degrees.
+Display the plot. df is women_degrees
+
+Answer:import pandas as pd
+import matplotlib.pyplot as plt
+
+women_degrees = pd.read_csv('percent-bachelors-degrees-women-usa.csv')
+plt.plot(women_degrees['Year'], women_degrees['Biology'])
+plt.show()
+
+Note:
+
+###Question: Generate 2 line charts on the same figure:
+One that visualizes the percentages of Biology degrees awarded to women over time. Set the line color to "blue" and the label to "Women".
+One that visualizes the percentages of Biology degrees awarded to men over time. Set the line color to "green" and the label to "Men".
+Set the title of the chart to "Percentage of Biology Degrees Awarded By Gender".
+Generate a legend and place it in the "upper right" location.
+Display the chart.
+
+df is women_degrees; relevant columns are 'Year' and 'Biology'
+
+Answer:plt.plot(women_degrees['Year'], women_degrees['Biology'], c='blue', label='Women')
+plt.plot(women_degrees['Year'], 100-women_degrees['Biology'], c='green', label='Men')
+plt.legend(loc='upper right')
+plt.title('Percentage of Biology Degrees Awarded By Gender')
+plt.show()
+
+Note:
+
+###Question: Generate 2 line chart in the same plotting area:
+One that visualizes the percentages of Biology degrees awarded to women over time. Set the line color to "blue" and the label to "Women".
+One that visualizes the percentages of Biology degrees awarded to men over time. Set the line color to "green" and the label to "Men".
+Remove all of the tick marks.
+Set the title of the plot to "Percentage of Biology Degrees Awarded By Gender".
+Generate a legend and place it in the "upper right" location.
+Display the chart.
+
+Answer:fig = plt.figure()
+plt.plot(women_degrees['Year'], women_degrees['Biology'], c='b', label='Women')
+plt.plot(women_degrees['Year'], 100-women_degrees['Biology'], c='g', label='Men')
+plt.tick_params(bottom='off', top='off', left='off', right='off')
+plt.legend(loc='upper right')
+plt.title('Percentage of Biology Degrees Awarded By Gender')
+plt.show()
+
+Note:
+
+###Question: The following line of code removes the spines for the right axis
+
+Answer: ax.spines["right"].set_visible(False)
+ax.spines["right"].set_visible(False)
+Note:
+
+###Question: remove spines for all axese
+
+Answer:for key,spine in ax.spines.items():
+    spine.set_visible(False) 
+
+Note:
+
+###Question: Generate a line chart using the women and men percentages for Biology in the top left subplot.
+Generate a line chart using the women and men percentages for Computer Science in the top right subplot.
+Generate a line chart using the women and men percentages for Engineering in the bottom left subplot.
+Generate a line chart using the women and men percentages for Math and Statistics in the bottom right subplot.
+For all subplots:
+For the line chart visualizing female percentages, set the line color to "blue" and the label to "Women".
+For the line chart visualizing male percentages, set the line color to "green" and the label to "Men".
+Set the x-axis limit to range from 1968 to 2011.
+Set the y-axis limit to range from 0 to 100.
+Hide all of the spines and tick marks.
+Set the title of each subplot to the name of the major category (e.g. "Biology", "Computer Science").
+Place a legend in the upper right corner of the bottom right subplot.
+Display the plot.
+variables include sp, major_cats
+
+Answer:major_cats = ['Biology', 'Computer Science', 'Engineering', 'Math and Statistics']
+fig = plt.figure(figsize=(12, 12))
+for sp in range(0,4):
+    ax = fig.add_subplot(2,2,sp+1)
+    ax.plot(women_degrees['Year'], women_degrees[major_cats[sp]], c='blue', label='Women')
+    ax.plot(women_degrees['Year'], 100-women_degrees[major_cats[sp]], c='green', label='Men')
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0, 100)
+    ax.set_title(major_cats[sp])
+plt.legend(loc='upper right')
+plt.show()
+
+Note:
+
+###Question:Modify the starter code to:
+Set the line color for the line charts visualizing women percentages to the dark blue color from the Color Blind 10 palette (RGB value of (0, 107, 164)).
+Set the line color for the line charts visualizing men percentages to the orange color from the Color Blind 10 palette (RGB value of (255, 128, 14)).
+Display the figure after you've made these changes.
+
+fig = plt.figure(figsize=(12, 12))
+
+for sp in range(0,4):
+    ax = fig.add_subplot(2,2,sp+1)
+    # The color for each line is assigned here.
+    ax.plot(women_degrees['Year'], women_degrees[major_cats[sp]], c='blue', label='Women')
+    ax.plot(women_degrees['Year'], 100-women_degrees[major_cats[sp]], c='green', label='Men')
+    for key,spine in ax.spines.items():
+        spine.set_visible(False)
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0,100)
+    ax.set_title(major_cats[sp])
+    ax.tick_params(bottom="off", top="off", left="off", right="off")
+
+plt.legend(loc='upper right')
+plt.show() 
+
+Answer:fig = plt.figure(figsize=(12, 12))
+
+for sp in range(0,4):
+    ax = fig.add_subplot(2,2,sp+1)
+    # The color for each line is assigned here.
+    cb_dark_blue = (0/255,107/255,164/255)
+    cb_orange = (0/255,128/255,14/255)
+    ax.plot(women_degrees['Year'], women_degrees[major_cats[sp]], c=cb_dark_blue, label='Women')
+    ax.plot(women_degrees['Year'], 100-women_degrees[major_cats[sp]], c=cb_orange, label='Men')
+    for key,spine in ax.spines.items():
+        spine.set_visible(False)
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0,100)
+    ax.set_title(major_cats[sp])
+    ax.tick_params(bottom="off", top="off", left="off", right="off")
+
+plt.legend(loc='upper right')
+plt.show()
+
+Note:
+
+###Question: Modify the starter code to:
+Change the width of the figure to a width of 18 inches and a height of 3 inches.
+In the for loop, change the range to (0,6) instead of (0,4).
+Change the subplot layout from 2 rows by 2 columns to 1 row by 6 columns.
+Use stem_cats instead of major_cats when generating and setting the titles for the line charts.
+
+stem_cats = ['Engineering', 'Computer Science', 'Psychology', 'Biology', 'Physical Sciences', 'Math and Statistics']
+
+fig = plt.figure(figsize=(12, 12))
+
+for sp in range(0,4):
+    ax = fig.add_subplot(2,2,sp+1)
+    ax.plot(women_degrees['Year'], women_degrees[major_cats[sp]], c=cb_dark_blue, label='Women', linewidth=3)
+    ax.plot(women_degrees['Year'], 100-women_degrees[major_cats[sp]], c=cb_orange, label='Men', linewidth=3)
+    for key,spine in ax.spines.items():
+        spine.set_visible(False)
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0,100)
+    ax.set_title(major_cats[sp])
+    ax.tick_params(bottom="off", top="off", left="off", right="off")
+
+plt.legend(loc='upper right')
+plt.show()
+
+Answer:stem_cats = ['Engineering', 'Computer Science', 'Psychology', 'Biology', 'Physical Sciences', 'Math and Statistics']
+
+fig = plt.figure(figsize=(18, 3))
+
+for sp in range(0,6):
+    ax = fig.add_subplot(1,6,sp+1)
+    ax.plot(women_degrees['Year'], women_degrees[stem_cats[sp]], c=cb_dark_blue, label='Women', linewidth=3)
+    ax.plot(women_degrees['Year'], 100-women_degrees[stem_cats[sp]], c=cb_orange, label='Men', linewidth=3)
+    for key,spine in ax.spines.items():
+        spine.set_visible(False)
+    ax.set_xlim(1968, 2011)
+    ax.set_ylim(0,100)
+    ax.set_title(stem_cats[sp])
+    ax.tick_params(bottom="off", top="off", left="off", right="off")
+
+plt.legend(loc='upper right')
+plt.show()
+
+Note:
+
+###Question: The values in the coordinate grid match exactly with the data ranges for the x-axis and the y-axis. If we want to add text 'starting point', at the intersection of 1970 from the x-axis and 0 from the y-axis, we would pass in those values, i.e. 
+
+Answer:ax.text(1970, 0, "starting point")
+
+Note:
+
+###Question: Import seaborn as sns and matplotlib.pyplot as plt.
+Use the seaborn.distplot() function to visualize the distribution of the "Age" column.
+Display the plot using pyplot.show 
+
+Answer: import seaborn as sns
+import matplotlib.pyplot as plt
+sns.distplot(titanic['Age'])
+plt.show()
+
+Note:
+
+###Question: # increase default figure and font sizes for easier viewing. figsize 8 width 6 height and font size 14
+
+Answer: plt.rcParams['figure.figsize'] = (8, 6)
+plt.rcParams['font.size'] = 14
+
+Note:
+
+###Question: plot hist of beer column in drinks df with 3 bins. Then plot with  20 bins and add title of "Histogram of Beer Servings" and lables 'Beer Servings' and 'Frequency'.
+
+Answer: drinks.beer.plot(kind='hist', bins=3)
+drinks.beer.plot(kind='hist', bins=20, title='Histogram of Beer Servings')
+plt.xlabel('Beer Servings')
+plt.ylabel('Frequency')
+
+Note:
+
+###Question: plot with density plot (smooth version of a histogram) for beer column for fewer than 500 beers
+
+Answer: drinks.beer.plot(kind='density', xlim=(0, 500))
+
+Note:
+
+###Question:  plot line of best fit using seaborn for price against sq__ft, beds, baths. The df is called shd
+
+Answer: import seaborn as sns
+sns.lmplot(x = 'sq__ft', y = 'price', data = shd)
+sns.lmplot(x = 'beds', y = 'price', data = shd)
+sns.lmplot(x = 'baths', y = 'price', data = shd)
+
+Note:
+
+###Question: for the drinks df:
+# select the beer and wine columns and sort by beer
+
+# make a scatter plot 
+
+# add transparency of .3
+
+# vary point color by spirit servings
+
+# scatter matrix of three numerical columns
+
+# increase figure size to 10 w and 8 h
+
+
+Answer: drinks[['beer', 'wine']].sort('beer').values
+drinks.plot(kind='scatter', x='beer', y='wine')
+drinks.plot(kind='scatter', x='beer', y='wine', alpha=0.3)
+drinks.plot(kind='scatter', x='beer', y='wine', c='spirit', colormap='Blues')
+pd.scatter_matrix(drinks[['beer', 'spirit', 'wine']])
+pd.scatter_matrix(drinks[['beer', 'spirit', 'wine']], figsize=(10, 8))
+
+Note:
+
+###Question: df is drinks 
+# count the number of countries in each continent 
+# compare with bar plot
+
+Answer: drinks.continent.value_counts()
+drinks.continent.value_counts().plot(kind='bar')
+
+Note:
+
+###Question: df is drinks # calculate the mean alcohol amounts for each continent
+
+# side-by-side bar plots
+
+# drop the liters column
+
+# stacked bar plots
+
+Answer:
+
+drinks.groupby('continent').mean()
+drinks.groupby('continent').mean().plot(kind='bar')
+drinks.groupby('continent').mean().drop('liters', axis=1).plot(kind='bar')
+drinks.groupby('continent').mean().drop('liters', axis=1).plot(kind='bar', stacked=True)
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

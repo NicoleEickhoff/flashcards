@@ -1,0 +1,1773 @@
+	###Question: how many "new"s in a_list = ['a', 'b', 'new', 'mpilgrim', 'new']
+
+	Answer: a_list.count('new')
+
+	Note:
+
+	###Question: delete 'b' in a_list = ['a', 'b', 'new', 'mpilgrim', 'new']
+
+	Answer: del a_list[1]
+
+	Note: Accessing index 1 after deleting index 1 does not result in an error. All items after the deleted item shift their positional index to “fill the gap” created by deleting the item.
+
+	###Question: remove 'new' from a_list = ['a', 'b', 'new', 'mpilgrim', 'new']
+
+	Answer: a_list.remove('new')
+
+	Note:You can also remove an item from a list with the remove() method. The remove() method takes a value and removes the first occurrence of that value from the list. Again, all items after the deleted item will have their positional indices bumped down to “fill the gap.” Lists never have gaps.
+
+	###Question: What happens if you try to remove value not in list
+
+	Answer: ValueError: list.remove(x): x not in list
+
+	Note: You can call the remove() method as often as you like, but it will raise an exception if you try to remove a value that isn’t in the list.
+
+	###Question: remove and return 'mpilgrim' from a_list = ['a', 'b', 'new', 'mpilgrim']
+
+	Answer: a_list.pop()
+
+	Note: 	When called without arguments, the pop() list method removes the last item in the list and returns the value it removed.
+
+	###Question: which throw errors?
+	>>> approximate_size(4000, a_kilobyte_is_1024_bytes=False)	   ①
+	>>> approximate_size(size=4000, a_kilobyte_is_1024_bytes=False)  ②
+	>>> approximate_size(a_kilobyte_is_1024_bytes=False, size=4000)  ③
+	>>> approximate_size(a_kilobyte_is_1024_bytes=False, 4000)       ④
+	>>> approximate_size(size=4000, False)                           ⑤
+
+	Answer: 4 and 5
+
+	Note: As soon as you have a named argument, all arguments to the right of that need to be named arguments, too.
+
+	###Question: Python looks in several places when you try to import a module. Specifically, it looks in all the directories defined in ****.
+
+	Answer: sys.path
+
+	Note:
+
+	###Question: insert a new directory at the beginning of Python's search path (assuming your are in the console) and new_path = '/user/home/etc./etc.'
+
+	Answer: import sys
+	sys.path.insert(0, new_path)
+
+	Note: You can add a new directory to Python’s search path at runtime by adding the directory name to sys.path, and then Python will look in that directory as well, whenever you try to import a module. The effect lasts as long as Python is running. By using sys.path.insert(0, new_path), you inserted a new directory as the first item of the sys.path list, and therefore at the beginning of Python’s search path. This is almost always what you want. In case of naming conflicts (for example, if Python ships with version 2 of a particular library but you want to use version 3), this ensures that your modules will be found and used instead of the modules that came with Python.
+
+	###Question: Return a string representing the current working directory.
+
+	Answer: import os
+	os.getcwd()
+
+	Note:
+
+	###Question: go from Desktop to Coding Practice folder in the console. print current directory to confirm.
+
+	Answer: import os
+	os.chdir('Coding Practice')
+	os.getcwd()
+
+	Note: os.chdir(path) Change the current working directory to path. 
+
+	###Question: What is an exception? Usually it’s an error, an indication that something went wrong. (Not all exceptions are errors, but never mind that for now.) Some programming languages encourage the use of error return codes, which you ****. Python encourages the use of exceptions, which you ****.
+
+	Answer: check, handle
+
+	Note:When an error occurs in the Python Shell, it prints out some details about the exception and how it happened, and that’s that. This is called an unhandled exception. When the exception was raised, there was no code to explicitly notice it and deal with it, so it bubbled its way back up to the top level of the Python Shell, which spits out some debugging information and calls it a day. In the shell, that's no big deal, but if that happened while your actual Python program was running, the entire program would come to a screeching halt if nothing handles the exception. Maybe that’s what you want, maybe it isn’t.
+
+	###Question: raise exception if perameter size is negative and tell user 'number must be non-negative'
+
+	Answer: if size < 0:
+		raise ValueError('number must be non-negative')
+
+	Note:
+
+	###Question: The chardet library provides character encoding auto-detection. Perhaps your program wants to use this library if it exists, but continue gracefully if the user hasn’t installed it.
+
+	Answer: try:
+		import chardet
+	except ImportError:
+		chardet = None
+
+	Note: Later, you can check for the presence of the chardet module with a simple if statement:
+	if chardet:
+		#do something
+	else:
+		#continue anyway
+
+	###Question: You can try to import one module but fall back to a different module if the first import fails. For example, the XML chapter talks about two modules that implement a common api, called the ElementTree api. The first, lxml, is a third-party module that you need to download and install yourself. The second, xml.etree.ElementTree, is slower but is part of the Python 3 standard library.
+
+	Answer: try:
+		from lxml import etree
+	except ImportError:
+		import xml.etree.ElementTree as etree
+
+	Note: By the end of this try..except block, you have imported some module and named it etree. Since both modules implement a common api, the rest of your code doesn’t need to keep checking which module got imported. And since the module that did get imported is always called etree, the rest of your code doesn’t need to be littered with if statements to call differently-named modules.
+
+	###Question: test the humansize.py module as you write it by including this block of code, which should return 1.0 TB and 931.3 GiB when your run the program (note that function 'approximate_size' declaration is --> def approximate_size(size, a_kilobyte_is_1024_bytes=True):)
+
+	Answer:if __name__ == '__main__':
+		print(approximate_size(1000000000000, False))
+		print(approximate_size(1000000000000))
+
+	Note:
+
+	###Question: Python supports both integers and **** numbers
+
+	Answer:floating point
+
+	Note: There’s no type declaration to distinguish them; Python tells them apart by the presence or absence of a decimal point.
+
+	###Question: check the type of 2.0
+
+	Answer:type(2.0)
+
+	Note:returns <class 'float'>
+
+	###Question: check if 1 is an integer
+
+	Answer:isinstance(1, int)
+
+	Note: returns True. You can use the isinstance() function to check whether a value or variable is of a given type.
+
+	###Question: what is result of 1 + 1.0
+
+	Answer: 2.0
+
+	Note: Adding an int to a float yields a float. Python coerces the int into a float to perform the addition, then returns a float as the result.
+
+	###Question: coerce 2 into a floating point number 
+
+	Answer:float(2)
+
+	Note:You can explicitly coerce an int to a float by calling the float() function.
+
+	###Question: coerce -2.5 into an int
+
+	Answer: int(-2.5)
+
+	Note: returns -2. The int() function will truncate, not round.  The int() function truncates negative numbers towards 0. It’s a true truncate function, not a floor function.
+
+	###Question: Floating point numbers are accurate to *** decimal places.
+
+	Answer: 15
+
+	Note:>>> 1.12345678901234567890
+	1.1234567890123457
+
+	###Question: return 5 and -6, respectively using numbers 11, -11 and 2
+
+	Answer: 11 // 2
+	-11 // 2
+
+	Note:The // operator performs a quirky kind of integer division. When the result is positive, you can think of it as truncating (not rounding) to 0 decimal places, but be careful with that. When integer-dividing negative numbers, the // operator rounds “up” to the nearest integer. Mathematically speaking, it’s rounding “down” since −6 is less than −5, but it could trip you up if you were expecting it to truncate to −5.
+
+	###Question: reduce 6/4 to 3/2 and then double it
+
+	Answer: import fractions
+	x = fractions.Fraction(6, 4)
+	x * 2
+
+	Note:returns 3. To start using fractions, import the fractions module. 
+	To define a fraction, create a Fraction object and pass in the numerator and denominator.
+	You can perform all the usual mathematical operations with fractions. Operations return a new Fraction object. 2 * (1/3) = (2/3)
+	The Fraction object will automatically reduce fractions. (6/4) = (3/2)
+
+	###Question: get the value of π and the value of sin(π/2)
+
+	Answer: import math
+	math.pi
+	math.sin(math.pi / 2)
+
+	Note:The math module has a constant for π, the ratio of a circle’s circumference to its diameter. The math module has all the basic trigonometric functions, including sin(), cos(), tan(), and variants like asin(). Note, however, that Python does not have infinite precision. tan(π / 4) should return 1.0, not 0.99999999999999989.
+
+	###Question: a_list = ['a']; append the strings 'four' and '&' to a_list with a single command
+
+	Answer: a_list.extend(['four', '&'])
+
+	Note:Lists are implemented as classes. “Creating” a list is really instantiating a class. As such, a list has methods that operate on it. The extend() method takes one argument, a list, and appends each of the items of the argument to the original list.
+
+	###Question: a_list = ['a']; append a list containing strings 'four' and '&' to a_list
+
+	Answer: a_list.append(['four', '&'])
+
+	Note: The append() method adds a single item to the end of the list. IN this case the single item is the list ['four', '&'] giving us ['a', ['four', '&']]
+
+	###Question: a_list = ['a', 'b', 'c']; insert the number 0 at the beginning of the list
+
+	Answer: a_list.insert(0, 0)
+
+	Note:
+
+	###Question: return "no, it's false" using a list as an input
+
+	def is_it_true(anything):
+		if anything:
+			print("yes, it's true")
+		else:
+			print("no, it's false")
+
+	Answer: is_it_true([])
+
+	Note: In a boolean context, an empty list is false. Any list with at least one item is true (the value of the items is irrelevant). Thus, is_it_true([False]) would return "yes, it's true"
+
+	###Question: return "yes, it's true" using a tuple of one item - False - as an input
+
+	def is_it_true(anything):
+		if anything:
+			print("yes, it's true")
+		else:
+			print("no, it's false")
+
+	Answer: is_it_true((False,))
+
+	Note: In a boolean context, an empty tuple is false. Thus, is_it_true(()) would return "no, it's false". Any tuple with at least one item is true (the value of the items is irrelevant). To create a tuple of one item, you need a comma after the value. Without the comma, Python just assumes you have an extra pair of parentheses, which is harmless, but it doesn't create a tuple.  
+
+
+	###Question: use tuples to assign x = 'a', y = 2, z = True
+
+	Answer: v = ('a', 2, True)
+	(x, y, z) = v
+
+	Note: v is a tuple of three elements and (x, y, z) is a tuple of three variables. Assigning one to the other assigns each of the values of v to each of the variables, in order.
+
+	###Question: make each day of the week a variable with a numeric value, e.g. Monday = 0
+
+	Answer: (Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday) = range(7)
+
+	Note:
+
+	###Question: create a_set with values 2 and 1
+
+	Answer: a_set = {1, 2}
+
+	Note:To create a set with multiple values, separate the values with commas and wrap it all up with curly brackets. sets are unordered. This set does not remember the original order of the list that was used to create it. If you were to add items to this set, it would not remember the order in which you added them.
+
+	###Question: create a_set without any values
+
+	Answer: a_set = set()
+
+	Note:
+
+	###Question: There are two different ways to add values to an existing set: the *** method, and the *** method.
+
+	Answer: add(), update()
+
+	Note:The add() method takes a single argument, which can be any datatype, and adds the given value to the set. The update() method takes one argument, a set, and adds all its members to the original set. It’s as if you called the add() method with each member of the set.
+
+	###Question: change a_set from {1, 2} to {1, 2, 4}
+
+	Answer: a_set.add(4)
+
+	Note: 
+
+	###Question: change a_set from {1, 2, 3} to {1, 2, 3, 4, 6}
+
+	Answer: a_set.update({4, 6}) 
+
+	Note:	The update() method takes one argument, a set, and adds all its members to the original set. It’s as if you called the add() method with each member of the set. Duplicate values are ignored, since sets can not contain duplicates.
+
+	###Question: change a_set from {1, 2, 3} to {1, 2, 3, 10, 20, 30}  using a list
+
+	Answer: a_set.update([10, 20, 30])
+
+	Note:	The update() method can take objects of a number of different datatypes, including lists. When called with a list, the update() method adds all the items of the list to the original set.
+
+	###Question: There are three ways to remove individual values from a set. 
+
+	Answer: discard(), remove(), pop()
+
+	Note:① The discard() method takes a single value as an argument and removes that value from the set. ② If you call the discard() method with a value that doesn’t exist in the set, it does nothing. No error; it’s just a no-op. ③ The remove() method also takes a single value as an argument, and it also removes that value from the set. ④ Here’s the difference: if the value doesn’t exist in the set, the remove() method raises a KeyError exception.
+
+	###Question: remove all values from a_set
+
+	Answer: a_set.clear()
+
+	Note: The clear() method removes all values from a set, leaving you with an empty set. This is equivalent to a_set = set(), which would create a new empty set and overwrite the previous value of the a_set variable.
+
+	###Question: try to remove the value 10 from a_set without throwing an error if 10 isn't in a_set
+
+	Answer: a_set.discard(10)
+
+	Note: If you call the discard() method with a value that doesn’t exist in the set, it does nothing. No error; it’s just a no-op. Remember that if the value doesn’t exist in the set, the remove() method raises a KeyError exception.
+
+	###Question: return a new set containing all the elements that are in either a_set or b_set.
+
+	Answer: a_set.union(b_set)
+
+	Note:The union() method returns a new set containing all the elements that are in either set.
+
+	###Question: returns a new set containing all the elements that are in both a_set and b_set
+
+	Answer: a_set.intersection(b_set)
+
+	Note: The intersection() method returns a new set containing all the elements that are in both sets.
+
+	###Question: return a new set containing all the elements that are in a_set but not b_set.
+
+	Answer: a_set.difference(b_set)
+
+	Note: The difference() method returns a new set containing all the elements that are in a_set but not b_set.
+
+	###Question: return a new set containing all the elements that are in exactly one of the sets a_set and b_set.
+
+	Answer: a_set.symmetric_difference(b_set)
+
+	Note: 	The symmetric_difference() method returns a new set containing all the elements that are in exactly one of the sets.
+	Question to self - is this the same as combining a_set.difference(b_set) and b_set.difference(a_set), i.e., a_set.difference(b_set).union(b_set.difference(a_set))? 
+
+	###Question: determine whether all the members of a_set are also members of b_set.
+
+	Answer: a_set.issubset(b_set)
+
+	Note: if returns True, a_set is a subset of b_set — all the members of a_set are also members of b_set.
+
+	###Question: determine whether all the members of a_set are also members of b_set using method taking a_set as perameter
+
+	Answer: b_set.issuperset(a_set)
+
+	Note: if returns True,  b_set is a superset of a_set, because all the members of a_set are also members of b_set.
+
+	###Question: what does >>>type(None) return
+
+	Answer: <class 'NoneType'>
+
+	Note: None is a special constant in Python. It is a null value. None is not the same as False. None is not 0. None is not an empty string. Comparing None to anything other than None will always return False. None is the only null value. It has its own datatype (NoneType). You can assign None to any variable, but you can not create other NoneType objects. All variables whose value is None are equal to each other.
+
+###Question: list the contents of the current working directory
+
+Answer: import os
+import glob
+glob.glob(os.getcwd() + '/*')
+
+Note:
+
+###Question: add the current working directory to the front of the system path list
+
+Answer: import os
+import sys
+sys.path.insert(0, os.getcwd())
+
+Note:
+
+###Question: print each element of your system path list on a separate line. sys already imported
+
+Answer: print(*sys.path, sep='\n')
+
+Note:
+
+###Question: change directories into dir_path = '/Users/pilgrim/diveintopython3/examples'
+
+Answer: import os
+os.chdir(dir_path)
+
+Note: Use the os.chdir() function to change the current working directory.
+
+###Question: print each item in sys.path list as a numbered tuple in a new line. sys already imported. 
+
+Answer: print(*[(i, sys.path[i]) for i in range(len(sys.path))], sep='\n')
+
+Note:
+
+###Question: ***  contains functions for manipulating filenames and directory names.
+
+Answer: os.path
+
+Note:
+
+###Question: go to the folder EDGAR located in the home directory
+
+Answer: os.chdir(os.path.join(os.path.expanduser('~'), 'EDGAR'))
+
+Note: calling the os.path.join() function will add an extra slash to the pathname before joining it to the filename. It’s a backslash instead of a forward slash, because I constructed this example on Windows. If you replicate this example on Linux or Mac OS X, you’ll see a forward slash instead. Don’t fuss with slashes; always use os.path.join() and let Python do the right thing. The os.path.expanduser() function will expand a pathname that uses ~ to represent the current user’s home directory. This works on any platform where users have a home directory, including Linux, Mac OS X, and Windows. The returned path does not have a trailing slash, but the os.path.join() function doesn’t mind. Combining these techniques, you can easily construct pathnames for directories and files in the user’s home directory. The os.path.join() function can take any number of arguments. I was overjoyed when I discovered this, since addSlashIfNecessary() is one of the stupid little functions I always need to write when building up my toolbox in a new language. Do not write this stupid little function in Python; smart people have already taken care of it for you.
+
+###Question: display all the files (excluding directories) in the given path that don’t start with '.'.
+
+Answer: for entry in os.scandir(path):
+	if not entry.name.startswith('.') and entry.is_file():
+		print(entry.name)
+
+Note: os.scandir(path='.') returns an iterator of DirEntry objects corresponding to the entries in the directory given by path. The entries are yielded in arbitrary order, and the special entries '.' and '..' are not included.
+
+Using scandir() instead of listdir() can significantly increase the performance of code that also needs file type or file attribute information, because DirEntry objects expose this information if the operating system provides it when scanning a directory. All DirEntry methods may perform a system call, but is_dir() and is_file() usually only require a system call for symbolic links; DirEntry.stat() always requires a system call on Unix but only requires one for symbolic links on Windows.
+
+###Question: Return a list containing the names of the entries in the current working directory
+
+Answer: import os
+os.listdir()
+
+Note: os.listdir(path='.')
+Return a list containing the names of the entries in the directory given by path. The list is in arbitrary order, and does not include the special entries '.' and '..' even if they are present in the directory. path may be either of type str or of type bytes. If path is of type bytes, the filenames returned will also be of type bytes; in all other circumstances, they will be of type str. This function can also support specifying a file descriptor; the file descriptor must refer to a directory.
+
+###Question: return list of each file (not directories) in teh current working directory in one line (variable name is 'entry')
+
+Answer: [entry for entry in os.scandir() if entry.is_file()]
+
+Note:
+
+###Question: define variables dirname and filename as name and directory of pathname = '/Users/nicholasatwood/Desktop/Python References/project_euler.txt' in one line. Then define the shortname and extension of the file.
+
+Answer: import os
+(dirname, filename) = os.path.split(pathname)
+(shortname, extension) = os.path.splitext(filename)
+
+Note: The split function splits a full pathname and returns a tuple containing the path and filename.
+②Remember when I said you could use multi-variable assignment to return multiple values from a function? The os.path.split() function does exactly that. You assign the return value of the split function into a tuple of two variables. Each variable receives the value of the corresponding element of the returned tuple.
+③The first variable, dirname, receives the value of the first element of the tuple returned from the os.path.split() function, the file path.
+④The second variable, filename, receives the value of the second element of the tuple returned from the os.path.split() function, the filename.
+⑤os.path also contains the os.path.splitext() function, which splits a filename and returns a tuple containing the filename and the file extension. You use the same technique to assign each of them to separate variables.
+
+###Question: The *** module is another tool in the Python standard library. It’s an easy way to get the contents of a directory programmatically, and it uses the sort of wildcards that you may already be familiar with from working on the command line.
+
+Answer: glob
+
+Note: The glob module finds all the pathnames matching a specified pattern according to the rules used by the Unix shell, although results are returned in arbitrary order. No tilde expansion is done, but *, ?, and character ranges expressed with [] will be correctly matched. This is done by using the os.listdir() and fnmatch.fnmatch() functions in concert, and not by actually invoking a subshell. Note that unlike fnmatch.fnmatch(), glob treats filenames beginning with a dot (.) as special cases. (For tilde and shell variable expansion, use os.path.expanduser() and os.path.expandvars().) For a literal match, wrap the meta-characters in brackets. For example, '[?]' matches the character '?'.
+
+###Question: get a list of all .py files in teh current directory that are larger than 6000 bytes
+
+Answer: import os, glob
+[f for f in glob.glob('*.py') if os.stat(f).st_size > 6000]
+
+Note:
+
+###Question: return info on when 'feed.xml' was last modified
+
+Answer: import os, time
+metadata = os.stat('feed.xml')
+time.localtime(metadata.st_mtime)
+
+Note:Calling the os.stat() function returns an object that contains several different types of metadata about the file. st_mtime is the modification time, but it’s in a format that isn’t terribly useful. (Technically, it’s the number of seconds since the Epoch, which is defined as the first second of January 1st, 1970. Seriously.)The time module is part of the Python standard library. It contains functions to convert between different time representations, format time values into strings, and fiddle with timezones. The time.localtime() function converts a time value from seconds-since-the-Epoch (from the st_mtime property returned from the os.stat() function) into a more useful structure of year, month, day, hour, minute, second, and so on. This file was last modified on July 13, 2009, at around 5:25 PM.
+
+###Question: construct the absolute pathname for file euler_solutions.py in the current working directory
+
+Answer: import os
+os.path.realpath('euler_solutions.py')
+
+Note: If you want to construct an absolute pathname — i.e. one that includes all the directory names back to the root directory or drive letter — then you’ll need the os.path.realpath() function.
+
+###Question: Use dictionary comprehension to construct a list of all the files in the current working directory (glob.glob('*')), get the file metadata for each file (os.stat(f)), and construct a dictionary whose keys are filenames and whose values are the metadata for each file. 
+Second dictionary comprehension builds on the previous comprehension, filters out files smaller than 6000 bytes (if meta.st_size > 6000), and uses that filtered list to construct a dictionary whose keys are the filename minus the extension (os.path.splitext(f)[0]) and whose values are the approximate size of each file (humansize.approximate_size(meta.st_size)). import os, glob, humansize already done
+
+Answer: metadata_dict = {f:os.stat(f) for f in glob.glob('*')}
+humansize_dict = {os.path.splitext(f)[0]:humansize.approximate_size(meta.st_size) for f, meta in metadata_dict.items() if meta.st_size > 6000}
+
+Note:>>> import os, glob, humansize
+>>> metadata_dict = {f:os.stat(f) for f in glob.glob('*')}                                  ①
+>>> humansize_dict = {os.path.splitext(f)[0]:humansize.approximate_size(meta.st_size) \     
+...                   for f, meta in metadata_dict.items() if meta.st_size > 6000}          ②
+>>> list(humansize_dict.keys())                                                             ③
+['romantest9', 'romantest8', 'romantest7', 'romantest6', 'romantest10', 'pluraltest6']
+>>> humansize_dict['romantest9']                                                            ④
+'6.5 KiB'
+
+###Question: swap the keys and values of a dictionary a_dict with immutable values
+
+Answer: {value:key for key, value in a_dict.items()}
+
+Note:>>> a_dict = {'a': 1, 'b': 2, 'c': 3}
+>>> {value:key for key, value in a_dict.items()}
+{1: 'a', 2: 'b', 3: 'c'}
+Of course, this only works if the values of the dictionary are immutable, like strings or tuples. If you try this with a dictionary that contains lists, it will fail most spectacularly.
+
+
+###Question: print a list of all items in a_dict = {'a': 1, 'b': 2, 'c': 3}
+
+Answer: a_dict.items()
+
+Note:>>> a_dict.items()
+dict_items([('a', 1), ('b', 2), ('c', 3)])
+
+###Question: a_set = set(range(10)) ; calculate the squares of the set of numbers from 0 to 9 (each number 'x'); filter out even values of a_set; create a set of two to the power  of all numbers from 0 to 9. (note: answer in three separate lines of code)
+
+Answer: {x ** 2 for x in a_set}
+{x for x in a_set if x % 2 == 0}
+{2 ** x for x in range(10)}
+
+Note: Not to be left out, sets have their own comprehension syntax as well. It is remarkably similar to the syntax for dictionary comprehensions. The only difference is that sets just have values instead of key:value pairs.
+
+###Question: ascii encoding, which stores English characters as numbers ranging from *******.
+
+Answer: 0 to 127
+
+Note:
+
+###Question: Then there are languages like Chinese, Japanese, and Korean, which have so many characters that they require multiple-byte character sets. That is, each “character” is represented by a two-byte number from ****
+
+Answer: 0 to 65535
+
+Note: But different multi-byte encodings still share the same problem as different single-byte encodings, namely that they each use the same numbers to mean different things. It’s just that the range of numbers is broader, because there are many more characters to represent.
+
+###Question:  is always 'A', even if your language doesn’t have an 'A' in it.
+
+Answer: U+0041
+
+Note:Unicode is a system designed to represent every character from every language. Unicode represents each letter, character, or ideograph as a 4-byte number. Each number represents a unique character used in at least one of the world’s languages. (Not all the numbers are used, but more than 65535 of them are, so 2 bytes wouldn’t be sufficient.) Characters that are used in multiple languages generally have the same number, unless there is a good etymological reason not to. Regardless, there is exactly 1 number per character, and exactly 1 character per number. Every number always means just one thing; there are no “modes” to keep track of. U+0041 is always 'A', even if your language doesn’t have an 'A' in it.
+
+###Question: UTF-8 is a ***** encoding system for Unicode. 
+
+Answer: variable-length
+
+Note: That is, different characters take up a different number of bytes. For ascii characters (A-Z, &c.) utf-8 uses just one byte per character. In fact, it uses the exact same bytes; the first 128 characters (0–127) in utf-8 are indistinguishable from ascii. “Extended Latin” characters like ñ and ö end up taking two bytes. (The bytes are not simply the Unicode code point like they would be in UTF-16; there is some serious bit-twiddling involved.) Chinese characters like 中 end up taking three bytes. The rarely-used “astral plane” characters take four bytes.
+
+###Question: string that prints "RobertFrost's password is birches"
+username = 'RobertFrost'
+password = 'birches'
+
+Answer: "{0}'s password is {1}".format(username, password)
+
+Note: 	There’s a lot going on here. First, that’s a method call on a string literal. Strings are objects, and objects have methods. Second, the whole expression evaluates to a string. Third, {0} and {1} are replacement fields, which are replaced by the arguments passed to the format() method.
+
+###Question: fill in the blank >>> import humansize
+>>> si_suffixes = humansize.SUFFIXES[1000]      ①
+>>> si_suffixes
+['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+>>> '1000{0[0]} = ******  ②
+'1000KB = 1MB'
+
+Answer: 1{0[1]}'.format(si_suffixes)
+
+Note:This looks complicated, but it’s not. {0} would refer to the first argument passed to the format() method, si_suffixes. But si_suffixes is a list. So {0[0]} refers to the first item of the list which is the first argument passed to the format() method: 'KB'. Meanwhile, {0[1]} refers to the second item of the same list: 'MB'. Everything outside the curly braces — including 1000, the equals sign, and the spaces — is untouched. The final result is the string '1000KB = 1MB'.
+
+###Question: fill in the blank 
+>>> import humansize
+>>> import sys
+>>> '1MB = 1000*****
+'1MB = 1000KB'
+
+Answer: {0.modules[humansize].SUFFIXES[1000][0]}'.format(sys)
+
+Note:Here’s how it works:
+The sys module holds information about the currently running Python instance. Since you just imported it, you can pass the sys module itself as an argument to the format() method. So the replacement field {0} refers to the sys module.
+sys.modules is a dictionary of all the modules that have been imported in this Python instance. The keys are the module names as strings; the values are the module objects themselves. So the replacement field {0.modules} refers to the dictionary of imported modules.
+sys.modules['humansize'] is the humansize module which you just imported. The replacement field {0.modules[humansize]} refers to the humansize module. Note the slight difference in syntax here. In real Python code, the keys of the sys.modules dictionary are strings; to refer to them, you need to put quotes around the module name (e.g. 'humansize'). But within a replacement field, you skip the quotes around the dictionary key name (e.g. humansize). To quote PEP 3101: Advanced String Formatting, “The rules for parsing an item key are very simple. If it starts with a digit, then it is treated as a number, otherwise it is used as a string.”
+sys.modules['humansize'].SUFFIXES is the dictionary defined at the top of the humansize module. The replacement field {0.modules[humansize].SUFFIXES} refers to that dictionary.
+sys.modules['humansize'].SUFFIXES[1000] is a list of si suffixes: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']. So the replacement field {0.modules[humansize].SUFFIXES[1000]} refers to that list.
+sys.modules['humansize'].SUFFIXES[1000][0] is the first item of the list of si suffixes: 'KB'. Therefore, the complete replacement field {0.modules[humansize].SUFFIXES[1000][0]} is replaced by the two-character string KB.
+
+###Question: fill in teh blank
+>>> import humansize
+>>> si_suffixes = humansize.SUFFIXES[1000]      ①
+>>> si_suffixes
+['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+>>> ********  ②
+'1000KB = 1MB'
+
+Answer: '1000{0[0]} = 1{0[1]}'.format(si_suffixes)
+
+Note: This looks complicated, but it’s not. {0} would refer to the first argument passed to the format() method, si_suffixes. But si_suffixes is a list. So {0[0]} refers to the first item of the list which is the first argument passed to the format() method: 'KB'. Meanwhile, {0[1]} refers to the second item of the same list: 'MB'. Everything outside the curly braces — including 1000, the equals sign, and the spaces — is untouched. The final result is the string '1000KB = 1MB'.
+
+###Question:  fill in teh blank so that size = 698.24 and suffix 'GB' returns '698.2 GB'
+if size < 0:
+	raise ValueError('number must be non-negative')
+    multiple = 1024 if a_kilobyte_is_1024_bytes else 1000
+    for suffix in SUFFIXES[multiple]:
+        size /= multiple
+        if size < multiple:
+            return ****
+
+Answer: '{0:.1f} {1}'.format(size, suffix)
+
+Note: {1} is replaced with the second argument passed to the format() method, which is suffix. But what is {0:.1f}? It’s two things: {0}, which you recognize, and :.1f, which you don’t. The second half (including and after the colon) defines the format specifier, which further refines how the replaced variable should be formatted.
+
+###Question: define by as a byte literal abcde
+
+Answer: by = b'abcd\x65'
+
+Note:>>> by
+b'abcde'
+To define a bytes object, use the b'' “byte literal” syntax. Each byte within the byte literal can be an ascii character or an encoded hexadecimal number from \x00 to \xff (0–255).
+
+###Question: convert a bytes object (by = b'abcd\x65') into a mutable bytearray object (barr),  
+
+Answer: barr = bytearray(by)
+
+Note:use the built-in bytearray() function.
+
+###Question: And here is the link between strings and bytes: bytes objects have a **** method that takes a character encoding and returns a string, and strings have an **** method that takes a character encoding and returns a bytes object. 
+
+Answer: decode(), encode()
+
+Note:
+
+###Question: In Python 2, the default encoding for .py files was ****. In Python 3, the default encoding is ****.
+
+Answer: ascii, utf-8
+
+Note:
+
+###Question: This declaration defines a .py file to be windows-1252:
+
+Answer: # -*- coding: windows-1252 -*-
+
+Note:
+
+###Question: regular expression reads “match (and 'ROAD' when it’s a whole word by itself anywhere in the string,” whether at the end, the beginning, or somewhere in the middle and replace it with 'RD.'. s = '100 BROAD'
+
+Answer: import re
+re.sub(r'\bROAD\b', 'RD.', s)
+
+Note:
+
+###Question: check if pattern = '^M?M?M?(CM|CD|D?C?C?C?)$' matches the string'MCM' 
+
+Answer: import re
+pattern = '^M?M?M?(CM|CD|D?C?C?C?)$'
+re.search(pattern, 'MCM')
+
+Note:
+
+###Question: copy the following verbose regular expression and then use it to see if it matches the letter 'M'
+pattern = '''
+^                   # beginning of string
+M{0,3}              # thousands - 0 to 3 Ms
+(CM|CD|D?C{0,3})    # hundreds - 900 (CM), 400 (CD), 0-300 (0 to 3 Cs),
+                    #            or 500-800 (D, followed by 0 to 3 Cs)
+(XC|XL|L?X{0,3})    # tens - 90 (XC), 40 (XL), 0-30 (0 to 3 Xs),
+                    #        or 50-80 (L, followed by 0 to 3 Xs)
+(IX|IV|V?I{0,3})    # ones - 9 (IX), 4 (IV), 0-3 (0 to 3 Is),
+                    #        or 5-8 (V, followed by 0 to 3 Is)
+$                   # end of string
+'''
+Answer:pattern = '''
+^ 					# beginning of string
+M{0,3}				# thousands - 0 to 3 Ms
+(CM|CD|D?C{0,3})	# hundreds - 900 (CM), 400 (CD), 0-300 (0 to 3 Cs),
+					#            or 500-800 (D, followed by 0 to 3 Cs)
+(XC|XL|L?X{0,3})	# tens - 90 (XC), 40 (XL), 0-30 (0 to 3 Xs),
+					#        or 50-80 (L, followed by 0 to 3 Xs)
+(IX|IV|V?I{0,3})	# ones - 9 (IX), 4 (IV), 0-3 (0 to 3 Is),
+					#        or 5-8 (V, followed by 0 to 3 Is)
+$					# end of string
+'''
+re.search(pattern, 'M', re.VERBOSE)
+
+Note: The most important thing to remember when using verbose regular expressions is that you need to pass an extra argument when working with them: re.VERBOSE is a constant defined in the re module that signals that the pattern should be treated as a verbose regular expression. As you can see, this pattern has quite a bit of whitespace (all of which is ignored), and several comments (all of which are ignored). Once you ignore the whitespace and the comments, this is exactly the same regular expression as you saw in the previous section, but it’s a lot more readable.  Python can’t auto-detect whether a regular expression is verbose or not. Python assumes every regular expression is compact unless you explicitly state that it is verbose.
+
+###Question: copy the following:
+>>> phonePattern = re.compile(r'''
+            # don't match beginning of string, number can start anywhere
+(\d{3})     # area code is 3 digits (e.g. '800')
+\D*         # optional separator is any number of non-digits
+(\d{3})     # trunk is 3 digits (e.g. '555')
+\D*         # optional separator
+(\d{4})     # rest of number is 4 digits (e.g. '1212')
+\D*         # optional separator
+(\d*)       # extension is optional and can be any number of digits
+$           # end of string
+''', re.VERBOSE)
+>>> phonePattern.search('work 1-(800) 555.1212 #1234').groups()  ①
+('800', '555', '1212', '1234')
+>>> phonePattern.search('800-555-1212')                          ②
+('800', '555', '1212', '')
+
+Answer: phonePattern = re.compile(r'''
+			# don't match beginning of string, number can start anywhere
+(\d{3})		# area code is 3 digits (e.g. '800')
+\D*			# optional separator is any number of non-digits
+(\d{3})		# trunk is 3 digits (e.g. '555')
+\D*			# optional separator
+(\d{4}) 	# rest of number is 4 digits (e.g. '1212')
+\D* 		# optional separator
+(\d*)		# extension is optional and can be any number of digits
+$			# end of string
+''', re.VERBOSE)
+phonePattern.search('work 1-(800) 555.1212 #1234').groups()
+phonePattern.search('800-555-1212')
+
+Note:
+
+###Question: find and replace singular 'y' with 'ies' using robust re and example of vancany --> vacancies
+
+Answer: import re
+re.sub('([^aeiou])y$', r'\1ies', 'vacancy')
+
+Note:This regular expression turns vacancy into vacancies and agency into agencies, which is what you wanted. Note that it would also turn boy into boies, but that will never happen in the function because you did that re.search first to find out whether you should do this re.sub. Just in passing, I want to point out that it is possible to combine these two regular expressions (one to find out if the rule applies, and another to actually apply it) into a single regular expression. Here’s what that would look like. Most of it should look familiar: you’re using a remembered group, which you learned in Case study: Parsing Phone Numbers. The group is used to remember the character before the letter y. Then in the substitution string, you use a new syntax, \1, which means “hey, that first group you remembered? put it right here.” In this case, you remember the c before the y; when you do the substitution, you substitute c in place of c, and ies in place of y. (If you have more than one remembered group, you can use \2 and \3 and so on.)
+
+
+###Question: write build_match_and_apply_functions() that builds other functions dynamically. It takes pattern, search and replace, then defines a matches_rule() function which calls re.search() with teh pattern that was passed to the build_match_and_appy_unfcionts() function, and the word that was passed to teh matchesrule() function you're building. 	Building the apply function works the same way. The apply function is a function that takes one parameter, and calls re.sub() with the search and replace parameters that were passed to the build_match_and_apply_functions() function, and the word that was passed to the apply_rule() function you’re building. This technique of using the values of outside parameters within a dynamic function is called closures. You’re essentially defining constants within the apply function you’re building: it takes one parameter (word), but it then acts on that plus two other values (search and replace) which were set when you defined the apply function. Finally, the build_match_and_apply_functions() function returns a tuple of two values: the two functions you just created. The constants you defined within those functions (pattern within the matches_rule() function, and search and replace within the apply_rule() function) stay with those functions, even after you return from build_match_and_apply_functions(). That’s insanely cool.
+
+Answer: import re
+def build_match_and_apply_functions(pattern, search, replace):
+	def matches_rule(word):
+		return re.search(pattern, word)
+	def apply_rule(word):
+		return re.sub(search, replace, word)
+	return (matches_rule, apply_rule)
+
+Note:
+
+###Question: fill in the rules variable which is magic. It takes the sequence of strings in patterns and turns them into a sequence of functions. How? By “mapping” the strings to the build_match_and_apply_functions() function. That is, it takes each triplet of strings and calls the build_match_and_apply_functions() function with those three strings as arguments. The build_match_and_apply_functions() function returns a tuple of two functions. This means that rules ends up being functionally equivalent to the previous example: a list of tuples, where each tuple is a pair of functions. The first function is the match function that calls re.search(), and the second function is the apply function that calls re.sub().
+
+patterns = \
+	(
+	('[sxz]$',           '$',  'es'),
+	('[^aeioudgkprt]h$', '$',  'es'),
+	('(qu|[^aeiou])y$',  'y$', 'ies'),
+	('$',                '$',  's')
+	)
+rules = ******
+
+Answer: [build_match_and_apply_functions(pattern, search, replace) for (pattern, search, replace) in patterns]
+
+Note: Our pluralization “rules” are now defined as a tuple of tuples of strings (not functions). The first string in each group is the regular expression pattern that you would use in re.search() to see if this rule matches. The second and third strings in each group are the search and replace expressions you would use in re.sub() to actually apply the rule to turn a noun into its plural.
+
+###Question: define pattern, search and replace as the three items on each line of plural-rules.txt below:
+[sxz]$               $    es
+[^aeioudgkprt]h$     $    es
+[^aeiou]y$          y$    ies
+$                    $    s
+
+Answer: with open('plural-rules.txt', encoding='utf-8') as pattern_file:
+	for line in pattern_file:
+		pattern, search, replace = line.split(None, 2)
+
+Note: 	Each line in the file really has three values, but they’re separated by whitespace (tabs or spaces, it makes no difference). To split it out, use the split() string method. The first argument to the split() method is None, which means “split on any whitespace (tabs or spaces, it makes no difference).” The second argument is 2, which means “split on whitespace 2 times (splitting once returns two values, splitting twice returns three values, and so on), then leave the rest of the line alone.” A line like [sxz]$ $ es will be broken up into the list ['[sxz]$', '$', 'es'], which means that pattern will get '[sxz]$', search will get '$', and replace will get 'es'. That’s a lot of power in one little line of code.
+
+###Question: define a generator make_counter that starts counting rom the number x and prints 'entering make_counter' when it starts and 'incrementing x' each time it counts up by one. then make it print 'entering make_counter \n 2' and 'incrementing x \n 3'
+
+Answer: def make_counter(x):
+	print('entering make_counter')
+	while True:
+		yield x
+		print('incrementing x')
+		x = x + 1
+counter = make_counter(2)
+next(counter)
+next(counter)
+
+Note:>>> counter = make_counter(2)          ②
+>>> counter                            ③
+<generator object at 0x001C9C10>
+>>> next(counter)                      ④
+entering make_counter
+2
+>>> next(counter)                      ⑤
+incrementing x
+3
+>>> next(counter)                      ⑥
+incrementing x
+Repeatedly calling next() with the same generator object resumes exactly where it left off and continues until it hits the next yield statement. All variables, local state, &c. are saved on yield and restored on next(). The next line of code waiting to be executed calls print(), which prints incrementing x. After that, the statement x = x + 1. Then it loops through the while loop again, and the first thing it hits is the statement yield x, which saves the state of everything and returns the current value of x (now 3).
+
+
+###Question: define a f fibonacci generator that goes up to max. Then iterate through the entire generator up to 1000 and return a list of all values
+
+Answer: def fib(max):
+	a, b = 0, 1
+	while a < max:
+		yield a
+		a, b, = b, a + b
+list(fib(1000))
+
+Note: This is a useful idiom: pass a generator to the list() function, and it will iterate through the entire generator (just like the for loop in the previous example) and return a list of all the values.
+
+###Question: build the Fibonacci generator from scratch. HInt:
+class Fib:
+    '''iterator that yields numbers in the Fibonacci sequence'''
+
+    def ****(****, ****):
+        **** = max
+
+    def ******(****):
+        self.a = 0
+        self.b = 1
+        return self
+
+    def ******(****):
+        fib = *****
+        if fib > *****:
+            raise ********
+        ****, self.b = *****, **** + *****
+        return fib
+
+Answer:class Fib:
+	'''iterator that yields numbers in the Fibonacci sequence'''
+
+	def __init__(self, max):
+		self.max = max
+
+	def __iter__(self):
+		self.a = 0
+		self.b = 1
+		return self
+
+	def __next__(self):
+		fib = self.a
+		if fib > self.max:
+			raise StopIteration
+		self.a, self.b = self.b, self.a + self.b
+		return fib
+
+Note:An iterator is just a class that defines an __iter__() method.To build an iterator from scratch, Fib needs to be a class, not a function. 	“Calling” Fib(max) is really creating an instance of this class and calling its __init__() method with max. The __init__() method saves the maximum value as an instance variable so other methods can refer to it later. 
+The __iter__() method is called whenever someone calls iter(fib). (As you’ll see in a minute, a for loop will call this automatically, but you can also call it yourself manually.) After performing beginning-of-iteration initialization (in this case, resetting self.a and self.b, our two counters), the __iter__() method can return any object that implements a __next__() method. In this case (and in most cases), __iter__() simply returns self, since this class implements its own __next__() method.
+The __next__() method is called whenever someone calls next() on an iterator of an instance of a class. That will make more sense in a minute.
+When the __next__() method raises a StopIteration exception, this signals to the caller that the iteration is exhausted. Unlike most exceptions, this is not an error; it’s a normal condition that just means that the iterator has no more values to generate. If the caller is a for loop, it will notice this StopIteration exception and gracefully exit the loop. (In other words, it will swallow the exception.) This little bit of magic is actually the key to using iterators in for loops.
+To spit out the next value, an iterator’s __next__() method simply returns the value. Do not use yield here; that’s a bit of syntactic sugar that only applies when you’re using generators. Here you’re creating your own iterator from scratch; use return instead.
+
+###Question: call the iterator Fib from module fibonacci2 and print all fib numbers up less than 1000 on a single line separated by space (note, don't print as a list)
+
+Answer: from fibonacci2 import Fib
+for n in Fib(1000):
+	print(n, end=' ')
+
+Note:The for loop calls Fib(1000), as shown. This returns an instance of the Fib class. Call this fib_inst.
+Secretly, and quite cleverly, the for loop calls iter(fib_inst), which returns an iterator object. Call this fib_iter. In this case, fib_iter == fib_inst, because the __iter__() method returns self, but the for loop doesn’t know (or care) about that.
+To “loop through” the iterator, the for loop calls next(fib_iter), which calls the __next__() method on the fib_iter object, which does the next-Fibonacci-number calculations and returns a value. The for loop takes this value and assigns it to n, then executes the body of the for loop for that value of n.
+How does the for loop know when to stop? I’m glad you asked! When next(fib_iter) raises a StopIteration exception, the for loop will swallow the exception and gracefully exit. (Any other exception will pass through and be raised as usual.) And where have you seen a StopIteration exception? In the __next__() method, of course!
+
+###Question: what are the class attributes in alphabetical order separated by commas
+
+Answer: __bases__, __dict__, __doc__, __module__, __mro__, __name__
+
+Note:
+
+###Question: list the names you have currently defined
+
+Answer: print(dir())
+
+Note: The built-in function dir() is used to find out which names a module defines. It returns a sorted list of strings. dir() does not list the names of built-in functions and variables. If you want a list of those, they are defined in the standard module builtins: 
+import builtins
+dir(builtins)
+
+###Question: fill in teh [blanks] 
+class LazyRules:
+	rules_filename = 'plural6-rules.txt'
+
+	def __init__(self):
+		[	When we instantiate the LazyRules class, open the pattern file but don’t read anything from it. (That comes later.)] ①
+		[After opening the patterns file, initialize the cache. You’ll use this cache later (in the __next__() method) as you read lines from the pattern file.]  ②
+
+Answer: self.pattern_file = open(self.rules_filename, encoding='utf-8')
+self.cache = [] 
+
+Note:
+
+###Question: what kind of variable is rules_filename?
+class LazyRules:
+    rules_filename = 'plural6-rules.txt'
+
+    def __init__(self):
+        self.pattern_file = open(self.rules_filename, encoding='utf-8')  ①
+        self.cache = []                                                  ②
+
+Answer: class variable
+
+Note:Before we continue, let’s take a closer look at rules_filename. It’s not defined within the __iter__() method. In fact, it’s not defined within any method. It’s defined at the class level. It’s a class variable, and although you can access it just like an instance variable (self.rules_filename), it is shared across all instances of the LazyRules class.
+
+###Question: change the class attribute rules_filename to new_text.txt. assume instance of the class r2 has already been created. 
+
+Answer: r2.__class__.rules_filename = 'new_text.txt'
+
+Note:You can access the class attribute (as opposed to an individual instance’s attribute) by using the special __class__ attribute to access the class itself. 	If you change the class attribute, all instances that are still inheriting that value (like r1 here) will be affected. 	Instances that have overridden that attribute (like r2 here) will not be affected, i.e. 
+r2.rules_filename = 'r2-override.txt' 
+r2.__class__.rules_filename = 'papayawhip.txt' 
+>>> r1.rules_filename
+'papayawhip.txt'
+>>> r2.rules_filename                             
+'r2-overridetxt'
+
+	###Question: decode this:
+	text = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
+
+	Answer: ''.join([chr(ord(i)+2) if i.isalpha() else i for i in text])
+
+	Note: i hope you didnt tr{nsl{te it |y h{nd. th{ts wh{t computers {re for. doing it in |y h{nd is inefficient {nd th{t's why this text is so long. using string.m{ketr{ns() is recommended. now {pply on the url. FIGURE OUT HOW TO SOLVE USING str.maketrans()!!
+
+###Question: decode this using str.maketrans()
+text = "g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."
+
+Answer: a = ''
+b = ''
+for i in range(26):
+	a += chr(97+i)
+	b += chr(99+i)
+xmap = str.maketrans(a, b[:-2]+'ab')
+print(text.translate(xmap))
+
+Note: output
+i hope you didnt translate it by hand. thats what computers are for. doing it in by hand is inefficient and that's why this text is so long. using string.maketrans() is recommended. now apply on the url.
+
+ Following is the syntax for maketrans() method −
+str.maketrans(intab, outtab)
+Parameters
+intab -- This is the string having actual characters.
+outtab -- This is the string having corresponding mapping character.
+Return Value
+This method returns a translate table to be used translate() function.
+
+###Question:  decode this using maketrans() and string module
+
+Answer:import string
+table = string.maketrans(string.ascii_lowercase, string.ascii_lowercase[2:]+string.ascii_lowercase[:2])
+string.translate(text,table)
+
+Note: Alternatively, just use the translate on the "text" variable:
+text.translate(table)
+
+###Question: the **** module puts iterators on steroids
+
+Answer: itertools
+
+Note:
+
+###Question: The *** statement is followed by any valid Python expression. In this case, the expression 1 + 1 == 2 evaluates to True, so the [***] statement does nothing. However, if the Python expression evaluates to False, the [***] statement will raise an ***.
+
+Answer: assert, AssertionError
+
+Note:
+
+###Question: write one line that prints 'AssertionError: you are an asshole' if the number of items in list_a is greater than 10
+
+Answer: assert len(list_a) <= 10, 'you are an asshole'
+
+Note:	You can also include a human-readable message that is printed if the AssertionError is raised.
+
+###Question: create a generator (named gen) that returns the Unicode code point for each of the one-character strings (c) in the set unique_characters = {'E', 'D', 'M', 'O', 'N', 'S', 'R', 'Y'}.  Then get the next value from the iterator returned by the generator gen.
+
+Answer: gen = (ord(c) for c in unique_characters)
+next(gen)
+
+Note: A generator expression is like an anonymous function that yields values. The expression itself looks like a list comprehension, but it’s wrapped in parentheses instead of square brackets. 
+If you like, you can iterate through all the possible values and return a tuple, list, or set, by passing the generator expression to tuple(), list(), or set(). In these cases, you don’t need an extra set of parentheses — just pass the “bare” expression ord(c) for c in unique_characters to the tuple() function, and Python figures out that it’s a generator expression: e.g., >>>tuple(ord(c) for c in unique_characters)
+Using a generator expression instead of a list comprehension can save both cpu and ram. If you’re building an list just to throw it away (e.g. passing it to tuple() or set()), use a generator expression instead!
+
+###Question: list permutations of list 1,2,3 taken two at a time
+
+Answer: import itertools
+list(itertools.permutations([1, 2, 3], 2))
+
+Note: this yields 
+[(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
+could also create it as an iterator, e.g. perms = itertools.permutations([1, 2, 3], 2)
+>>> next(perms)
+(1, 2)
+
+###Question: list permutations of letters ABC taken three at a time
+
+Answer: import itertools
+list(itertools.permutations('ABC', 3))
+
+Note: [('A', 'B', 'C'),
+ ('A', 'C', 'B'),
+ ('B', 'A', 'C'),
+ ('B', 'C', 'A'),
+ ('C', 'A', 'B'),
+ ('C', 'B', 'A')]
+
+###Question: list combinations of letters ABC taken two at a time
+
+Answer:import itertools
+list(itertools.combinations('ABC', 2))
+
+Note:
+
+###Question: names = ['Dora', 'Ethan', 'Wesley', 'John', 'Anne',
+'Mike', 'Chris', 'Sarah', 'Alex', 'Lizzie'].  Sort names alphabetically.  Then sort the names by length.
+
+Answer: names = sorted(names)
+names = sorted(names, key=len)
+
+Note:③	The sorted() function takes a list and returns it sorted. By default, it sorts alphabetically.
+④	But the sorted() function can also take a function as the key parameter, and it sorts by that key. In this case, the sort function is len(), so it sorts by len(each item). Shorter names come first, then longer, then longest.
+
+###Question: input is 'ABC', '123'.  Return:
+[('A', '1'), ('A', '2'), ('A', '3'), 
+('B', '1'), ('B', '2'), ('B', '3'), 
+('C', '1'), ('C', '2'), ('C', '3')]
+
+Answer: import itertools
+list(itertools.product('ABC', '123'))
+
+Note: The itertools.product() function returns an iterator containing the Cartesian product of two sequences.
+
+###Question: names = ['Dora', 'Ethan', 'Wesley', 'John', 'Anne',
+'Mike', 'Chris', 'Sarah', 'Alex', 'Lizzie']. write one line of code (assuming import itertools) that returns this:
+[(4, <itertools._grouper at 0x10468a438>),
+ (5, <itertools._grouper at 0x10468a828>),
+ (6, <itertools._grouper at 0x10468a1d0>)]
+
+Answer: list(itertools.groupby(sorted(names, key=len), len))
+
+Note:	The itertools.groupby() function takes a sequence and a key function, and returns an iterator that generates pairs. Each pair contains the result of key_function(each item) and another iterator containing all the items that shared that key result. 	In this example, given a list of names already sorted by length, itertools.groupby(names, len) will put all the 4-letter names in one iterator, all the 5-letter names in another iterator, and so on. The groupby() function is completely generic; it could group strings by first letter, numbers by their number of factors, or any other key function you can think of. 	Calling the list() function “exhausted” the iterator, i.e. you’ve already generated every item in the iterator to make the list. There’s no “reset” button on an iterator; you can’t just start over once you’ve exhausted it. If you want to loop through it again (say, in the upcoming for loop), you need to call itertools.groupby() again to create a new iterator.
+
+###Question: names = ['Dora', 'Ethan', 'Wesley', 'John', 'Anne',
+'Mike', 'Chris', 'Sarah', 'Alex', 'Lizzie']. write on line of code (assuming import itertools) that returns this:
+[(4, <itertools._grouper at 0x10467eef0>),
+ (5, <itertools._grouper at 0x10467ecc0>),
+ (6, <itertools._grouper at 0x10467e978>),
+ (4, <itertools._grouper at 0x10467e630>),
+ (5, <itertools._grouper at 0x10467ea58>),
+ (4, <itertools._grouper at 0x10467e9e8>),
+ (6, <itertools._grouper at 0x10467e668>)]
+
+Answer:list(itertools.groupby(names, len))
+
+Note: The itertools.groupby() function only works if the input sequence is already sorted by the grouping function. In the example above, you didn't group a list of names by the len() function. If you did, the input list was already sorted by length, and itertools.groupby() returns:
+[(4, <itertools._grouper at 0x104679cc0>),
+ (5, <itertools._grouper at 0x104679cf8>),
+ (6, <itertools._grouper at 0x104679d30>)] - i.e. where all 4, 5, 6 letter names are grouped togetehr.
+
+###Question: >>> list(range(0, 3))
+[0, 1, 2]
+>>> list(range(10, 13))
+[10, 11, 12]
+return [0, 1, 2, 10, 11, 12] in one line of code (assuming import itertools)
+
+Answer: list(itertools.chain(range(0, 3), range(10, 13)))
+
+Note: The itertools.chain() function takes two iterators and returns an iterator that contains all the items from the first iterator, followed by all the items from the second iterator. (Actually, it can take any number of iterators, and it chains them all in the order they were passed to the function.)
+
+###Question: return [(0, 10), (1, 11), (2, 12)] without itertools in one line
+
+Answer: list(zip(range(0, 3), range(10, 13))) 
+
+Note: list(enumerate(range(10,13))) also works 
+remember range(x, y) NOT range(x : y)!!!!!
+
+###Question: return [(0, 10), (1, 11), (2, 12), (None, 13)] (itertools imported already)
+
+Answer: list(itertools.zip_longest(range(0, 3), range(10, 14)))
+
+Note:>>> list(zip(range(0, 3), range(10, 14)))                    ③
+[(0, 10), (1, 11), (2, 12)]
+>>> list(itertools.zip_longest(range(0, 3), range(10, 14)))  ④
+[(0, 10), (1, 11), (2, 12), (None, 13)]
+③	The zip() function stops at the end of the shortest sequence. range(10, 14) has 4 items (10, 11, 12, and 13), but range(0, 3) only has 3, so the zip() function returns an iterator of 3 items.
+④	On the other hand, the itertools.zip_longest() function stops at the end of the longest sequence, inserting None values for items past the end of the shorter sequences.¬
+
+###Question: >>> characters = ('S', 'M', 'E', 'D', 'O', 'N', 'R', 'Y')
+>>> guess = ('1', '2', '0', '3', '4', '5', '6', '7')
+return:
+(('S', '1'), ('M', '2'), ('E', '0'), ('D', '3'),
+ ('O', '4'), ('N', '5'), ('R', '6'), ('Y', '7'))
+ and then...
+{'E': '0', 'D': '3', 'M': '2', 'O': '4',
+ 'N': '5', 'S': '1', 'R': '6', 'Y': '7'}
+ two lines of code
+
+
+Answer: tuple(zip(characters, guess))
+dict(zip(characters, guess))
+
+
+Note: Given a list of letters and a list of digits (each represented here as 1-character strings), the zip function will create a pairing of letters and digits, in order.
+Why is that cool? Because that data structure happens to be exactly the right structure to pass to the dict() function to create a dictionary that uses letters as keys and their associated digits as values. (This isn’t the only way to do it, of course. You could use a dictionary comprehension to create the dictionary directly.) Although the printed representation of the dictionary lists the pairs in a different order (dictionaries have no “order” per se), you can see that each letter is associated with the digit, based on the ordering of the original characters and guess sequences.
+
+###Question: return (48, 49, 50, 51, 52, 53, 54, 55, 56, 57)
+
+Answer: tuple(ord(c) for c in '0123456789')
+
+Note: >>>tuple(chr(c) for c in (tuple(ord(c) for c in '0123456789')))
+('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
+###Question: eval("x * 5", {}, {})   ; 	The second and third parameters passed to the eval() function act as the *** and *** *** for evaluating the expression. 
+
+Answer: global, local, namespaces
+
+Note:In this case, they are both empty, which means that when the string "x * 5" is evaluated, there is no reference to x in either the global or local namespace, so eval() throws an exception.
+>>> x = 5
+>>> eval("x * 5", {}, {})              
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<string>", line 1, in <module>
+NameError: name 'x' is not defined
+
+
+###Question: >>> x = 5
+>>> eval("x * 5", {"x": x}, {})
+what does this return?
+
+Answer: 25
+
+Note: You can selectively include specific values in the global namespace by listing them individually. Then those — and only those — variables will be available during evaluation.
+>>> import math
+>>> eval("math.sqrt(x)", {"x": x}, {})  ③
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<string>", line 1, in <module>
+NameError: name 'math' is not defined
+③	Even though you just imported the math module, you didn’t include it in the namespace passed to the eval() function, so the evaluation failed.
+
+
+###Question: eval("pow(5, 2)", {}, {}) returns an error, True or False? 
+
+Answer: False
+
+Note: returns 25; Even though you’ve passed empty dictionaries for the global and local namespaces, all of Python’s built-in functions are still available during evaluation. So pow(5, 2) works, because 5 and 2 are literals, and pow() is a built-in function.
+
+###Question: type full eval expression so you get sqrt(5) = 2.236; >>>eval(***, {}, {}) 
+
+Answer: eval("__import__('math').sqrt(5)", {}, {})
+
+Note:Unfortunately (and if you don’t see why it’s unfortunate, read on), the __import__() function is also a built-in function, so it works too.Yeah, that means you can still do nasty things, even if you explicitly set the global and local namespaces to empty dictionaries when calling eval(): >>> eval("__import__('subprocess').getoutput('rm /some/random/file')", {}, {}). The subprocess module allows you to run arbitrary shell commands and get the result as a Python string.
+
+###Question: The *** module allows you to run arbitrary shell commands and get the result as a Python string.
+
+Answer: subprocess
+
+Note: 	Arbitrary shell commands can have permanent consequences when coupled with eval(), which is EVIL.
+
+###Question: modify so that you can evaluate untrusted expressions safely... eval("__import__('math').sqrt(5)", {}, {})
+
+Answer: eval("__import__('math').sqrt(5)", {"__builtins__":None}, {})
+
+Note:	To evaluate untrusted expressions safely, you need to define a global namespace dictionary that maps "__builtins__" to None, the Python null value. Internally, the “built-in” functions are contained within a pseudo-module called "__builtins__". This pseudo-module (i.e. the set of built-in functions) is made available to evaluated expressions unless you explicitly override it.
+
+###Question: program solves alphametic puzzle by:
+1. Finds all the letters in the puzzle with the *** function
+2. Find all the unique letters in the puzzle with sets and the *** function
+3. Checks if there are more than 10 unique letters (meaning the puzzle is definitely unsolvable) with an *** statement
+4. Converts the letters to their ASCII equivalents with a *** object
+5. Calculates all the possible solutions with the *** function
+6. Converts each possible solution to a Python expression with the *** string method
+7. Tests each possible solution by evaluating the Python expression with the *** function
+8. Returns the first solution that evaluates to True
+
+Answer: re.findall(), set(), assert, generator, generator, translate(), eval()
+
+Note:
+
+###Question: So far, all we know is that Python has a built-in function called ***. The [***] function returns a ***, which has methods and attributes for getting information about and manipulating a ***.
+
+Answer: open(), stream object, stream of characters
+
+Note:
+
+###Question: open chinese.txt as a_file with utf8 encoding and get the name, encoding and mode in 4 lines.  Then read from the file
+
+Answer:a_file = open('chinese.txt', encoding='utf-8')
+a_file.name
+a_file.encoding
+a_file.mode
+a_file.read()
+
+Note:	
+①	The name attribute reflects the name you passed in to the open() function when you opened the file. It is not normalized to an absolute pathname.
+②	Likewise, encoding attribute reflects the encoding you passed in to the open() function. If you didn’t specify the encoding when you opened the file (bad developer!) then the encoding attribute will reflect locale.getpreferredencoding().
+③	The mode attribute tells you in which mode the file was opened. You can pass an optional mode parameter to the open() function. You didn’t specify a mode when you opened this file, so Python defaults to 'r', which means “open for reading only, in text mode.” As you’ll see later in this chapter, the file mode serves several purposes; different modes let you write to a file, append to a file, or open a file in binary mode (in which you deal with bytes instead of strings).
+>>> a_file = open('examples/chinese.txt', encoding='utf-8')
+>>> a_file.name                                              
+'examples/chinese.txt'
+>>> a_file.encoding                                          
+'utf-8'
+>>> a_file.mode                                              
+'r'
+
+###Question: What if you want to re-read a file? Since you’re still at the end of the file, further calls to the stream object’s read() method simply return an ***.
+
+Answer: empty string
+
+Note:>>> a_file = open('examples/chinese.txt', encoding='utf-8')
+>>> a_file.read()                                            ①
+'Dive Into Python 是为有经验的程序员编写的一本 Python 书。\n'
+>>> a_file.read()                                            ②
+''
+
+###Question: display website='www.baidu.com' in a jupyter notebook
+
+Answer: from IPython.display import HTML
+HTML('<iframe src=http://{0} width=700 height=500></iframe>'.format(website))
+
+Note:
+
+###Question: return a dictionary of all imported modules
+
+Answer:import sys
+sys.modules
+
+Note: sys.modules is a dictionary of all the modules that have been imported in this Python instance. The keys are the module names as strings; the values are the module objects themselves. So the replacement field {0.modules} in, e.g, {0.modules[humansize].SUFFIXES[1000][0]}'.format(sys), refers to the dictionary of imported modules.
+
+###Question: Create a new function called function:
+Make a global variable b inside the function.
+Assign the value 20 to b inside the function.
+Call the function.
+Print out b.
+
+Answer:def function():
+	global b
+	b = 20
+
+function()
+print(b)
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

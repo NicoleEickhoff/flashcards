@@ -1,0 +1,691 @@
+###Question: drop the rows indexed 243 to the end of the dataframe energy
+
+Answer: energy.drop(energy.ix[243:].index)
+
+Note:
+
+###Question: Convert Energy Supply to gigajoules (there are 1,000,000 gigajoules in a petajoule). For all countries which have missing data (e.g. data with "...") make sure this is reflected as np.NaN values. 
+
+Answer: import numpy as np
+energy['Energy Supply'][energy['Energy Supply'].map(lambda x: not isinstance(x, int))] = np.nan
+energy['Energy Supply per Capita'][energy['Energy Supply per Capita'].map(lambda x: not isinstance(x, int))] = np.nan
+
+Note: alternative 
+energy['Energy Supply per Capita'].replace("...", np.nan, inplace=True)
+energy['Energy Supply'].replace("...", np.nan, inplace=True)
+
+###Question:In [21]: df = pd.DataFrame({'a':['Small', 'Medium', 'High']})
+
+In [22]: df
+Out[22]: 
+        a
+0   Small
+1  Medium
+2    High
+
+In[23]:***
+
+Out[23]: 
+   a
+0  1
+1  2
+2  3
+
+Answer: df.replace({'a' : { 'Medium' : 2, 'Small' : 1, 'High' : 3 }})
+
+Note:
+
+###Question: There are also several countries with numbers and/or parenthesis in their name. Be sure to remove these,
+e.g.
+'Bolivia (Plurinational State of)' should be 'Bolivia',
+'Switzerland17' should be 'Switzerland'. 
+
+Answer: energy['Country'] = energy['Country'].str.replace(r'\d', '')
+energy['Country'] = energy['Country'].str.replace(r'\(.*\)', '')
+
+Note:
+
+###Question: add new column 'Date' for with December for first row and mid-May for third row after resetting index . use 'df' as dataframe variable name
+
+Answer: df = df.reset_index
+df['Date'] = pd.Series({0: 'December 1', 2: 'mid-May'})
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'Name': 'Kelly', 'Role': 'Director of HR'},
+                        {'Name': 'Sally', 'Role': 'Course liaison'},
+                        {'Name': 'James', 'Role': 'Grader'}])
+staff_df = staff_df.set_index('Name')
+student_df = pd.DataFrame([{'Name': 'James', 'School': 'Business'},
+                          {'Name': 'Mike', 'School': 'Law'},
+                          {'Name': 'Sally', 'School': 'Engineering'}])
+student_df = student_df.set_index('Name')
+return this...
+
+        Role            School
+Name            
+James   Grader          Business
+Kelly   Director of HR  NaN
+Mike    NaN             Law
+Sally   Course liaison  Engineering
+
+
+Answer:pd.merge(staff_df, student_df, how='outer', left_index=True, right_index=True)
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'Name': 'Kelly', 'Role': 'Director of HR'},
+                        {'Name': 'Sally', 'Role': 'Course liaison'},
+                        {'Name': 'James', 'Role': 'Grader'}])
+staff_df = staff_df.set_index('Name')
+student_df = pd.DataFrame([{'Name': 'James', 'School': 'Business'},
+                          {'Name': 'Mike', 'School': 'Law'},
+                          {'Name': 'Sally', 'School': 'Engineering'}])
+student_df = student_df.set_index('Name')
+return this...
+
+
+        Role            School
+Name                    
+James   Grader          Business
+Sally   Course liaison  Engineering
+
+Answer: pd.merge(staff_df, student_df, how='inner', left_index=True, right_index=True)
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'Name': 'Kelly', 'Role': 'Director of HR'},
+                        {'Name': 'Sally', 'Role': 'Course liaison'},
+                        {'Name': 'James', 'Role': 'Grader'}])
+staff_df = staff_df.set_index('Name')
+student_df = pd.DataFrame([{'Name': 'James', 'School': 'Business'},
+                          {'Name': 'Mike', 'School': 'Law'},
+                          {'Name': 'Sally', 'School': 'Engineering'}])
+student_df = student_df.set_index('Name')
+return this...
+
+
+        Role            School
+Name            
+Kelly   Director of HR  NaN
+Sally   Course liaison  Engineering
+James   Grader          Business
+
+Answer: pd.merge(staff_df, student_df, how='left', left_index=True, right_index=True)
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'Name': 'Kelly', 'Role': 'Director of HR'},
+                        {'Name': 'Sally', 'Role': 'Course liaison'},
+                        {'Name': 'James', 'Role': 'Grader'}])
+staff_df = staff_df.set_index('Name')
+student_df = pd.DataFrame([{'Name': 'James', 'School': 'Business'},
+                          {'Name': 'Mike', 'School': 'Law'},
+                          {'Name': 'Sally', 'School': 'Engineering'}])
+student_df = student_df.set_index('Name')
+return this...
+
+
+        Role            School
+Name            
+James   Grader          Business
+Mike    NaN             Law
+Sally   Course liaison  Engineering
+
+Answer: pd.merge(staff_df, student_df, how='right', left_index=True, right_index=True)
+
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'Name': 'Kelly', 'Role': 'Director of HR'},
+                        {'Name': 'Sally', 'Role': 'Course liaison'},
+                        {'Name': 'James', 'Role': 'Grader'}])
+staff_df = staff_df.set_index('Name')
+student_df = pd.DataFrame([{'Name': 'James', 'School': 'Business'},
+                          {'Name': 'Mike', 'School': 'Law'},
+                          {'Name': 'Sally', 'School': 'Engineering'}])
+student_df = student_df.set_index('Name')
+
+return this...
+
+        Name    Role            School
+0       Kelly   Director of HR  NaN
+1       Sally   Course liaison  Engineering
+2       James   Grader          Business 
+
+Answer: staff_df = staff_df.reset_index()
+student_df = student_df.reset_index()
+pd.merge(staff_df, student_df, how='left', left_on='Name', right_on='Name')
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'Name': 'Kelly', 'Role': 'Director of HR', 'Location': 'State Street'},
+                       {'Name': 'Sally', 'Role': 'Course liaison', 'Location': 'Washington Avenue'},
+                       {'Name': 'james', 'Role': 'Grader', 'Location': 'Washington Avenue'}])
+
+student_df = pd.DataFrame([{'Name': 'James', 'School': 'Business', 'Location': '1024 Billiard Avenue'},
+                          {'Name': 'Mike', 'School': 'Law', 'Location': 'Fraternity House #22'},
+                          {'Name': 'Sally', 'School': 'Engineering', 'Location': '512 Wilson Crescent'}])
+
+return...
+
+        Location_x               Name    Role           Location_y              School
+0       State Street            Kelly   Director of HR  NaN                     NaN
+1       Washington Avenue       Sally   Course liaison  512 Wilson Crescent     Engineering
+2       Washington Avenue       james   Grader          NaN                      NaN
+
+Answer: pd.merge(staff_df, student_df, how='left', left_on='Name', right_on='Name')
+
+Note:
+
+###Question: staff_df = pd.DataFrame([{'First Name': 'Kelly', 'Last Name': 'Desjardins', 'Role': 'Director of HR'},
+                        {'First Name': 'Sally', 'Last Name': 'Brooks', 'Role': 'Course liaison'},
+                        {'First Name': 'James', 'Last Name': 'Wilde', 'Role': 'Grader'}])
+student_df = pd.DataFrame([{'First Name': 'James', 'Last Name': 'Hammond', 'School': 'Business'},
+                          {'First Name': 'Mike', 'Last Name': 'Smith', 'School': 'Law'},
+                          {'First Name': 'Sally', 'Last Name': 'Brooks', 'School': 'Engineering'}])
+return...
+  First Name Last Name            Role       School
+0      Sally    Brooks  Course liaison  Engineering
+
+Answer: pd.merge(staff_df, student_df, how='inner', left_on=['First Name', 'Last Name'], right_on=['First Name', 'Last Name'])
+
+Note:
+
+###Question: drop columns with names of the year from 1960 through 2004
+
+Answer: columns_to_drop = [str(y) for y in range(1960, 2005)]
+df = df.drop(columns_to_drop, axis=1)
+
+Note:
+
+###Question: find the average of values in the 'CENSUS2010POP' column for each state, and time it for 10 tries. print 'Counties in state ' + group + 'have an average population of ' + str(avg)
+
+df.head()
+SUMLEV  REGION  DIVISION  STATE COUNTY  STNAME  CTYNAME CENSUS2010POP ESTIMATESBASE2010
+1 50  3 6 1 1 Alabama Autauga County  54571 54571
+2 50  3 6 1 3 Alabama Baldwin County  182265  182265
+3 50  3 6 1 5 Alabama Barbour County  27457 27457
+4 50  3 6 1 7 Alabama Bibb County 22915 22919
+5 50  3 6 1 9 Alabama Blount County 57322 57322
+
+Answer:%%timeit -n 10
+for group, frame in df.groupby('STNAME'):
+  avg = np.average(frame['CENSUS2010POP'])
+  print('Counties in state ' + group + 'have an average population of ' + str(avg))
+
+Note:
+
+###Question: split data by statename into three groups based on first letter (alphabet before 'M' before 'Q' and all others). 
+    print('There are ' + str(len(frame)) + ' records in group ' + str(group) + ' for processing.')
+    
+df.head()
+SUMLEV  REGION  DIVISION  STATE COUNTY  STNAME  CTYNAME CENSUS2010POP ESTIMATESBASE2010
+1 50  3 6 1 1 Alabama Autauga County  54571 54571
+2 50  3 6 1 3 Alabama Baldwin County  182265  182265
+3 50  3 6 1 5 Alabama Barbour County  27457 27457
+4 50  3 6 1 7 Alabama Bibb County 22915 22919
+5 50  3 6 1 9 Alabama Blount County 57322 57322
+
+Answer: df = df.set_index('STNAME')
+
+def fun(item):
+  if item[0] < 'M':
+    return 0
+  if item[0] < 'Q':
+    return 1
+  return 2
+
+for group, frame in df.groupby(fun):
+  print('There are ' + str(len(frame)) + ' records in group ' + str(group) + ' for processing.')
+
+Note:
+
+###Question: return this which is the average of CENSUS2010POP for each state
+        CENSUS2010POP
+STNAME  
+Alabama 71339.343284
+Alaska  24490.724138
+Arizona 426134.466667
+Arkansas  38878.906667
+California  642309.586207
+Colorado  78581.187500
+Connecticut 446762.125000
+
+Answer: df.groupby('STNAME').agg({'CENSUS2010POP': np.average})
+
+Note:
+
+###Question: get the total number of items in each 'Category' along with the weight of each 'Category' 
+
+Answer:df.groupby('Category').agg(sum)
+
+Note:
+
+###Question: return this...
+  sum avg
+STNAME    
+Alabama 4779736 71339.343284
+Alaska  710231  24490.724138
+Arizona 6392017 426134.466667
+Arkansas  2915918 38878.906667
+California  37253956  642309.586207
+Colorado  5029196 78581.187500
+Connecticut 3574097 446762.125000
+Delaware  897934  299311.333333
+District of Columbia  601723  601723.000000
+
+Answer: df.set_index('STNAME').groupby(level=0)['CENSUS2010POP'].agg({'avg': np.average, 'sum': np.sum})
+
+Note:
+
+###Question: return this
+
+sum                             avg
+POPESTIMATE2010 POPESTIMATE2011 POPESTIMATE2010 POPESTIMATE2011
+STNAME        
+Alabama 4785161 4801108         71420.313433  71658.328358
+Alaska  714021  722720          24621.413793  24921.379310
+Arizona 6408208 6468732         427213.866667 431248.800000
+
+Answer:(df.set_index('STNAME').groupby(level=0)['POPESTIMATE2010', 'POPESTIMATE2011']
+.agg({'avg':np.average, 'sum':np.sum}))
+
+Note:
+
+###Question: return this (group by state name and then return avergae of 2010 and sum of 2011)
+
+POPESTIMATE2010 POPESTIMATE2011
+STNAME    
+Alabama 71420.313433  4801108
+Alaska  24621.413793  722720
+Arizona 427213.866667 6468732
+Arkansas  38965.253333  2938538
+California  643691.017241 37700034
+Colorado  78878.968750  5119480
+Connecticut 447464.625000 3589759
+
+
+Answer:(df.set_index('STNAME').groupby(level=0)['POPESTIMATE2010', 'POPESTIMATE2011']
+.agg({'POPESTIMATE2010': np.average, 'POPESTIMATE2011': np.sum}))
+
+Note:
+
+###Question: Aggregation (agg) is just one of several methods available for performing computation on grouped data. Frot the following question, try using the apply method to apply a function on the grouped data. Use groupby to group teh dataframe, and apply a function to calculate the total weight (Weight (oz.) * Quantity) by category
+
+Answer:print(df.groupby('Category').apply(lambda df,a,b: sum(df[a] * df[b]), 'Weight (oz.)', 'Quantity'))
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+
+###Question: 
+
+Answer:
+
+Note:
+

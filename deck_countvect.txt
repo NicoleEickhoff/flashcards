@@ -1,0 +1,395 @@
+###Question: # count vectorizer
+***
+***
+cvec = CountVectorizer()
+cvec.fit([spam])
+# create dataframe on cvec
+df  = pd.DataFrame(cvec.transform([spam]).todense(),
+             columns=cvec.get_feature_names())
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+hvec = HashingVectorizer()
+df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# td idf vectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+df  = pd.DataFrame(tvec.transform([spam, ham]).todense(),
+                   columns=tvec.get_feature_names(),
+                   index=['spam', 'ham'])
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose()
+Answer:
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+Note:
+###Question: # count vectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+***
+***
+# create dataframe on cvec
+df  = pd.DataFrame(cvec.transform([spam]).todense(),
+             columns=cvec.get_feature_names())
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+hvec = HashingVectorizer()
+df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+
+# td idf vectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+df  = pd.DataFrame(tvec.transform([spam, ham]).todense(),
+                   columns=tvec.get_feature_names(),
+                   index=['spam', 'ham'])
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose() 
+Answer:cvec = CountVectorizer()
+cvec.fit([spam])
+Note:
+###Question:# count vectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+cvec = CountVectorizer()
+cvec.fit([spam])
+# create dataframe on cvec
+***
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+hvec = HashingVectorizer()
+df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+
+# td idf vectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+df  = pd.DataFrame(tvec.transform([spam, ham]).todense(),
+                   columns=tvec.get_feature_names(),
+                   index=['spam', 'ham'])
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose() 
+Answer: df  = pd.DataFrame(cvec.transform([spam]).todense(), columns=cvec.get_feature_names())
+Note:
+###Question:# count vectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+cvec = CountVectorizer()
+cvec.fit([spam])
+# create dataframe on cvec
+df  = pd.DataFrame(cvec.transform([spam]).todense(),
+             columns=cvec.get_feature_names())
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+***
+df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+
+# td idf vectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+df  = pd.DataFrame(tvec.transform([spam, ham]).todense(),
+                   columns=tvec.get_feature_names(),
+                   index=['spam', 'ham'])
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose() 
+Answer: hvec = HashingVectorizer()
+Note:
+###Question: # count vectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+cvec = CountVectorizer()
+cvec.fit([spam])
+# create dataframe on cvec
+df  = pd.DataFrame(cvec.transform([spam]).todense(),
+             columns=cvec.get_feature_names())
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+hvec = HashingVectorizer()
+***
+***
+
+# td idf vectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+df  = pd.DataFrame(tvec.transform([spam, ham]).todense(),
+                   columns=tvec.get_feature_names(),
+                   index=['spam', 'ham'])
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose()
+Answer: df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+Note:
+###Question: # count vectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+cvec = CountVectorizer()
+cvec.fit([spam])
+# create dataframe on cvec
+df  = pd.DataFrame(cvec.transform([spam]).todense(),
+             columns=cvec.get_feature_names())
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+hvec = HashingVectorizer()
+df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+
+# td idf vectorizer
+***
+***
+***
+df = pd.DataFrame(tvec.transform([spam, ham]).todense(),
+                   columns=tvec.get_feature_names(),
+                   index=['spam', 'ham'])
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose() 
+Answer: from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+Note:
+###Question: # count vectorizer
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer
+cvec = CountVectorizer()
+cvec.fit([spam])
+# create dataframe on cvec
+df  = pd.DataFrame(cvec.transform([spam]).todense(),
+             columns=cvec.get_feature_names())
+#show the df
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+# hashing vectorizer (your turn)
+hvec = HashingVectorizer()
+df  = pd.DataFrame(hvec.transform([spam]).todense())
+df.transpose().sort_values(0, ascending=False).head(10).transpose()
+
+# td idf vectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+tvec = TfidfVectorizer(stop_words='english')
+tvec.fit([spam, ham])
+# make df
+***
+df
+# see dfs
+df.transpose().sort_values('spam', ascending=False).head(10).transpose()
+#see dfs
+df.transpose().sort_values('ham', ascending=False).head(10).transpose()
+Answer: df  = pd.DataFrame(tvec.transform([spam, ham]).todense(), columns=tvec.get_feature_names(), index=['spam', 'ham'])
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
+###Question: 
+Answer:
+Note:
