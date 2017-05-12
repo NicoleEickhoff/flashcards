@@ -59,7 +59,8 @@ class Game:
 		print(*enumerate(self.deck_paths), sep='\n')
 		deck_num = int(raw_input('\ndeck number:  '))
 		self.current_deck_path = self.deck_paths[deck_num]
-		print('You chose {}. That is a great choice, we are all rooting for you.\n'.format(self.current_deck_path))
+		print('You chose {}. That is a great choice, and we are all rooting for you. \n\n REMEMBER: Work done with anxiety about results is far inferior to work done in the calm of self surrender... - Bhagavad Gita\n'.format(
+			self.current_deck_path))
 		raw_input('hit ENTER to start! After starting, type "THIS IS BULLSHIT" to quit. Type SPACE ENTER to submit '
 		          'answer.\n')
 		self.current_deck = Deck(self.current_deck_path)
@@ -67,7 +68,9 @@ class Game:
 	def play(self):
 		self.choose_deck()
 		self.current_deck.make_cards()
-		while [c for c in self.current_deck.cards if not c.you_got_it and c.answer!=""]:
+		self.current_deck.cards = [c for c in self.current_deck.cards if c.question.strip() != '']
+		# print([c.question.strip() for c in self.current_deck.cards])
+		while [c for c in self.current_deck.cards if not c.you_got_it]:
 			card = random.choice([c for c in self.current_deck.cards if not c.you_got_it])
 			card.tries += 1
 			question, answer, note = card.question, card.answer, card.note
@@ -106,5 +109,4 @@ class Game:
 if __name__ == "__main__":
 	# aflash = AutoFlash()
 	Game().play()
-
 

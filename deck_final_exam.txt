@@ -1,0 +1,132 @@
+###Question:# box plot of beer servings grouped by continent.
+df is 'drinks', columns are 'beer' & 'continent'
+
+Answer: drinks.boxplot(column='beer', by='continent')
+
+Note:
+
+###Question: histogram of beer servings grouped by continent 
+share the x and y axes
+df is 'drinks', columns are 'beer' & 'continent'
+
+Answer: drinks.hist(column='beer', by='continent', sharex=True, sharey=True)
+
+Note:
+
+###Question: # list available plot styles
+
+Answer: plt.style.available
+
+Note:
+
+###Question: change to a different style
+
+Answer: plt.style.use('ggplot')
+
+Note:
+
+###Question: (1) train test split the following into equal size train-test groups using random state of 8
+(2) fit a linear regression model
+(3) make predictions and score
+
+X = pd.DataFrame(boston.data)
+y = pd.DataFrame(boston.target)
+
+Answer: X_train, X_test, y_train, y_test = train_test_split(X,y, train_size = 0.5, random_state =8 )
+from sklearn.linear_model import LinearRegression 
+lr = LinearRegression() #and instantiate the algorithm 
+model = lr.fit(X_train,y_train) 
+predictions = lr.predict(X_test) 
+lr.score(X_test, y_test)
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:

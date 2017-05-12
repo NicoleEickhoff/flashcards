@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac0597f0-43b1-4971-90dd-4602edc5da0b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fcards_py2.py" afterPath="$PROJECT_DIR$/fcards_py2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fcards_py2_beta.py" afterPath="$PROJECT_DIR$/fcards_py2_beta.py" />
     </list>
@@ -65,8 +66,8 @@
       <file leaf-file-name="fcards_py2_beta.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fcards_py2_beta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="69" column="47" lean-forward="false" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+            <state relative-caret-position="270">
+              <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
               <folding>
                 <element signature="e#24#62#0" expanded="true" />
               </folding>
@@ -77,8 +78,8 @@
       <file leaf-file-name="fcards_py2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fcards_py2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="69" column="85" lean-forward="false" selection-start-line="69" selection-start-column="85" selection-end-line="69" selection-end-column="85" />
+            <state relative-caret-position="210">
+              <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
               <folding>
                 <element signature="e#24#62#0" expanded="true" />
               </folding>
@@ -955,8 +956,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fcards_py2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="69" column="85" lean-forward="false" selection-start-line="69" selection-start-column="85" selection-end-line="69" selection-end-column="85" />
+        <state relative-caret-position="210">
+          <caret line="61" column="8" lean-forward="false" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
           <folding>
             <element signature="e#24#62#0" expanded="true" />
           </folding>
@@ -965,8 +966,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fcards_py2_beta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="69" column="47" lean-forward="false" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+        <state relative-caret-position="270">
+          <caret line="64" column="27" lean-forward="false" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
           <folding>
             <element signature="e#24#62#0" expanded="true" />
           </folding>
