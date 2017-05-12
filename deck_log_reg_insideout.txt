@@ -1,0 +1,209 @@
+###Question: Parameter used to specify the norm used in the penalization.
+ The ‘newton-cg’, ‘sag’ and ‘lbfgs’ solvers support only l2 penalties.
+
+Answer: sklearn.linear_model.LogisticRegression(penalty='l2')
+
+Note:
+
+###Question: Parameter specifying dual or primal formulation. Dual formulation
+is only implemented for l2 penalty with liblinear solver. Prefer dual=False
+when n_samples > n_features.
+
+Answer: sklearn.linear_model.LogisticRegression(dual=False)
+
+Note:
+
+###Question: Parameter for inverse of regularization strength; must be a
+positive float. Like in support vector machines, smaller values specify stronger
+ regularization.
+
+Answer: sklearn.linear_model.LogisticRegression(C=1.0)
+
+Note:
+
+###Question: Parameter that specifies if a constant (a.k.a. bias or intercept)
+should be added to the decision function.
+
+
+Answer: sklearn.linear_model.LogisticRegression(fit_intercept=True)
+
+Note:
+
+###Question: Parameter that's useful only when the solver ‘liblinear’ is used
+and self.fit_intercept is set to True. In this case, x becomes
+[x, self.intercept_scaling], i.e. a “synthetic” feature with constant value
+equal to intercept_scaling is appended to the instance vector. The intercept
+becomes intercept_scaling * synthetic_feature_weight.
+Note! the synthetic feature weight is subject to l1/l2 regularization as all
+other features. To lessen the effect of regularization on synthetic feature
+weight (and therefore on the intercept) intercept_scaling has to be increased.
+
+Answer: sklearn.linear_model.LogisticRegression(intercept_scaling=1)
+
+Note:
+
+###Question: Parameter specifying weights associated with classes in the form
+{class_label: weight}.
+If not given, all classes are supposed to have weight one.
+The “balanced” mode uses the values of y to automatically adjust weights
+inversely proportional to class frequencies in the input data as
+n_samples / (n_classes * np.bincount(y)).
+Note that these weights will be multiplied with [parameter name]] (passed through
+the fit method) if [parameter name] is specified.
+
+Answer: sklearn.linear_model.LogisticRegression(class_weight=None)
+
+Note:
+
+###Question: Parameter that's Useful only for the newton-cg, sag and lbfgs
+solvers. Maximum number of iterations taken for the solvers to converge.
+
+Answer: sklearn.linear_model.LogisticRegression(max_iter=100)
+
+Note:
+
+###Question: Parameter that specifies the seed of the pseudo random number
+generator to use when shuffling the data. Used only in solvers ‘sag’ and
+‘liblinear’.
+
+Answer: sklearn.linear_model.LogisticRegression(random_state=None)
+
+Note:
+
+###Question: Parameter that specifies which algorithm to use in the optimization
+ problem.
+For small datasets, ‘liblinear’ is a good choice, whereas ‘sag’ is
+faster for large ones.
+For multiclass problems, only ‘newton-cg’, ‘sag’ and ‘lbfgs’ handle
+multinomial loss; ‘liblinear’ is limited to one-versus-rest schemes.
+‘newton-cg’, ‘lbfgs’ and ‘sag’ only handle L2 penalty.
+Note that ‘sag’ fast convergence is only guaranteed on features with
+approximately the same scale. You can preprocess the data with a scaler
+from sklearn.preprocessing.
+
+Answer: sklearn.linear_model.LogisticRegression(solver='liblinear')
+
+Note:
+
+###Question: Parameter that specifies tolerance for stopping criteria.
+
+Answer: sklearn.linear_model.LogisticRegression(tol=0.0001)
+
+Note:
+
+###Question: Multiclass option parameter can be either ‘ovr’ or ‘multinomial’.
+If the option chosen is ‘ovr’, then a binary problem is fit for each label.
+Else the loss minimized is the multinomial loss fit across the entire
+probability distribution. Works only for the ‘newton-cg’, ‘sag’ and ‘lbfgs’
+solver.
+
+Answer: sklearn.linear_model.LogisticRegression(multi_class='ovr')
+
+Note:
+
+###Question: Parameter - For the liblinear and lbfgs solvers set verbose to any
+positive number for verbosity.
+
+Answer: sklearn.linear_model.LogisticRegression(verbose=0)
+
+Note:
+
+###Question: Parameter that when set to True, will reuse the solution of the previous c
+all to fit as initialization, otherwise, just erase the previous solution.
+Useless for liblinear solver.
+
+Answer: sklearn.linear_model.LogisticRegression(warm_start=False)
+
+Note:
+
+###Question: Parameter - Number of CPU cores used during the cross-validation
+loop. If given a value of -1, all cores are used.
+
+Answer: sklearn.linear_model.LogisticRegression(n_jobs=1)
+
+Note:
+
+###Question: Attribute - Coefficient of the features in the decision function.
+
+Answer: sklearn.linear_model.LogisticRegression.coef_
+
+Note:
+
+###Question: Atrribute - Intercept (a.k.a. bias) added to the decision function.
+If fit_intercept is set to False, the intercept is set to zero.
+
+Answer: sklearn.linear_model.LogisticRegression.intercept_
+
+Note:
+
+###Question: Attribute - Actual number of iterations for all classes. If binary or
+multinomial, it returns only 1 element. For liblinear solver, only the maximum
+number of iteration across all classes is given.
+
+Answer: sklearn.linear_model.LogisticRegression.n_iter_
+
+Note:
+
+###Question: Method - Predict confidence scores for samples.
+
+Answer: sklearn.linear_model.LogisticRegression.decision_function()
+
+Note:
+
+###Question: Method - Convert coefficient matrix to dense array format.
+
+Answer: sklearn.linear_model.LogisticRegression.densify()
+
+Note:
+
+###Question: Method - Fit the model according to the given training data.
+
+Answer: sklearn.linear_model.LogisticRegression.fit()
+
+Note:
+
+###Question: Method  - Fit to data, then transform it.
+
+Answer: sklearn.linear_model.LogisticRegression.fit_transform()
+
+Note:
+
+###Question: Method - 	Get parameters for this estimator.
+
+Answer: sklearn.linear_model.LogisticRegression.get_params
+
+Note:
+
+###Question: Method - Predict class labels for samples in X.
+
+Answer: sklearn.linear_model.LogisticRegression.predict()
+
+Note:
+
+###Question: Method - Log of probability estimates.
+
+Answer: sklearn.linear_model.LogisticRegression.predict_log_proba()
+
+Note:
+
+###Question: Method - Probability estimates.
+
+Answer: sklearn.linear_model.LogisticRegression.predict_proba()
+
+Note:
+
+###Question: Method - Returns the mean accuracy on the given test data and labels.
+
+Answer: sklearn.linear_model.LogisticRegression.score()
+
+Note:
+
+###Question: Method - Set the parameters of this estimator.
+
+Answer: sklearn.linear_model.LogisticRegression.set_params()
+
+Note:
+
+###Question: Method - Convert coefficient matrix to sparse format.
+
+Answer: sklearn.linear_model.LogisticRegression.sparsify()
