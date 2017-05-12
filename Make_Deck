@@ -1,0 +1,5 @@
+import subprocess
+def make_new_deck(deck_name):
+	subprocess.run('cp deck_template.txt deck_{}.txt'.format(deck_name), shell=True)
+
+make_new_deck("regression_NA")
