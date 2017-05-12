@@ -61,6 +61,7 @@ class Game:
 		self.current_deck = Deck(self.current_deck_path)
 	
 	def play(self):
+		self.choose_deck()
 		self.current_deck.make_cards()
 		while [c for c in self.current_deck.cards if not c.you_got_it]:
 			card = random.choice([c for c in self.current_deck.cards if not c.you_got_it])
@@ -187,6 +188,7 @@ class AutoFlash:
 
 	
 
-aflash = AutoFlash()
-
+if __name__ == "__main__":
+	# aflash = AutoFlash()
+	Game().play()
 

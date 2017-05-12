@@ -1,0 +1,96 @@
+###Question:The type of modules. Constructor takes the name of the  module to be created and optionally its docstring.    Note  Use importlib.util.module_from_spec() to create a new module if you  wish to set the various import-controlled attributes.        __doc__¶  The docstring of the module. Defaults to None.        __loader__¶  The loader which loaded the module. Defaults to None.    Changed in version 3.4: Defaults to None. Previously the attribute was optional.          __name__¶  The name of the module.        __package__¶  Which package a module belongs to. If the module is top-level  (i.e. not a part of any specific package) then the attribute should be set  to '', else it should be set to the name of the package (which can be  __name__ if the module is a package itself). Defaults to None.    Changed in version 3.4: Defaults to None. Previously the attribute was optional.
+
+Answer:class types.ModuleType(name, doc=None)
+
+Note:
+
+###Question:Read-only proxy of a mapping. It provides a dynamic view on the mapping’s  entries, which means that when the mapping changes, the view reflects these  changes.    New in version 3.3.        key in proxy  Return True if the underlying mapping has a key key, else  False.        proxy[key]  Return the item of the underlying mapping with key key.  Raises a  KeyError if key is not in the underlying mapping.        iter(proxy)  Return an iterator over the keys of the underlying mapping.  This is a  shortcut for iter(proxy.keys()).        len(proxy)  Return the number of items in the underlying mapping.        copy()¶  Return a shallow copy of the underlying mapping.        get(key[, default])¶  Return the value for key if key is in the underlying mapping, else  default.  If default is not given, it defaults to None, so that  this method never raises a KeyError.        items()¶  Return a new view of the underlying mapping’s items ((key, value)  pairs).        keys()¶  Return a new view of the underlying mapping’s keys.        values()¶  Return a new view of the underlying mapping’s values.
+
+Answer:class types.MappingProxyType(mapping)
+
+Note:
+
+###Question:A simple object subclass that provides attribute access to its  namespace, as well as a meaningful repr.  Unlike object, with SimpleNamespace you can add and remove  attributes.  If a SimpleNamespace object is initialized with keyword  arguments, those are directly added to the underlying namespace.  The type is roughly equivalent to the following code:  class SimpleNamespace:      def __init__(self, **kwargs):          self.__dict__.update(kwargs)        def __repr__(self):          keys = sorted(self.__dict__)          items = ("{}={!r}".format(k, self.__dict__[k]) for k in keys)          return "{}({})".format(type(self).__name__, ", ".join(items))        def __eq__(self, other):          return self.__dict__ == other.__dict__      SimpleNamespace may be useful as a replacement for class NS: pass.  However, for a structured record type use namedtuple()  instead.    New in version 3.3.
+
+Answer:class types.SimpleNamespace
+
+Note:
+
+###Question:method of class types.MappingProxyType(mapping): Return a shallow copy of the underlying mapping.
+
+Answer:copy()
+
+Note:
+
+###Question:method of class types.MappingProxyType(mapping): Return the value for key if key is in the underlying mapping, else  default.  If default is not given, it defaults to None, so that  this method never raises a KeyError.
+
+Answer:get(key[, default])
+
+Note:
+
+###Question:method of class types.MappingProxyType(mapping): Return a new view of the underlying mapping’s items ((key, value)  pairs).
+
+Answer:items()
+
+Note:
+
+###Question:method of class types.MappingProxyType(mapping): Return a new view of the underlying mapping’s keys.
+
+Answer:keys()
+
+Note:
+
+###Question:method of class types.MappingProxyType(mapping): Return a new view of the underlying mapping’s values.
+
+Answer:values()
+
+Note:
+
+###Question:Creates a class object dynamically using the appropriate metaclass.  The first three arguments are the components that make up a class  definition header: the class name, the base classes (in order), the  keyword arguments (such as metaclass).  The exec_body argument is a callback that is used to populate the  freshly created class namespace. It should accept the class namespace  as its sole argument and update the namespace directly with the class  contents. If no callback is provided, it has the same effect as passing  in lambda ns: ns.    New in version 3.3.
+
+Answer:types.new_class(name, bases=(), kwds=None, exec_body=None)
+
+Note:
+
+###Question:Calculates the appropriate metaclass and creates the class namespace.  The arguments are the components that make up a class definition header:  the class name, the base classes (in order) and the keyword arguments  (such as metaclass).  The return value is a 3-tuple: metaclass, namespace, kwds  metaclass is the appropriate metaclass, namespace is the  prepared class namespace and kwds is an updated copy of the passed  in kwds argument with any 'metaclass' entry removed. If no kwds  argument is passed in, this will be an empty dict.    New in version 3.3.      Changed in version 3.6: The default value for the namespace element of the returned  tuple has changed.  Now an insertion-order-preserving mapping is  used when the metaclass does not have a __prepare__ method,
+
+Answer:types.prepare_class(name, bases=(), kwds=None)
+
+Note:
+
+###Question:Route attribute access on a class to __getattr__.  This is a descriptor, used to define attributes that act differently when  accessed through an instance and through a class.  Instance access remains  normal, but access to an attribute through a class will be routed to the  class’s __getattr__ method; this is done by raising AttributeError.  This allows one to have properties active on an instance, and have virtual  attributes on the class with the same name (see Enum for an example).    New in version 3.4.
+
+Answer:types.DynamicClassAttribute(fget=None, fset=None, fdel=None, doc=None)
+
+Note:
+
+###Question:This function transforms a generator function into a  coroutine function which returns a generator-based coroutine.  The generator-based coroutine is still a generator iterator,  but is also considered to be a coroutine object and is  awaitable.  However, it may not necessarily implement  the __await__() method.  If gen_func is a generator function, it will be modified in-place.  If gen_func is not a generator function, it will be wrapped. If it  returns an instance of collections.abc.Generator, the instance  will be wrapped in an awaitable proxy object.  All other types  of objects will be returned as is.    New in version 3.5.
+
+Answer:types.coroutine(gen_func)
+
+Note:
+
+###Question:Creates a class object dynamically using the appropriate metaclass.  The first three arguments are the components that make up a class  definition header: the class name, the base classes (in order), the  keyword arguments (such as metaclass).  The exec_body argument is a callback that is used to populate the  freshly created class namespace. It should accept the class namespace  as its sole argument and update the namespace directly with the class  contents. If no callback is provided, it has the same effect as passing  in lambda ns: ns.    New in version 3.3.
+
+Answer:types.new_class(name, bases=(), kwds=None, exec_body=None)
+
+Note:
+
+###Question:Calculates the appropriate metaclass and creates the class namespace.  The arguments are the components that make up a class definition header:  the class name, the base classes (in order) and the keyword arguments  (such as metaclass).  The return value is a 3-tuple: metaclass, namespace, kwds  metaclass is the appropriate metaclass, namespace is the  prepared class namespace and kwds is an updated copy of the passed  in kwds argument with any 'metaclass' entry removed. If no kwds  argument is passed in, this will be an empty dict.    New in version 3.3.      Changed in version 3.6: The default value for the namespace element of the returned  tuple has changed.  Now an insertion-order-preserving mapping is  used when the metaclass does not have a __prepare__ method,
+
+Answer:types.prepare_class(name, bases=(), kwds=None)
+
+Note:
+
+###Question:Route attribute access on a class to __getattr__.  This is a descriptor, used to define attributes that act differently when  accessed through an instance and through a class.  Instance access remains  normal, but access to an attribute through a class will be routed to the  class’s __getattr__ method; this is done by raising AttributeError.  This allows one to have properties active on an instance, and have virtual  attributes on the class with the same name (see Enum for an example).    New in version 3.4.
+
+Answer:types.DynamicClassAttribute(fget=None, fset=None, fdel=None, doc=None)
+
+Note:
+
+###Question:This function transforms a generator function into a  coroutine function which returns a generator-based coroutine.  The generator-based coroutine is still a generator iterator,  but is also considered to be a coroutine object and is  awaitable.  However, it may not necessarily implement  the __await__() method.  If gen_func is a generator function, it will be modified in-place.  If gen_func is not a generator function, it will be wrapped. If it  returns an instance of collections.abc.Generator, the instance  will be wrapped in an awaitable proxy object.  All other types  of objects will be returned as is.    New in version 3.5.
+
+Answer:types.coroutine(gen_func)
+
+Note:
+
