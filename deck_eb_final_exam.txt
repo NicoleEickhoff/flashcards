@@ -1,0 +1,158 @@
+###Question: Regression problem example
+a. predict man or woman from height
+b. predict weight from height
+c. find which variable best explains demographics of a state fair
+
+Answer: predict weight from height
+
+Note:
+
+###Question: Classification problem
+a. find which variable best explains demographics of a state fair
+b. predict weight from height
+c. predict man or woman from height
+
+Answer: predict man or woman from height
+
+Note:
+
+###Question: Prediction
+a. what the effect of age, class and gender has on surviving the Titanic
+b. given age, class, and gender, will a given passenger on the Titanic live or die
+c. what different ages, classes, and genders were on the Titanic given the data
+
+Answer: given age, class, and gender, will a given passenger on the Titanic live or die
+
+Note:
+
+###Question: Inference
+a. what different ages, classes, and genders were on the Titanic given the data
+b. what the effect of age, class and gender has on surviving the Titanic
+c. given age, class, and gender, will a given passenger on the Titanic live or die
+
+Answer: what the effect of age, class and gender has on surviving the Titanic
+
+Note:
+
+###Question: What is a Bayesian interpretation of "50% chance of rain tomorrow"?
+a. given weather data, tomorrow has a 50% chance of rain
+b. based off knowledge I currently have, I am 50% certain it will rain
+c. if we were to repeat tomorrow 100 times, it would rain in about 50 of them
+
+Answer: based off knowledge I currently have, I am 50% certain it will rain
+
+Note:
+
+###Question: What is a frequentist interpretation of "50% chance of rain tomorrow"?
+a. if we were to repeat tomorrow 100 times, it would rain in about 50 of them
+b. given weather data, tomorrow has a 50% chance of rain
+c. based off knowledge I currently have, I am 50% certain it will rain
+
+Answer: based off knowledge I currently have, I am 50% certain it will rain
+
+Note:
+
+###Question: Give an example of a situation that uses supervised learning
+a. digit image recognition
+b. clustering of different demographics at the state fair
+c. a teacher proctoring an exam
+
+Answer: digit image recognition
+
+Note:
+
+###Question: How can unsupervised learning be applied to a situation
+a. kmeans could be used to model the underlying structure
+b. the target variable could be predicted/inferred using a regression
+c. the student is given a take-home test
+
+Answer: kmeans could be used to model the underlying structure
+
+Note:
+
+###Question: Give an example of a situation where a model might have high error
+due to bias.
+a. a decision tree that only goes one node deep
+b. using a phonebook to select participants of a survey
+c. small sample size
+
+Answer: using a phonebook to select participants of a survey
+
+Note:
+
+###Question: Give an example of a situation where a model might have high error
+due to variance.
+a. using a phonebook to select participants of a survey
+b. an unpruned decision tree
+c. a pruned decision tree
+
+Answer: an unpruned decision tree
+
+Note:
+
+###Question: Explain the bias-variance trade-off as if your boss were five.
+a. when you get more bias, you often have less variance.
+b. simpler models are more biased because they group data into fewer categories.
+c. more complex models are more biased because they overfit.
+
+Answer: simpler models are more biased because they group data into fewer categories.
+
+Note:
+
+###Question: In what circumstances is regularization used?
+a. in circumstances with dependent variables
+b. in circumstances with lots of variables
+c. in circumstances where variables cannot be easily compared
+
+Answer: in circumstances with lots of variables
+
+Note:
+
+###Question: What is Bayes' Theorem?
+
+Answer: P(A|B) = P(B|A) * P(A) / P(B)
+
+Note:
+
+###Question: How can MapReduce be used to average many numbers?
+
+Answer: Mapper sends all values to key. Reducer sums values. Counter counts values.
+Divide sum by count.
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
+
+###Question:
+
+Answer:
+
+Note:
