@@ -116,8 +116,7 @@ Note:
 
 ###Question: How can MapReduce be used to average many numbers?
 
-Answer: Mapper sends all values to key. Reducer sums values. Counter counts values.
-Divide sum by count.
+Answer: Mapper sends all values to key. Reducer sums values. Counter counts values. Divide sum by count.
 
 Note:
 
