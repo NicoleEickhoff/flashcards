@@ -48,7 +48,7 @@ a. if we were to repeat tomorrow 100 times, it would rain in about 50 of them
 b. given weather data, tomorrow has a 50% chance of rain
 c. based off knowledge I currently have, I am 50% certain it will rain
 
-Answer: based off knowledge I currently have, I am 50% certain it will rain
+Answer: given weather data, tomorrow has a 50% chance of rain
 
 Note:
 
