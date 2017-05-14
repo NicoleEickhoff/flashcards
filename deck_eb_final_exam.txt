@@ -120,38 +120,111 @@ Answer: Mapper sends all values to key. Reducer sums values. Counter counts valu
 
 Note:
 
-###Question:
+###Question: What is the formula for sensitivity (in a confusion matrix)?
 
-Answer:
-
-Note:
-
-###Question:
-
-Answer:
+Answer: TP/TP+FN
 
 Note:
 
-###Question:
+###Question: What is the formula for specificity (in a confusion matrix)?
 
-Answer:
-
-Note:
-
-###Question:
-
-Answer:
+Answer:TN/TN+FP
 
 Note:
 
-###Question:
+###Question: What is the formula for accuracy (in a confusion matrix)?
 
-Answer:
+Answer: TP+TN/Total
 
 Note:
 
-###Question:
+###Question: What is the formula for precision (in a confusion matrix)?
 
-Answer:
+Answer: TP/TP+FP
+
+Note:
+
+###Question: How is the ROC curve generated?
+
+
+Answer: It is a plot of the true positive rate against the true negative rate.
+
+Note:
+
+###Question: What is the difference between ROC and AUC ROC?
+
+Answer: ROC is a range, while AUC ROC is a single number (the area under the curve).
+
+Note:
+
+###Question: Linear Regression: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R, S, finds linear relationships, can be used to predict linear relationships, doesn't work for nonlinear data.
+
+Note:
+
+###Question: Logistic Regression: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: C, S, a regression model where the dependent variable is categorical, estimates probability of class being yes, data must truly be binary.
+
+Note:
+
+###Question: k-Nearest Neighbors: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R&C, S, non-parametric method used to identify Ys based on distance, simple way to predict without prior knowledge of the data, it is lazy (uses all the data) and therefore expensive
+
+Note:
+
+###Question: Decision Trees: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R&C, S, organizes data along branches and nodes to maximize purity of information, easy to see and understand, prone to overfitting
+
+Note:
+
+###Question: SVMs: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R&C, S, the algorithm outputs an optimal hyperplane which categorizes new examples, it finds a line passing as far as possible from all points, black box
+
+Note:
+
+###Question: PCR: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R, U, is based on PCA, reduces dimensionality, makes your variables independent, black box
+
+Note:
+
+###Question: k-Means Clustering: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: C, U, aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean, works well with spherical clusters, inconsistent repeatability
+
+Note:
+
+###Question: Hierarchical Clustering: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: C, U, bottom-up or top-down, splits a single cluster into minis or pairs minis together into larger clusters, greedy algorithm- can fail to reach global optimum
+
+Note:
+
+###Question: DBSCAN: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: C, U, finds core samples of high density and expands clusters from them, good for data which contains clusters of similar density, quality depends on distance measurement used
+
+Note:
+
+###Question: Neural Networks: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R&C, S&U, contains an input, hidden layer, output and weights, you update weights based on error, processor intensive and can be hard to interpret
+
+Note:
+
+###Question: Naive Bayes: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: C, S, requires only a small sample to predict classes, assumes independence of variables, typically not as good as random forests
+
+Note:
+
+###Question: ARIMA: R/C, S/U, Unique, Explain, Pitfalls
+
+Answer: R, S, autoregressive integrated moving average, uses a "differencing step" to eliminate non-stationarity and forecast future events, would not be useful for non-time data
 
 Note:
