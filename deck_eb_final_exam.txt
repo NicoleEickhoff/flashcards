@@ -147,7 +147,7 @@ Note:
 ###Question: How is the ROC curve generated?
 
 
-Answer: It is a plot of the true positive rate against the false positive rate.
+Answer: It is a plot of the true positive rate against the true negative rate.
 
 Note:
 
